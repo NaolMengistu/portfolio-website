@@ -1,0 +1,68 @@
+name: Build and Deploy Unified Site
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "github-pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Build and Deploy to GitHub Pages
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Checkout the repository source code
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      # 2. Setup Hugo to build the blog
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: 'latest'
+          extended: true
+
+      # 3. Build the Hugo blog. The output will be in './blog/public/'
+      - name: Build Hugo Blog
+        # Crucially set the baseURL so all links work correctly
+        run: cd blog && hugo --minify --baseURL "/blog/"
+
+      # 4. Prepare a unified deployment directory called 'dist'
+      - name: Prepare Deployment Directory
+        run: |
+          mkdir dist
+          # Copy main portfolio files to the root of 'dist'
+          cp index.html style.css mediaqueries.css script.js dist/
+          cp -r assets dist/
+          # Copy the built blog into a '/blog' subfolder inside 'dist'
+          cp -r blog/public/* dist/blog/
+          # Create the CNAME file for the main domain
+          echo "naol.dev" > dist/CNAME
+
+      # 5. Setup and Upload the unified 'dist' directory as the artifact
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+
+      # 6. Deploy the artifact to GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,27 @@
+disabled = false
+languageCode = "en"
+languageName = "English"
+weight = 1
+title = "Naol Mengistu"
+
+
+[params]
+  displayName = "EN"
+  isoCode = "en"
+  rtl = false
+  dateFormat = "2 January 2006"
+
+  [params.site]
+    homeURL = "https://naol.dev"
+
+  [params.author]
+    name = "Naol Mengistu"
+    # email = "naolmengistu.d@gmail.com"
+    image = "https://media.licdn.com/dms/image/v2/D4D03AQHyevAMwu6vGw/profile-displayphoto-shrink_400_400/B4DZPlpFkZHcAk-/0/1734724574100?e=1756339200&v=beta&t=9NuGeugWfOQfNSCKXBaUPNzUsMNNaumyUDchWXAy27M"
+    imageQuality = 100
+    headline = "Cybersecurity Engineer & Researcher"
+    bio = "Cybersecurity Engineer & Researcher"
+    links = [
+      { github = "https://github.com/naolmengistu" },
+      { linkedin = "https://linkedin.com/in/naolmengistu" }
+    ]

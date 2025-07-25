@@ -1,0 +1,8 @@
+# Hugo build artifacts
+/blog/public/
+/blog/resources/
+/blog/.hugo_build.lock
+
+# OS files
+.DS_Store
+Thumbs.db
