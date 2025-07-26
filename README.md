@@ -1,4 +1,4 @@
-# Personal Portfolio & Technical Blog Monorepo
+# Portfolio & Technical Blog Website Monorepo
 
 This repository contains the source code for my website. It serves as both my professional online presence and a live demonstration of my skills in DevOps, cloud infrastructure, and security engineering. It showcases a modern, hybrid CI/CD pipeline managing two distinct projects from a single source.
 
