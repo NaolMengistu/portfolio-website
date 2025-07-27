@@ -6,3 +6,18 @@ footer#site-footer > div {
   flex-direction: column;
   text-align: center;
 }
+
+/* Custom CSS for class="figure-wide" */
+.figure-wide {
+    width: 95%; /* Full width to take up the entire container */
+    max-width: 100%; /* An optional max-width to prevent it from getting too huge on massive screens */
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Ensure the image inside the wide figure scales correctly */
+.figure-wide img {
+    width: 100%;
+    height: auto;
+}
