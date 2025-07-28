@@ -78,6 +78,8 @@ After applying these principles across all business requirements, the result is 
 
 ![Database Schema for Mobile Payment Service](https://github.com/NaolMengistu/iPay_database_design/raw/main/images/database-schema.png)
 
+<p align="center"><strong>Figure: Database schema</strong></p>
+
 #### Key Design Decisions & Highlights:
 
 *   **Identity vs. Application User (`person` vs. `user`):** The schema separates a person's core identity (`person` table) from their application-specific data (`user` table). This allows a single person to potentially have multiple user profiles in the system, a flexible and scalable design choice.
