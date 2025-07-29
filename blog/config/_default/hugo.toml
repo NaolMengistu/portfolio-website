@@ -6,7 +6,7 @@ theme = "blowfish" # UNCOMMENT THIS LINE
 baseURL = "https://naol.dev/"
 defaultContentLanguage = "en"
 
-# pluralizeListTitles = "true" # hugo function useful for non-english languages, find out more in  https://gohugo.io/getting-started/configuration/#pluralizelisttitles
+# pluralizeListTitles = "true" # hugo function useful for non-english languages, find out more in  https://gugo.io/getting-started/configuration/#pluralizelisttitles
 
 enableRobotsTXT = true
 summaryLength = 0
@@ -16,7 +16,7 @@ buildFuture = false
 
 enableEmoji = true
 
-# googleAnalytics = "G-XXXXXXXXX"
+# googleAnalytics = "G-XXXXXXXXX"
 
 [params.assets]
   customCSS = ["css/custom.css"]
@@ -40,6 +40,16 @@ enableEmoji = true
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
+
+
+# This section tells Hugo to name the JSON file "index.json" for the theme's search script.
+[outputFormats]
+  [outputFormats.JSON]
+    mediaType = "application/json"
+    baseName = "index"
+    isPlainText = false
+    notAlternative = true
+
 
 [related]
   threshold = 0
@@ -70,4 +80,3 @@ enableEmoji = true
       name = 'fragmentrefs'
       type = 'fragments'
       weight = 10
-
