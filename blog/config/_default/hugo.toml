@@ -21,6 +21,9 @@ enableEmoji = true
 [params.assets]
   customCSS = ["css/custom.css"]
 
+[params.search]
+  enable = true
+
 [pagination]
   pagerSize = 100
 
