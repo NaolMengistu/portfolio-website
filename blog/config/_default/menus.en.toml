@@ -16,16 +16,19 @@
   weight = 1
 
 [[main]]
-  name = "Topics"
+  name = "Tags"
   pageRef = "tags"
   weight = 2
 
 [[main]]
-  name = "About"
-  pageRef = "about"
+  name = "Categories"
+  pageRef = "categories"
   weight = 3
 
-
+[[main]]
+  name = "About"
+  pageRef = "about"
+  weight = 4
 
 
 #[[main]]

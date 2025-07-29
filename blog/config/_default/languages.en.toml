@@ -12,7 +12,8 @@ title = "Naol Mengistu"
   dateFormat = "2 January 2006"
 
   [params.site]
-    homeURL = "https://naol.dev"
+    # CORRECTED: This should point to the blog's homepage, not the main portfolio.
+    homeURL = "https://blog.naol.dev" 
 
   [params.author]
     name = "Naol Mengistu"
@@ -22,6 +23,9 @@ title = "Naol Mengistu"
     headline = "Cybersecurity Engineer & Researcher"
     bio = "Cybersecurity Engineer & Researcher"
     links = [
+      # ADDED: A link to your main portfolio website.
+      # The theme will use a generic 'link' or 'globe' icon for this.
+      { link = "https://naol.dev" },
       { github = "https://github.com/naolmengistu" },
       { linkedin = "https://linkedin.com/in/naolmengistu" }
     ]

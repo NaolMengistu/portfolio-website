@@ -1,10 +1,11 @@
 ---
-title: "About Me"
-layout: "simple" #other option is page
-# description: "Learn more about Naol Mengistu, a cybersecurity professional passionate about building resilient and compliant systems."
-# date: 2025-08-01
+title: "About"
+layout: "terms" #other option is page, simple, terms
+description: "Learn more about Naol Mengistu, a cybersecurity professional passionate about building resilient and compliant systems."
+# date: 2025-07-01
 # author: "Naol Mengistu"
 # toc: true
+
 ---
 
 
