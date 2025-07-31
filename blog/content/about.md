@@ -10,10 +10,10 @@ description: "Learn more about Naol Mengistu, a cybersecurity professional passi
 
 
 
-Hello, and welcome to my corner of the web at [blog.naol.dev](https://naol.dev/). I'm Naol Mengistu, a cybersecurity professional. This website is where I document my hands-on projects in digital forensics, cloud security, and automated GRC, turning theory into practical code and analysis. 
+Hello, and welcome to my corner of the web at [blog.naol.dev](https://blog.naol.dev/). I'm Naol Mengistu, a cybersecurity professional. This website is where I document my hands-on projects in digital forensics, cloud security, and automated GRC, turning theory into practical code and analysis. 
 
 For a broader look at my featured projects, CV, contact details, and key skills, check out the main page of my website at:
-- [naol.dev](https://blog.naol.dev/)
+- [naol.dev](https://naol.dev/)
 
 In our rapidly evolving digital world, it’s not enough to just deploy technology. We must build systems that are not only functional but also resilient, secure, and compliant by design. 
 

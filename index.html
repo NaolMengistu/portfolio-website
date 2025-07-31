@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,409 +8,282 @@
     <link rel="icon" type="image/png" href="./assets/web-icon.png" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="mediaqueries.css" />
-  </head>
-  <body>
+</head>
+<body>
+    <!-- Desktop Navigation Bar -->
     <nav id="desktop-nav">
-      <div class="logo">Naol Mengistu</div>
-      <div>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Key Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="https://blog.naol.dev">Blog</a></li>
-        </ul>
-      </div>
+        <div class="logo">Naol Mengistu</div>
+        <div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Key Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="https://blog.naol.dev">Blog</a></li>
+                <!-- Theme toggle button for desktop -->
+                <button id="theme-toggle-desktop" class="theme-toggle-btn" title="Toggle theme">
+                    <!-- Moon icon for light mode -->
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.106a.75.75 0 010 1.06l-1.591 1.591a.75.75 0 11-1.06-1.06l1.591-1.591a.75.75 0 011.06 0zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 011.06 0l1.591 1.591a.75.75 0 11-1.06 1.06l-1.591-1.591a.75.75 0 010-1.06zM12 21.75a.75.75 0 01-.75-.75v-2.25a.75.75 0 011.5 0V21a.75.75 0 01-.75-.75zM5.106 17.834a.75.75 0 010-1.06l1.591-1.591a.75.75 0 011.06 1.06l-1.591 1.591a.75.75 0 01-1.06 0zM3 12a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5H3.75A.75.75 0 013 12zM6.166 5.106a.75.75 0 01-1.06 0L3.515 3.515a.75.75 0 111.06-1.06l1.591 1.591a.75.75 0 010 1.06z"></path></svg>
+                    <!-- Sun icon for dark mode -->
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 004.463-.976a.75.75 0 01.98.98A10.503 10.503 0 0112 22.5C6.202 22.5 1.5 17.798 1.5 12A10.503 10.503 0 019.528 1.718z" clip-rule="evenodd"></path></svg>
+                </button>
+            </ul>
+        </div>
     </nav>
+
+    <!-- Hamburger Navigation for Mobile -->
     <nav id="hamburger-nav">
-      <div class="logo">Naol Mengistu</div>
-      <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
+        <div class="logo">Naol Mengistu</div>
+        <div class="nav-right-container">
+            <!-- Theme toggle button for mobile -->
+            <button id="theme-toggle-mobile" class="theme-toggle-btn" title="Toggle theme">
+                 <!-- Moon icon for light mode -->
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.106a.75.75 0 010 1.06l-1.591 1.591a.75.75 0 11-1.06-1.06l1.591-1.591a.75.75 0 011.06 0zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 011.06 0l1.591 1.591a.75.75 0 11-1.06 1.06l-1.591-1.591a.75.75 0 010-1.06zM12 21.75a.75.75 0 01-.75-.75v-2.25a.75.75 0 011.5 0V21a.75.75 0 01-.75.75zM5.106 17.834a.75.75 0 010-1.06l1.591-1.591a.75.75 0 011.06 1.06l-1.591 1.591a.75.75 0 01-1.06 0zM3 12a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5H3.75A.75.75 0 013 12zM6.166 5.106a.75.75 0 01-1.06 0L3.515 3.515a.75.75 0 111.06-1.06l1.591 1.591a.75.75 0 010 1.06z"></path></svg>
+                <!-- Sun icon for dark mode -->
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 004.463-.976a.75.75 0 01.98.98A10.503 10.503 0 0112 22.5C6.202 22.5 1.5 17.798 1.5 12A10.503 10.503 0 019.528 1.718z" clip-rule="evenodd"></path></svg>
+            </button>
+            <div class="hamburger-menu" title="Menu">
+                <!-- The `onclick` attribute calls a JavaScript function to toggle the menu -->
+                <div class="hamburger-icon" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="menu-links">
+                    <ul>
+                        <!-- `onclick` is also used here to close the menu after a link is clicked -->
+                        <li><a href="#about" onclick="toggleMenu()">About</a></li>
+                        <li><a href="#experience" onclick="toggleMenu()">Key Skills</a></li>
+                        <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+                        <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+                        <li><a href="https://blog.naol.dev" onclick="toggleMenu()">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="menu-links">
-          <li><a href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="#experience" onclick="toggleMenu()">Key Skills</a></li>
-          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-          <li><a href="https://blog.naol.dev" onclick="toggleMenu()">Blog</a></li>
-        </div>
-      </div>
     </nav>
+
+    <!-- Profile/Hero Section -->
     <section id="profile">
-      <div class="section__text">
-        <p class="section__text__p1">Hello, I'm</p>
-        <h1 class="title">Naol Mengistu</h1>
-        <p class="section__text__p2">Cloud Engineering | DevOps | Cybersecurity</p>
-        <div class="btn-container">
-          <button
-            class="btn btn-color-2"
-            onclick="window.open('./assets/naol_cv.pdf')"
-          >
-            Download CV
-          </button>
-          <button class="btn btn-color-1" onclick="location.href='./#contact'">
-            Contact Info
-          </button>
+        <div class="section__text">
+            <p class="section__text__p1">Hello, I'm</p>
+            <h1 class="title">Naol Mengistu</h1>
+            <p class="section__text__p2">Cybersecurity | DevOps | Cloud Engineering</p>
+            <div class="btn-container">
+                <!-- `window.open` opens the CV in a new tab -->
+                <button class="btn btn-color-2" onclick="window.open('./assets/naol_cv.pdf')">
+                    Download CV
+                </button>
+                <!-- `location.href` navigates to the contact section on the same page -->
+                <button class="btn btn-color-1" onclick="location.href='./#contact'">
+                    Contact Info
+                </button>
+            </div>
+            <div id="socials-container">
+                <img src="./assets/linkedin.png" alt="LinkedIn profile" class="icon" onclick="window.open('https://linkedin.com/in/naolmengistu')" />
+                <img src="./assets/github.png" alt="Github profile" class="icon" onclick="window.open('https://github.com/naolmengistu')" />
+            </div>
         </div>
-        <div id="socials-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="LinkedIn profile"
-            class="icon"
-            onclick="window.open('https://linkedin.com/in/naolmengistu')"
-          />
-          <img
-            src="./assets/github.png"
-            alt="Github profile"
-            class="icon"
-            onclick="window.open('https://github.com/naolmengistu')"
-          />
-        </div>
-      </div>
     </section>
+
+    <!-- About Section -->
     <section id="about">
-      <p class="section__text__p1">Get To Know More</p>
-      <h1 class="title">About Me</h1>
-      <div class="section-container">
-        <div class="section__pic-container">
-          <img
-            src="./assets/about-pic.png"
-            alt="Profile picture"
-            class="about-pic"
-          />
-        </div>
-        <div class="about-details-container">
-          <div class="about-containers">
-            <div class="details-container">
-              <img
-                src="./assets/experience.png"
-                alt="Experience icon"
-                class="icon"
-              />
-              <h3>Experience</h3>
-              <p>Professional Experience<br />IT Support & Quality Analysis</p>
+        <p class="section__text__p1">Get To Know More</p>
+        <h1 class="title">About Me</h1>
+        <div class="section-container">
+            <div class="section__pic-container">
+                <img src="./assets/about-pic.png" alt="Profile picture" class="about-pic" />
             </div>
-            <div class="details-container">
-              <img
-                src="./assets/education.png"
-                alt="Education icon"
-                class="icon"
-              />
-              <h3>Education</h3>
-              <p>B.Sc. in Computer Science<br />M.Sc. in Cybersecurity</p>
+            <div class="about-details-container">
+                <div class="about-containers">
+                    <div class="details-container">
+                        <img src="./assets/experience.png" alt="Experience icon" class="icon" />
+                        <h3>Professional Experience</h3>
+                        <p>IT Support &<br /> Quality Analysis</p>
+                    </div>
+                    <div class="details-container">
+                        <img src="./assets/education.png" alt="Education icon" class="icon" />
+                        <h3>Education</h3>
+                        <p>B.Sc. in Computer Science<br />M.Sc. in Cybersecurity</p>
+                    </div>
+                </div>
+                <div class="text-container">
+                    <p>
+                        I am an analytical professional with a background in Computer Science and a Master's in Cybersecurity. Currently, I'm expanding my expertise in Google Cloud Platform and DevOps engineering, integrating security best practices into scalable and efficient infrastructures. My experience includes adherence to IT security frameworks like ISO 27001, data integrity, and providing actionable insights for process improvements. I am passionate about building secure, reliable environments that leverage the latest in cloud, automation, and cybersecurity techniques.
+                    </p>
+                </div>
             </div>
-          </div>
-          <div class="text-container">
-            <p>
-              I am an analytical professional with a background in Computer
-              Science and a Master's in Cybersecurity. Currently, I'm expanding
-              my expertise in Google Cloud Platform and DevOps engineering,
-              integrating security best practices into scalable and efficient
-              infrastructures. My experience includes adherence to IT security
-              frameworks like ISO 27001, data integrity, and providing actionable
-              insights for process improvements. I am passionate about building
-              secure, reliable environments that leverage the latest in cloud,
-              automation, and cybersecurity techniques.
-            </p>
-          </div>
         </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#experience'"
-      />
+        <!-- Arrow icon to navigate to the next section -->
+        <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#experience'" />
     </section>
+
+    <!-- Key Skills/Experience Section -->
     <section id="experience">
-      <p class="section__text__p1">Explore My</p>
-      <h1 class="title">Key Skills</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-    
-          <!-- Cloud Engineer Skills -->
-          <div class="details-container">
-            <h2 class="experience-sub-title">Cloud Engineer</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div class="skill-text">
-                  <h3>Google Cloud Platform</h3>
+        <p class="section__text__p1">Explore My</p>
+        <h1 class="title">Key Skills</h1>
+        <div class="experience-details-container">
+            <div class="about-containers">
+                <!-- Cloud Engineer Skills -->
+                <div class="details-container">
+                    <h2 class="experience-sub-title">Cloud Engineer</h2>
+                    <div class="article-container">
+                        <article>
+                            <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                            <div class="skill-text"><h3>Google Cloud Platform</h3></div>
+                        </article>
+                        <article>
+                            <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                            <div class="skill-text"><h3>Linux Administration</h3></div>
+                        </article>
+                        <article>
+                            <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                            <div class="skill-text"><h3>Networking & Security</h3></div>
+                        </article>
+                        <article>
+                            <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                            <div class="skill-text"><h3>Infrastructure as Code (Terraform)</h3></div>
+                        </article>
+                    </div>
                 </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div class="skill-text">
-                  <h3>Linux Administration</h3>
+                <!-- DevOps Engineer Skills -->
+                <div class="details-container">
+                    <h2 class="experience-sub-title">DevOps Engineer</h2>
+                    <div class="article-container">
+                        <article>
+                            <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                            <div class="skill-text"><h3>CI/CD Pipelines</h3></div>
+                        </article>
+                        <article>
+                            <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                            <div class="skill-text"><h3>Git & Version Control</h3></div>
+                        </article>
+                        <article>
+                            <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                            <div class="skill-text"><h3>Python & Bash Scripting</h3></div>
+                        </article>
+                        <article>
+                            <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                            <div class="skill-text"><h3>Docker & Containerization</h3></div>
+                        </article>
+                    </div>
                 </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div class="skill-text">
-                  <h3>Networking & Security</h3>
+                <!-- SOC Analyst Skills -->
+                <div class="details-container">
+                    <h2 class="experience-sub-title">SOC Analyst</h2>
+                    <div class="article-container">
+                        <article>
+                            <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                            <div class="skill-text"><h3>SIEM (Splunk)</h3></div>
+                        </article>
+                        <article>
+                            <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                            <div class="skill-text"><h3>Vulnerability Assessment (NMAP)</h3></div>
+                        </article>
+                        <article>
+                            <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                            <div class="skill-text"><h3>ISO 27001 / NIST Frameworks</h3></div>
+                        </article>
+                        <article>
+                            <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                            <div class="skill-text"><h3>Wireshark & Network Analysis</h3></div>
+                        </article>
+                    </div>
                 </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div class="skill-text">
-                  <h3>Infrastructure as Code (Terraform)</h3>
-                </div>
-              </article>
             </div>
-          </div>
-    
-          <!-- DevOps Engineer Skills -->
-          <div class="details-container">
-            <h2 class="experience-sub-title">DevOps Engineer</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div class="skill-text">
-                  <h3>CI/CD Pipelines</h3>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div class="skill-text">
-                  <h3>Git & Version Control</h3>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div class="skill-text">
-                  <h3>Python & Bash Scripting</h3>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div class="skill-text">
-                  <h3>Docker & Containerization</h3>
-                </div>
-              </article>
-            </div>
-          </div>
-    
-          <!-- SOC Analyst Skills -->
-          <div class="details-container">
-            <h2 class="experience-sub-title">SOC Analyst</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div class="skill-text">
-                  <h3>SIEM (Splunk)</h3>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div class="skill-text">
-                  <h3>Vulnerability Assessment (NMAP)</h3>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div class="skill-text">
-                  <h3>ISO 27001 / NIST Frameworks</h3>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div class="skill-text">
-                  <h3>Wireshark & Network Analysis</h3>
-                </div>
-              </article>
-            </div>
-          </div>
-    
         </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#projects'"
-      />
-    </section>   
+        <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#projects'" />
+    </section>
+
+    <!-- Projects Section -->
     <section id="projects">
-      <p class="section__text__p1">Browse My Recent</p>
-      <h1 class="title">Projects</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container color-container project-card">
-            <div class="article-container">
-              <img
-                src="./assets/project-1.png"
-                alt="Cybersecurity Home Lab"
-                class="project-img"
-              />
+        <p class="section__text__p1">Browse My Recent</p>
+        <h1 class="title">Featured Projects</h1>
+        <div class="experience-details-container">
+            <div class="about-containers">
+                <!-- Project 1 -->
+                <div class="details-container color-container project-card">
+                    <div class="article-container">
+                        <img src="./assets/project-1.png" alt="Cybersecurity Home Lab" class="project-img" />
+                    </div>
+                    <h2 class="experience-sub-title project-title">Cybersecurity Home Lab</h2>
+                    <p class="project-description">A virtual SOC environment leveraging Splunk, Wireshark, and Kali Linux to practice threat detection, incident response, and log analysis. This project demonstrates hands-on cybersecurity skills and a practical approach to network and system security.</p>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/naolmengistu/SOC-Lab')">Github</button>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="details-container color-container project-card">
+                    <div class="article-container">
+                        <img src="./assets/project-2.png" alt="AWS Security Scanner" class="project-img" />
+                    </div>
+                    <h2 class="experience-sub-title project-title">AWS Security Scanner</h2>
+                    <p class="project-description">A Python-based tool developed for my master's thesis to detect misconfigurations in AWS IAM, S3, EC2, and VPC using the Boto3 SDK. It maps issues to DORA compliance standards, and automates cloud security audits for financial environments.</p>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/NaolMengistu/AWS-security-scanner')">Github</button>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="details-container color-container project-card">
+                    <div class="article-container">
+                        <img src="./assets/project-3.png" alt="Mobile Payment Service Database" class="project-img" />
+                    </div>
+                    <h2 class="experience-sub-title project-title">Mobile Payment Service Database</h2>
+                    <p class="project-description">A relational database design (MySQL) for a mobile payment platform, supporting user account management, peer-to-peer transactions, and service purchases. Developed for my bachelor thesis, it emphasizes ACID compliance, 3NF normalization, scalability, and data security.</p>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/NaolMengistu/iPay_database_design')">Github</button>
+                    </div>
+                </div>
+                <!-- Project 4 -->
+                <div class="details-container color-container project-card">
+                    <div class="article-container">
+                        <img src="./assets/project-4.png" alt="Portfolio Website Source Code" class="project-img" />
+                    </div>
+                    <h2 class="experience-sub-title project-title">Portfolio Website Source Code</h2>
+                    <p class="project-description">The source code for my personal portfolio website. This responsive, modern, and minimalist website highlights my key skills, projects, and professional profile. It is also optimized for mobile devices, it ensures seamless usability across all screen sizes. The repository includes HTML, CSS, and JavaScript for a fully functional and visually appealing user experience.</p>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/NaolMengistu/portfolio-website')">Github</button>
+                    </div>
+                </div>
             </div>
-            <h2 class="experience-sub-title project-title">Cybersecurity Home Lab</h2>
-            <p class="project-description">
-              A virtual SOC environment leveraging Splunk, Wireshark, and Kali Linux to practice threat detection, incident response, and log analysis. This project demonstrates hands-on cybersecurity skills and a practical approach to network and system security.
-            </p>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="window.open('https://github.com/naolmengistu/SOC-Lab')"
-              >
-                Github
-              </button>
-            </div>
-          </div>
-          <div class="details-container color-container project-card">
-            <div class="article-container">
-              <img
-                src="./assets/project-2.png"
-                alt="AWS Security Scanner"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">AWS Security Scanner</h2>
-            <p class="project-description">
-              A Python-based tool developed for my master's thesis to detect misconfigurations in AWS IAM, S3, EC2, and VPC using the Boto3 SDK. It maps issues to DORA compliance standards, and automates cloud security audits for financial environments.
-            </p>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="window.open('https://github.com/NaolMengistu/AWS-security-scanner')">
-                Github
-              </button>
-            </div>
-          </div>
-          <div class="details-container color-container project-card">
-            <div class="article-container">
-              <img
-                src="./assets/project-3.png"
-                alt="Mobile Payment Service Database"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">Mobile Payment Service Database</h2>
-            <p class="project-description">
-              A relational database design (MySQL) for a mobile payment platform, supporting user account management, peer-to-peer transactions, and service purchases. Developed for my bachelor thesis, it emphasizes ACID compliance, 3NF normalization, scalability, and data security.
-            </p>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="window.open('https://github.com/NaolMengistu/iPay_database_design')">
-                Github
-              </button>
-            </div>
-          </div>
-          <div class="details-container color-container project-card">
-            <div class="article-container">
-              <img
-                src="./assets/project-4.png"
-                alt="Portfolio Website Source Code"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">Portfolio Website Source Code</h2>
-            <p class="project-description">
-              The source code for my personal portfolio website. This responsive, modern, and minimalist website highlights my key skills, projects, and professional profile. It is also optimized for mobile devices, it ensures seamless usability across all screen sizes. The repository includes HTML, CSS, and JavaScript for a fully functional and visually appealing user experience. </p>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="window.open('https://github.com/NaolMengistu/portfolio-website')">
-                Github
-              </button>
-            </div>
-          </div>
         </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#contact'"
-      />
+        <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#contact'" />
     </section>
+
+    <!-- Contact Section -->
     <section id="contact">
-      <p class="section__text__p1">Get in Touch</p>
-      <h1 class="title">Contact Me</h1>
-      <div class="contact-info-upper-container">
-        <div class="contact-info-container">
-          <img
-            src="./assets/email.png"
-            alt="Email icon"
-            class="icon contact-icon email-icon"
-          />
-          <p><a href="mailto:naolmengistu.d@gmail.com">Email</a></p>
+        <p class="section__text__p1">Get in Touch</p>
+        <h1 class="title">Contact Me</h1>
+        <div class="contact-info-upper-container">
+            <div class="contact-info-container">
+                <img src="./assets/email.png" alt="Email icon" class="icon contact-icon email-icon" />
+                <p><a href="mailto:naolmengistu.d@gmail.com">Email</a></p>
+            </div>
+            <div class="contact-info-container">
+                <img src="./assets/linkedin.png" alt="LinkedIn icon" class="icon contact-icon" />
+                <p><a href="https://linkedin.com/in/naolmengistu" target="_blank">LinkedIn</a></p>
+            </div>
         </div>
-        <div class="contact-info-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="LinkedIn icon"
-            class="icon contact-icon"
-          />
-          <p><a href="https://linkedin.com/in/naolmengistu" target="_blank">LinkedIn</a></p>
-        </div>
-      </div>
     </section>
+
+    <!-- Footer -->
     <footer>
-      <nav>
-        <div class="nav-links-container">
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Key Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="https://blog.naol.dev">Blog</a></li>
-          </ul>
-        </div>
-      </nav>
-      <p>Copyright © <span id="current-year"></span> Naol Mengistu. All Rights Reserved.</p>
+        <nav>
+            <div class="nav-links-container">
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Key Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="https://blog.naol.dev">Blog</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- The year will be dynamically updated by script.js -->
+        <p>© <span id="current-year"></span> Naol Mengistu.</p>
     </footer>
+
+    <!-- Link to the main JavaScript file -->
     <script src="script.js"></script>
-  </body>
+</body>
 </html>

@@ -1,54 +1,74 @@
-/* GENERAL */
+/* ==========================================================================
+   1. GENERAL & SETUP
+   ========================================================================== */
 
+/* Import Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
+/* Reset default margin and padding for all elements */
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
 }
 
-body {
-  font-family: "Poppins", sans-serif;
-}
-
+/* Smooth scrolling behavior for anchor links */
 html {
   scroll-behavior: smooth;
 }
 
+/* ==========================================================================
+   2. THEME & COLOR VARIABLES
+   - Defines colors for light and dark modes.
+   - This makes theme switching easy by just toggling a class on the body.
+   ========================================================================== */
+
+/* Light Mode theme */
+:root {
+  --color-bg: white;
+  --color-text: black;
+  --color-text-secondary: rgb(85, 85, 85);
+  --color-border: rgb(53, 53, 53);
+  --color-border-light: rgb(163, 163, 163);
+  --color-card-bg: white;
+  --color-card-bg-alt: rgb(250, 250, 250);
+  --color-menu-shadow: rgba(0, 0, 0, 0.1);
+  --icon-filter: none; /* Default for light mode */
+}
+
+/* Dark Mode styles, applied when .dark-mode class is present on the body */
+.dark-mode {
+  --color-bg: #1e293b;
+  --color-text: #d1d5db;
+  --color-text-secondary: #9ca3af;
+  --color-border: #9ca3af;
+  --color-border-light: #374151;
+  --color-card-bg: #1f2937;
+  --color-card-bg-alt: #1f2937;
+  --color-menu-shadow: rgba(255, 255, 255, 0.08);
+  --icon-filter: invert(1) grayscale(1) brightness(2); /* Inverts icons to be visible on dark bg */
+}
+
+/* Apply base font, background, and text colors from variables */
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for theme changes */
+}
+
+/* ==========================================================================
+   3. TYPOGRAPHY & BASIC ELEMENTS
+   ========================================================================== */
+
 p {
-  color: rgb(85, 85, 85);
-}
-
-/* TRANSITION */
-
-a,
-.btn {
-  transition: all 300ms ease;
-}
-
-/* DESKTOP NAV */
-
-nav,
-.nav-links {
-  display: flex;
-}
-
-nav {
-  justify-content: space-around;
-  align-items: center;
-  height: 17vh;
-}
-
-.nav-links {
-  gap: 2rem;
-  list-style: none;
-  font-size: 1.5rem;
+  color: var(--color-text-secondary); /* Sets a secondary text color for all paragraphs */
 }
 
 a {
-  color: black;
+  color: var(--color-text); /* Link color inherits from theme */
   text-decoration: none;
-  text-decoration-color: white;
+  transition: all 300ms ease; /* Smooth transition for hover effects */
 }
 
 a:hover {
@@ -58,18 +78,55 @@ a:hover {
   text-decoration-color: rgb(181, 181, 181);
 }
 
+.title {
+  font-size: 3rem;
+  text-align: center;
+  color: var(--color-text); /* Ensure title color updates with theme */
+}
+
+/* ==========================================================================
+   4. NAVIGATION (DESKTOP & HAMBURGER)
+   ========================================================================== */
+
+/* --- General Navigation Styles --- */
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 17vh;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  font-size: 1.5rem;
+  align-items: center; /* Vertically align items in the nav bar */
+}
+
 .logo {
   font-size: 2rem;
+  color: var(--color-text);
 }
 
 .logo:hover {
   cursor: default;
 }
 
-/* HAMBURGER MENU */
+/* --- Desktop Navigation --- */
+#desktop-nav {
+  display: flex; /* Default display is flex, will be hidden on smaller screens */
+}
 
+/* --- Hamburger Navigation (for mobile) --- */
 #hamburger-nav {
-  display: none;
+  display: none; /* Hidden by default */
+}
+
+.nav-right-container {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem; /* Space between theme button and hamburger icon */
 }
 
 .hamburger-menu {
@@ -89,19 +146,32 @@ a:hover {
 .hamburger-icon span {
   width: 100%;
   height: 2px;
-  background-color: black;
-  transition: all 0.3 ease-in-out;
+  background-color: var(--color-text);
+  transition: all 0.3s ease-in-out; /* Smooth animation for the "X" shape */
 }
 
+/* --- Hamburger Menu Dropdown --- */
 .menu-links {
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: white;
-  width: fit-content;
+  background-color: var(--color-bg);
+  min-width: 200px;
   max-height: 0;
   overflow: hidden;
-  transition: all 0.3 ease-in-out;
+  transition: max-height 0.3s ease-in-out;
+  border-radius: 1rem;
+  box-shadow: 0 8px 16px var(--color-menu-shadow);
+  z-index: 100; /* Ensures menu appears above other content */
+}
+
+.menu-links.open {
+  max-height: 350px; /* Reveals the menu */
+}
+
+.menu-links ul {
+  list-style: none;
+  padding: 1rem;
 }
 
 .menu-links a {
@@ -109,19 +179,14 @@ a:hover {
   padding: 10px;
   text-align: center;
   font-size: 1.5rem;
-  color: black;
-  text-decoration: none;
-  transition: all 0.3 ease-in-out;
+  color: var(--color-text);
 }
 
-.menu-links li {
-  list-style: none;
+.menu-links a:hover {
+  text-underline-offset: 0.5rem; /* Smaller offset for menu links */
 }
 
-.menu-links.open {
-  max-height: 300px;
-}
-
+/* --- Hamburger Icon Animation to "X" --- */
 .hamburger-icon.open span:first-child {
   transform: rotate(45deg) translate(10px, 5px);
 }
@@ -134,39 +199,72 @@ a:hover {
   transform: rotate(-45deg) translate(10px, -5px);
 }
 
-.hamburger-icon span:first-child {
-  transform: none;
+/* ==========================================================================
+   5. THEME TOGGLE BUTTON
+   ========================================================================== */
+
+#theme-toggle-mobile {
+    display: none; /* Hide mobile button by default */
 }
 
-.hamburger-icon span:first-child {
-  opacity: 1;
+.theme-toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 1.6rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text); /* SVG icons inherit this color */
+  transition: transform 300ms ease;
 }
 
-.hamburger-icon span:first-child {
-  transform: none;
+.theme-toggle-btn:hover {
+  transform: scale(1.1);
 }
 
-/* SECTIONS */
+.theme-toggle-btn svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Logic for showing/hiding sun/moon icons based on theme */
+.sun-icon { display: block; }
+.moon-icon { display: none; }
+.dark-mode .sun-icon { display: none; }
+.dark-mode .moon-icon { display: block; }
+
+
+/* ==========================================================================
+   6. SECTIONS & LAYOUT
+   ========================================================================== */
 
 section {
   padding-top: 4vh;
-  height: 96vh;
+  min-height: 96vh;
   margin: 0 10rem;
-  box-sizing: border-box;
-  min-height: fit-content;
 }
 
 .section-container {
   display: flex;
+  gap: 4rem;
+  height: 80%;
 }
 
-/* PROFILE SECTION */
+.section__text {
+  align-self: center;
+  text-align: center;
+}
 
-#profile {
-  display: flex;
-  justify-content: center;
-  gap: 5rem;
-  height: 80vh;
+.section__text__p1 {
+  text-align: center;
+  font-weight: 600;
+}
+
+.section__text__p2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
 }
 
 .section__pic-container {
@@ -176,27 +274,90 @@ section {
   margin: auto 0;
 }
 
-.section__text {
-  align-self: center;
-  text-align: center;
+/* ==========================================================================
+   7. COMPONENTS (Buttons, Icons, Cards)
+   ========================================================================== */
+
+/* --- Icons --- */
+.icon {
+  cursor: pointer;
+  height: 2rem;
+  filter: var(--icon-filter); /* Applies the dark mode filter */
+  transition: filter 300ms ease;
 }
 
-.section__text p {
+.arrow {
+  position: absolute;
+  right: -5rem;
+  bottom: 2.5rem;
+}
+
+/* --- Buttons --- */
+.btn-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn {
   font-weight: 600;
+  padding: 1rem;
+  width: 8rem;
+  border-radius: 2rem;
+  border: var(--color-border) 0.1rem solid;
+  transition: all 300ms ease;
 }
 
-.section__text__p1 {
+.btn:hover {
+  cursor: pointer;
+}
+
+.btn-color-1 {
+  background: var(--color-border);
+  color: var(--color-bg);
+}
+
+.btn-color-1:hover {
+  background: var(--color-text);
+}
+
+.btn-color-2 {
+  background: none;
+  color: var(--color-text);
+}
+
+.btn-color-2:hover {
+  background: var(--color-text);
+  color: var(--color-bg);
+  border-color: var(--color-text);
+}
+
+/* --- Cards / Containers --- */
+.details-container {
+  padding: 1.5rem;
+  flex: 1;
+  background: var(--color-card-bg);
+  border-radius: 2rem;
+  border: var(--color-border-light) 0.1rem solid;
   text-align: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth theme transitions */
 }
 
-.section__text__p2 {
-  font-size: 1.75rem;
-  margin-bottom: 1rem;
+.color-container {
+  border-color: var(--color-border-light);
+  background: var(--color-card-bg-alt);
 }
 
-.title {
-  font-size: 3rem;
-  text-align: center;
+/* ==========================================================================
+   8. PAGE-SPECIFIC SECTIONS
+   ========================================================================== */
+
+/* --- Profile Section --- */
+#profile {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  height: 80vh;
 }
 
 #socials-container {
@@ -206,122 +367,57 @@ section {
   gap: 1rem;
 }
 
-/* ICONS */
-
-.icon {
-  cursor: pointer;
-  height: 2rem;
-}
-
-/* BUTTONS */
-
-.btn-container {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.btn {
-  font-weight: 600;
-  transition: all 300ms ease;
-  padding: 1rem;
-  width: 8rem;
-  border-radius: 2rem;
-}
-
-.btn-color-1,
-.btn-color-2 {
-  border: rgb(53, 53, 53) 0.1rem solid;
-}
-
-.btn-color-1:hover,
-.btn-color-2:hover {
-  cursor: pointer;
-}
-
-.btn-color-1,
-.btn-color-2:hover {
-  background: rgb(53, 53, 53);
-  color: white;
-}
-
-.btn-color-1:hover {
-  background: rgb(0, 0, 0);
-}
-
-.btn-color-2 {
-  background: none;
-}
-
-.btn-color-2:hover {
-  border: rgb(255, 255, 255) 0.1rem solid;
-}
-
-.btn-container {
-  gap: 1rem;
-}
-
-/* ABOUT SECTION */
-
+/* --- About Section --- */
 #about {
   position: relative;
 }
 
+/* Center the About Me image and details block on wide screens */
+#about .section-container {
+  justify-content: center;
+  align-items: center;
+}
+
 .about-containers {
+  display: flex;
   gap: 2rem;
   margin-bottom: 2rem;
   margin-top: 2rem;
 }
 
-.about-details-container {
-  justify-content: center;
-  flex-direction: column;
+/* Constrain and center the Experience/Education cards on wide screens */
+#about .about-containers {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.about-containers,
 .about-details-container {
   display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .about-pic {
   border-radius: 2rem;
 }
 
-.arrow {
-  position: absolute;
-  right: -5rem;
-  bottom: 2.5rem;
+/* Constrain and center the About Me paragraph for readability */
+#about .text-container {
+  max-width: 800px; /* Increased to match card container width */
+  margin-left: auto;
+  margin-right: auto;
+  text-align: justify; /* Justify text for a cleaner look */
 }
 
-.details-container {
-  padding: 1.5rem;
-  flex: 1;
-  background: white;
-  border-radius: 2rem;
-  border: rgb(53, 53, 53) 0.1rem solid;
-  border-color: rgb(163, 163, 163);
-  text-align: center;
-}
 
-.section-container {
-  gap: 4rem;
-  height: 80%;
-}
-
-.section__pic-container {
-  height: 400px;
-  width: 400px;
-  margin: auto 0;
-}
-
-/* EXPERIENCE SECTION */
-
+/* --- Experience Section --- */
 #experience {
   position: relative;
 }
 
 .experience-sub-title {
-  color: rgb(85, 85, 85);
+  color: var(--color-text-secondary);
   font-weight: 600;
   font-size: 1.75rem;
   margin-bottom: 2rem;
@@ -333,18 +429,24 @@ section {
   flex-direction: column;
 }
 
+#experience .about-containers {
+  max-width: 1200px; /* Sets a limit for how wide the container can get */
+  margin-left: auto;  /* When the screen is wider than 1200px, this centers the container */
+  margin-right: auto; /* When the screen is wider than 1200px, this centers the container */
+}
+
 .article-container {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  align-items: stretch;
+  align-items: flex-start; /* Aligns checkmarks and text to the left */
 }
 
 article {
   display: flex;
-  align-items: center;
+  width: 100%;
   gap: 0.5rem;
-  justify-content: flex-start;
+  align-items: center; /* Vertically align icon and text */
 }
 
 article .icon {
@@ -352,42 +454,52 @@ article .icon {
 }
 
 .skill-text {
-  flex: 1;
-  text-align: center;
+  text-align: left; /* Better readability for skill lists */
 }
 
-
-/* PROJECTS SECTION */
-
+/* --- Projects Section --- */
 #projects .about-containers {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
   gap: 2rem;
 }
 
-.color-container {
-  border-color: rgb(163, 163, 163);
-  background: rgb(250, 250, 250);
+#projects .article-container {
+    padding-bottom: 1rem;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 520px;
 }
 
 .project-img {
   border-radius: 2rem;
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  /* FIX: Use a 1/1 aspect ratio to make the image container a perfect square */
+  aspect-ratio: 1 / 1;
+  /* Ensures the image covers the square area without distortion, cropping if necessary */
+  object-fit: cover;
 }
 
 .project-title {
-  margin: 1rem;
-  color: black;
+  margin: 1rem 0;
+  color: var(--color-text);
+}
+
+.project-description {
+    flex-grow: 1; /* Allows description to fill available space */
+    margin-bottom: 1rem;
 }
 
 .project-btn {
-  color: black;
-  border-color: rgb(163, 163, 163);
+  color: var(--color-text);
+  border-color: var(--color-border-light);
 }
 
-/* CONTACT */
-
+/* --- Contact Section --- */
 #contact {
   display: flex;
   justify-content: center;
@@ -398,20 +510,20 @@ article .icon {
 .contact-info-upper-container {
   display: flex;
   justify-content: center;
+  align-items: center;
   border-radius: 2rem;
-  border: rgb(53, 53, 53) 0.1rem solid;
-  border-color: rgb(163, 163, 163);
-  background: (250, 250, 250);
+  border: var(--color-border-light) 0.1rem solid;
+  background: var(--color-card-bg-alt);
   margin: 2rem auto;
-  padding: 0.5rem;
+  padding: 1rem 2rem;
+  gap: 2rem;
+  flex-wrap: wrap; /* Allows items to wrap on smaller screens */
 }
 
 .contact-info-container {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 0.5rem;
-  margin: 1rem;
 }
 
 .contact-info-container p {
@@ -426,30 +538,24 @@ article .icon {
   height: 2.5rem;
 }
 
-/* FOOTER SECTION */
+/* ==========================================================================
+   9. FOOTER
+   ========================================================================== */
 
 footer {
   height: 26vh;
   margin: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+footer .nav-links {
+    justify-content: center; /* Center the footer nav links */
 }
 
 footer p {
   text-align: center;
+  color: var(--color-text-secondary);
 }
-
-/* PROJECTS SECTION FIX ONLY */
-.about-containers#projects-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-.project-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 520px; /* adjust as needed */
-  box-sizing: border-box;
-}
-
-
