@@ -28,7 +28,6 @@ function toggleMenu() {
   }
 })();
 
-
 // --- DARK MODE THEME TOGGLE SCRIPT ---
 
 // Select all theme toggle buttons (for both desktop and mobile)
@@ -89,3 +88,49 @@ themeToggleBtns.forEach(btn => {
     applyTheme('light');
   }
 })();
+
+// --- SCROLL TO TOP BUTTON SCRIPT ---
+
+// Get the button element by its ID
+const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+/**
+ * Shows or hides the 'scroll to top' button based on how close the user is to the bottom of the page.
+ */
+const handleScroll = () => {
+  // 1. How far the user has scrolled from the top
+  const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+  
+  // 2. The height of the visible browser window
+  const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+  
+  // 3. The total height of the entire webpage
+  const totalHeight = document.documentElement.scrollHeight;
+  
+  // Show the button if the user has scrolled to a point where the bottom of their view
+  // is within 500 pixels of the total page bottom.
+  // A larger number (e.g., 1000) will make the button appear a bit earlier.
+  // A smaller number (e.g., 200) will make it appear only when the user is very, very close to the footer.
+  if (scrollPosition + windowHeight >= totalHeight - 250) {
+    scrollToTopBtn.classList.add("show");
+  } else {
+    // Otherwise, hide the button
+    scrollToTopBtn.classList.remove("show");
+  }
+};
+
+/**
+ * Smoothly scrolls the window to the top of the page.
+ */
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth" // This enables the smooth scrolling animation
+  });
+};
+
+// Add event listener to the window to detect scrolling
+window.addEventListener("scroll", handleScroll);
+
+// Add event listener to the button to scroll to top on click
+scrollToTopBtn.addEventListener("click", scrollToTop);

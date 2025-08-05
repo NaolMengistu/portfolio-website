@@ -139,3 +139,11 @@
     text-align: justify;
   }
 }
+
+/* Custom styles for Scroll to Top Button on Mobile, this rule applies to all screens 1200px wide or less (tablets and phones) */
+@media screen and (max-width: 1200px) {
+  #scrollToTopBtn {
+    right: 2.5rem; /* Moves the button closer to the right edge on mobile */
+    bottom: 2.5rem; /* Moves the button closer to the bottom edge on mobile */
+  }
+}
