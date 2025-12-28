@@ -4,7 +4,7 @@ on:
   push:
     branches: ["main"]
   # Optimization: This workflow will NOT run if you only push changes to the blog folder.
-  paths-ignore:
+    paths-ignore:
     - 'blog/**'
   workflow_dispatch:
 
