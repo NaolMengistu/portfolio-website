@@ -134,3 +134,24 @@ window.addEventListener("scroll", handleScroll);
 
 // Add event listener to the button to scroll to top on click
 scrollToTopBtn.addEventListener("click", scrollToTop);
+
+/**
+ * Closes the hamburger menu if the user clicks outside of it.
+ */
+document.addEventListener("click", function(event) {
+  const menu = document.querySelector(".menu-links");
+  const icon = document.querySelector(".hamburger-icon");
+
+  // 1. Check if the menu is currently open
+  if (menu.classList.contains("open")) {
+    
+    // 2. Check if the click happened INSIDE the menu or ON the icon
+    const isClickInsideMenu = menu.contains(event.target);
+    const isClickOnIcon = icon.contains(event.target);
+
+    // 3. If the click was OUTSIDE both, close the menu
+    if (!isClickInsideMenu && !isClickOnIcon) {
+      toggleMenu();
+    }
+  }
+});
