@@ -17,7 +17,7 @@ title = "Naol Mengistu"
 
   [params.author]
     name = "Naol Mengistu"
-    image = "https://media.licdn.com/dms/image/v2/D4D03AQHyevAMwu6vGw/profile-displayphoto-shrink_400_400/B4DZPlpFkZHcAk-/0/1734724574100?e=1756339200&v=beta&t=9NuGeugWfOQfNSCKXBaUPNzUsMNNaumyUDchWXAy27M"
+    image = "profile.jpg"
     imageQuality = 100
     headline = "Cybersecurity Engineer & Researcher"
     bio = "Cybersecurity Engineer & Researcher"
