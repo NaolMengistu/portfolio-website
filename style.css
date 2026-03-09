@@ -550,8 +550,10 @@ section {
 
 /* List items inside the Experience / Education cards */
 .about-card-list {
-  list-style: none;
+  list-style: none !important;
+  list-style-type: none !important;
   padding: 0;
+  padding-left: 0;
   margin: 0.5rem 0 0;
   display: flex;
   flex-direction: column;
@@ -559,6 +561,7 @@ section {
 }
 
 .about-card-list li {
+  list-style: none;
   color: var(--color-text-secondary);
   font-size: 0.95rem;
 }
