@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Naol Mengistu</title>
-    
-    <!-- 
-      SEO OPTIMIZATIONS
-      - The canonical tag tells Google that naol.dev is the official URL.
-    -->
-    <meta name="description" content="Naol is a Cybersecurity Analyst with expertise in GRC (ISO 27001, DORA, NIST), DevOps (CI/CD, Git, Docker), and System Administration (Active Directory, PowerShell). Skilled in Splunk for threat modeling and Python for automation." />
+
+    <!-- SEO -->
+    <meta name="description"
+        content="Naol is a Cybersecurity Analyst with expertise in GRC (ISO 27001, DORA, NIST), DevOps (CI/CD, Git, Docker), and System Administration (Active Directory, PowerShell). Skilled in Splunk for threat modeling and Python for automation." />
     <link rel="canonical" href="https://naol.dev/" />
 
     <link rel="icon" type="image/png" href="./assets/web-icon.png" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="mediaqueries.css" />
+
+    <!-- Three.js for particle background -->
+    <script type="importmap">
+    {"imports": {"three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js"}}
+    </script>
 </head>
+
 <body>
-    <!-- Desktop Navigation Bar -->
+    <!-- Desktop Navigation -->
     <nav id="desktop-nav">
         <div class="logo">Naol Mengistu</div>
         <div>
@@ -28,26 +32,41 @@
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="https://blog.naol.dev">Blog</a></li>
-                <!-- Theme toggle button for desktop -->
+                <!-- Desktop theme toggle -->
                 <button id="theme-toggle-desktop" class="theme-toggle-btn" title="Toggle theme">
-                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.106a.75.75 0 010 1.06l-1.591 1.591a.75.75 0 11-1.06-1.06l1.591-1.591a.75.75 0 011.06 0zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 011.06 0l1.591 1.591a.75.75 0 11-1.06 1.06l-1.591-1.591a.75.75 0 010-1.06zM12 21.75a.75.75 0 01-.75-.75v-2.25a.75.75 0 011.5 0V21a.75.75 0 01-.75-.75zM5.106 17.834a.75.75 0 010-1.06l1.591-1.591a.75.75 0 011.06 1.06l-1.591 1.591a.75.75 0 01-1.06 0zM3 12a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5H3.75A.75.75 0 013 12zM6.166 5.106a.75.75 0 01-1.06 0L3.515 3.515a.75.75 0 111.06-1.06l1.591 1.591a.75.75 0 010 1.06z"></path></svg>
-                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 004.463-.976a.75.75 0 01.98.98A10.503 10.503 0 0112 22.5C6.202 22.5 1.5 17.798 1.5 12A10.503 10.503 0 019.528 1.718z" clip-rule="evenodd"></path></svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.106a.75.75 0 010 1.06l-1.591 1.591a.75.75 0 11-1.06-1.06l1.591-1.591a.75.75 0 011.06 0zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 011.06 0l1.591 1.591a.75.75 0 11-1.06 1.06l-1.591-1.591a.75.75 0 010-1.06zM12 21.75a.75.75 0 01-.75-.75v-2.25a.75.75 0 011.5 0V21a.75.75 0 01-.75-.75zM5.106 17.834a.75.75 0 010-1.06l1.591-1.591a.75.75 0 011.06 1.06l-1.591 1.591a.75.75 0 01-1.06 0zM3 12a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5H3.75A.75.75 0 013 12zM6.166 5.106a.75.75 0 01-1.06 0L3.515 3.515a.75.75 0 111.06-1.06l1.591 1.591a.75.75 0 010 1.06z">
+                        </path>
+                    </svg>
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 004.463-.976a.75.75 0 01.98.98A10.503 10.503 0 0112 22.5C6.202 22.5 1.5 17.798 1.5 12A10.503 10.503 0 019.528 1.718z"
+                            clip-rule="evenodd"></path>
+                    </svg>
                 </button>
             </ul>
         </div>
     </nav>
 
-    <!-- Hamburger Navigation for Mobile -->
+    <!-- Mobile Navigation (hamburger) -->
     <nav id="hamburger-nav">
         <div class="logo">Naol Mengistu</div>
         <div class="nav-right-container">
-            <!-- Theme toggle button for mobile -->
+            <!-- Mobile theme toggle (sits outside the hamburger dropdown) -->
             <button id="theme-toggle-mobile" class="theme-toggle-btn" title="Toggle theme">
-                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.106a.75.75 0 010 1.06l-1.591 1.591a.75.75 0 11-1.06-1.06l1.591-1.591a.75.75 0 011.06 0zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 011.06 0l1.591 1.591a.75.75 0 11-1.06 1.06l-1.591-1.591a.75.75 0 010-1.06zM12 21.75a.75.75 0 01-.75-.75v-2.25a.75.75 0 011.5 0V21a.75.75 0 01-.75-.75zM5.106 17.834a.75.75 0 010-1.06l1.591-1.591a.75.75 0 011.06 1.06l-1.591 1.591a.75.75 0 01-1.06 0zM3 12a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5H3.75A.75.75 0 013 12zM6.166 5.106a.75.75 0 01-1.06 0L3.515 3.515a.75.75 0 111.06-1.06l1.591 1.591a.75.75 0 010 1.06z"></path></svg>
-                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 004.463-.976a.75.75 0 01.98.98A10.503 10.503 0 0112 22.5C6.202 22.5 1.5 17.798 1.5 12A10.503 10.503 0 019.528 1.718z" clip-rule="evenodd"></path></svg>
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.106a.75.75 0 010 1.06l-1.591 1.591a.75.75 0 11-1.06-1.06l1.591-1.591a.75.75 0 011.06 0zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 011.06 0l1.591 1.591a.75.75 0 11-1.06 1.06l-1.591-1.591a.75.75 0 010-1.06zM12 21.75a.75.75 0 01-.75-.75v-2.25a.75.75 0 011.5 0V21a.75.75 0 01-.75-.75zM5.106 17.834a.75.75 0 010-1.06l1.591-1.591a.75.75 0 011.06 1.06l-1.591 1.591a.75.75 0 01-1.06 0zM3 12a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5H3.75A.75.75 0 013 12zM6.166 5.106a.75.75 0 01-1.06 0L3.515 3.515a.75.75 0 111.06-1.06l1.591 1.591a.75.75 0 010 1.06z">
+                    </path>
+                </svg>
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 004.463-.976a.75.75 0 01.98.98A10.503 10.503 0 0112 22.5C6.202 22.5 1.5 17.798 1.5 12A10.503 10.503 0 019.528 1.718z"
+                        clip-rule="evenodd"></path>
+                </svg>
             </button>
             <div class="hamburger-menu" title="Menu">
-                <!-- The `onclick` attribute calls a JavaScript function to toggle the menu -->
                 <div class="hamburger-icon" onclick="toggleMenu()">
                     <span></span>
                     <span></span>
@@ -55,7 +74,6 @@
                 </div>
                 <div class="menu-links">
                     <ul>
-                        <!-- `onclick` is also used here to close the menu after a link is clicked -->
                         <li><a href="#about" onclick="toggleMenu()">About</a></li>
                         <li><a href="#skills" onclick="toggleMenu()">Key Skills</a></li>
                         <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
@@ -67,25 +85,25 @@
         </div>
     </nav>
 
-    <!-- Profile/Hero Section -->
+    <!-- Hero Section -->
     <section id="profile">
         <div class="section__text">
             <p class="section__text__p1">Hello, I'm</p>
             <h1 class="title">Naol Mengistu</h1>
             <p class="section__text__p2">Cybersecurity | DevOps | Cloud Engineering</p>
             <div class="btn-container">
-                <!-- `window.open` opens the CV in a new tab -->
                 <button class="btn btn-color-2" onclick="window.open('./assets/naol_cv.pdf')">
                     Download CV
                 </button>
-                <!-- `location.href` navigates to the contact section on the same page -->
                 <button class="btn btn-color-1" onclick="location.href='./#contact'">
                     Contact Info
                 </button>
             </div>
             <div id="socials-container">
-                <img src="./assets/linkedin.png" alt="LinkedIn profile" class="icon" onclick="window.open('https://linkedin.com/in/naolmengistu')" />
-                <img src="./assets/github.png" alt="Github profile" class="icon" onclick="window.open('https://github.com/naolmengistu')" />
+                <img src="./assets/linkedin.png" alt="LinkedIn profile" class="icon"
+                    onclick="window.open('https://linkedin.com/in/naolmengistu')" />
+                <img src="./assets/github.png" alt="Github profile" class="icon"
+                    onclick="window.open('https://github.com/naolmengistu')" />
             </div>
         </div>
     </section>
@@ -103,7 +121,7 @@
                     <div class="details-container">
                         <img src="./assets/experience.png" alt="Experience icon" class="icon" />
                         <h3>Professional Experience</h3>
-                        <p>Sys Admin <br /> IT Support</p>
+                        <p>Sys Admin <br />IT Support</p>
                     </div>
                     <div class="details-container">
                         <img src="./assets/education.png" alt="Education icon" class="icon" />
@@ -113,84 +131,113 @@
                 </div>
                 <div class="text-container">
                     <p>
-                        Information Security professional with a Master’s in Information Security and a Bachelor’s in Computer Science. I currently work as a System Administrator, managing backend infrastructure, Debian Linux servers, and security protocols for a Freedom of Information platform. With over 3 years of experience in technical support and quality analysis, I combine hands-on skills in ISO 27001/NIST compliance, threat detection, and cloud security. I actively build enterprise-grade home labs involving Active Directory, pfSense, and automation scripts to stay sharp in defensive and infrastructure operations.
+                        Information Security professional with a Master's in Information Security and a Bachelor's in
+                        Computer Science. I currently work as a System Administrator, managing backend infrastructure,
+                        Debian Linux servers, and security protocols for a Freedom of Information platform. With over 3
+                        years of experience in technical support and quality analysis, I combine hands-on skills in ISO
+                        27001/NIST compliance, threat detection, and cloud security. I actively build enterprise-grade
+                        home labs involving Active Directory, pfSense, and automation scripts to stay sharp in defensive
+                        and infrastructure operations.
                     </p>
                 </div>
             </div>
         </div>
-        <!-- Arrow icon to navigate to the next section -->
         <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#skills'" />
     </section>
 
-    <!-- Key Skills/Experience Section -->
+    <!-- Key Skills Section -->
     <section id="skills">
         <p class="section__text__p1">Explore My</p>
         <h1 class="title">Key Skills</h1>
         <div class="experience-details-container">
             <div class="about-containers">
-                <!-- Cloud Engineer Skills -->
+                <!-- Cloud Engineer -->
                 <div class="details-container">
                     <h2 class="experience-sub-title">Cloud Engineer</h2>
                     <div class="article-container">
                         <article>
                             <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                            <div class="skill-text"><h3>Google Cloud Platform</h3></div>
+                            <div class="skill-text">
+                                <h3>Google Cloud Platform</h3>
+                            </div>
                         </article>
                         <article>
                             <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                            <div class="skill-text"><h3>AWS & Cloud Security</h3></div>
+                            <div class="skill-text">
+                                <h3>AWS & Cloud Security</h3>
+                            </div>
                         </article>
                         <article>
                             <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                            <div class="skill-text"><h3>Networking & Security</h3></div>
+                            <div class="skill-text">
+                                <h3>Networking & Security</h3>
+                            </div>
                         </article>
                         <article>
                             <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                            <div class="skill-text"><h3>Infrastructure as Code (Terraform)</h3></div>
+                            <div class="skill-text">
+                                <h3>Infrastructure as Code (Terraform)</h3>
+                            </div>
                         </article>
                     </div>
                 </div>
-                <!-- System Administrator Skills -->
+                <!-- System Admin -->
                 <div class="details-container">
                     <h2 class="experience-sub-title">System Admin</h2>
                     <div class="article-container">
                         <article>
                             <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                            <div class="skill-text"><h3>Active Directory & GPO</h3></div>
+                            <div class="skill-text">
+                                <h3>Active Directory & GPO</h3>
+                            </div>
                         </article>
                         <article>
                             <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                            <div class="skill-text"><h3>Windows & Linux Server</h3></div>
+                            <div class="skill-text">
+                                <h3>Windows & Linux Server</h3>
+                            </div>
                         </article>
                         <article>
                             <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                            <div class="skill-text"><h3>PowerShell & Automation</h3></div>
+                            <div class="skill-text">
+                                <h3>PowerShell & Automation</h3>
+                            </div>
                         </article>
                         <article>
                             <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                            <div class="skill-text"><h3>Virtualization & Networking</h3></div>
+                            <div class="skill-text">
+                                <h3>Virtualization & Networking</h3>
+                            </div>
                         </article>
                     </div>
                 </div>
-                <!-- SOC Analyst Skills -->
+                <!-- SOC Analyst -->
                 <div class="details-container">
                     <h2 class="experience-sub-title">SOC Analyst</h2>
                     <div class="article-container">
                         <article>
                             <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                            <div class="skill-text"><h3>SIEM (Splunk)</h3></div>
+                            <div class="skill-text">
+                                <h3>SIEM (Splunk)</h3>
+                            </div>
                         </article>
                         <article>
                             <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                            <div class="skill-text"><h3>Vulnerability Assessment (NMAP)</h3></div>
+                            <div class="skill-text">
+                                <h3>Vulnerability Assessment (NMAP)</h3>
+                            </div>
                         </article>
                         <article>
                             <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                            <div class="skill-text"><h3>ISO 27001 / NIST Frameworks</h3></div>
+                            <div class="skill-text">
+                                <h3>ISO 27001 / NIST Frameworks</h3>
+                            </div>
                         </article>
                         <article>
                             <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                            <div class="skill-text"><h3>Wireshark & Network Analysis</h3></div>
+                            <div class="skill-text">
+                                <h3>Wireshark & Network Analysis</h3>
+                            </div>
                         </article>
                     </div>
                 </div>
@@ -211,9 +258,13 @@
                         <img src="./assets/project-1.png" alt="Cybersecurity Home Lab" class="project-img" />
                     </div>
                     <h2 class="experience-sub-title project-title">Cybersecurity Home Lab</h2>
-                    <p class="project-description">A virtual SOC environment leveraging Splunk, Wireshark, and Kali Linux to practice threat detection, incident response, and log analysis. This project demonstrates hands-on cybersecurity skills and a practical approach to network and system security.</p>
+                    <p class="project-description">A virtual SOC environment leveraging Splunk, Wireshark, and Kali
+                        Linux to practice threat detection, incident response, and log analysis. This project
+                        demonstrates hands-on cybersecurity skills and a practical approach to network and system
+                        security.</p>
                     <div class="btn-container">
-                        <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/naolmengistu/SOC-Lab')">Github</button>
+                        <button class="btn btn-color-2 project-btn"
+                            onclick="window.open('https://github.com/naolmengistu/SOC-Lab')">Github</button>
                     </div>
                 </div>
                 <!-- Project 2 -->
@@ -222,9 +273,12 @@
                         <img src="./assets/project-2.png" alt="AWS Security Scanner" class="project-img" />
                     </div>
                     <h2 class="experience-sub-title project-title">AWS Security Scanner</h2>
-                    <p class="project-description">A Python-based tool developed for my master's thesis to detect misconfigurations in AWS IAM, S3, EC2, and VPC using the Boto3 SDK. It maps issues to DORA compliance standards, and automates cloud security audits for financial environments.</p>
+                    <p class="project-description">A Python-based tool developed for my master's thesis to detect
+                        misconfigurations in AWS IAM, S3, EC2, and VPC using the Boto3 SDK. It maps issues to DORA
+                        compliance standards, and automates cloud security audits for financial environments.</p>
                     <div class="btn-container">
-                        <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/NaolMengistu/AWS-security-scanner')">Github</button>
+                        <button class="btn btn-color-2 project-btn"
+                            onclick="window.open('https://github.com/NaolMengistu/AWS-security-scanner')">Github</button>
                     </div>
                 </div>
                 <!-- Project 3 -->
@@ -233,9 +287,13 @@
                         <img src="./assets/project-3.png" alt="Enterprise Sysadmin Home Lab" class="project-img" />
                     </div>
                     <h2 class="experience-sub-title project-title"> Sys Admin Home Lab</h2>
-                    <p class="project-description">A fully virtualized enterprise network simulating real-world infrastructure. Features a segmented LAN/WAN environment secured by pfSense (with Suricata IDS/IPS), Active Directory on Windows Server 2022 for IAM, and Linux/Windows interoperability. Managed via PowerShell and Bash automation scripts.</p>
+                    <p class="project-description">A fully virtualized enterprise network simulating real-world
+                        infrastructure. Features a segmented LAN/WAN environment secured by pfSense (with Suricata
+                        IDS/IPS), Active Directory on Windows Server 2022 for IAM, and Linux/Windows interoperability.
+                        Managed via PowerShell and Bash automation scripts.</p>
                     <div class="btn-container">
-                        <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/NaolMengistu/Sysadmin-Home-Lab')">Github</button>
+                        <button class="btn btn-color-2 project-btn"
+                            onclick="window.open('https://github.com/NaolMengistu/Sysadmin-Home-Lab')">Github</button>
                     </div>
                 </div>
                 <!-- Project 4 -->
@@ -244,9 +302,14 @@
                         <img src="./assets/project-4.png" alt="Portfolio Website Source Code" class="project-img" />
                     </div>
                     <h2 class="experience-sub-title project-title">Portfolio Website Source Code</h2>
-                    <p class="project-description">The source code for my personal portfolio website. This responsive, modern, and minimalist website highlights my key skills, projects, and professional profile. It is also optimized for mobile devices, it ensures seamless usability across all screen sizes. The repository includes HTML, CSS, and JavaScript for a fully functional and visually appealing user experience.</p>
+                    <p class="project-description">The source code for my personal portfolio website. This responsive,
+                        modern, and minimalist website highlights my key skills, projects, and professional profile. It
+                        is also optimized for mobile devices, it ensures seamless usability across all screen sizes. The
+                        repository includes HTML, CSS, and JavaScript for a fully functional and visually appealing user
+                        experience.</p>
                     <div class="btn-container">
-                        <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/NaolMengistu/portfolio-website')">Github</button>
+                        <button class="btn btn-color-2 project-btn"
+                            onclick="window.open('https://github.com/NaolMengistu/portfolio-website')">Github</button>
                     </div>
                 </div>
             </div>
@@ -283,18 +346,21 @@
                 </ul>
             </div>
         </nav>
-        <!-- The year will be dynamically updated by script.js -->
+        <!-- Year is set dynamically by script.js -->
         <p>© <span id="current-year"></span> Naol Mengistu.</p>
     </footer>
 
     <!-- Scroll to Top Button -->
     <button id="scrollToTopBtn" title="Go to top">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px">
-            <path d="M12.97 3.97a.75.75 0 011.06 0l6 6a.75.75 0 01-1.06 1.06L13.5 5.56V21a.75.75 0 01-1.5 0V5.56l-5.47 5.47a.75.75 0 01-1.06-1.06l6-6z"></path>
+            <path
+                d="M12.97 3.97a.75.75 0 011.06 0l6 6a.75.75 0 01-1.06 1.06L13.5 5.56V21a.75.75 0 01-1.5 0V5.56l-5.47 5.47a.75.75 0 01-1.06-1.06l6-6z">
+            </path>
         </svg>
     </button>
 
-    <!-- Link to the main JavaScript file -->
     <script src="script.js"></script>
+    <script type="module" src="./particles.js"></script>
 </body>
+
 </html>

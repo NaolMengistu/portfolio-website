@@ -1,158 +1,101 @@
-/**
- * Toggles the visibility of the mobile navigation menu.
- * It adds/removes the 'open' class to the menu and hamburger icon,
- * which triggers the CSS animations and transitions.
- */
+// Toggle mobile hamburger menu open/closed
 function toggleMenu() {
-  // Select the menu container element
   const menu = document.querySelector(".menu-links");
-  // Select the hamburger icon element
   const icon = document.querySelector(".hamburger-icon");
-  // Toggle the 'open' class on the menu to show/hide it
   menu.classList.toggle("open");
-  // Toggle the 'open' class on the icon to animate it into an 'X'
   icon.classList.toggle("open");
 }
 
-/**
- * Dynamically updates the copyright year in the footer.
- * This ensures the year is always current without manual updates.
- */
-(function() {
-  // Get the current year
+// Set the copyright year in the footer automatically
+(function () {
   const year = new Date().getFullYear();
-  // Find the span element with the id 'current-year' and set its text content
   const yearElement = document.getElementById("current-year");
   if (yearElement) {
     yearElement.textContent = year;
   }
 })();
 
-// --- DARK MODE THEME TOGGLE SCRIPT ---
+// ---- Dark Mode Toggle ----
 
-// Select all theme toggle buttons (for both desktop and mobile)
 const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
-// Select the body element to apply the theme class
 const body = document.body;
 
-/**
- * Applies the specified theme to the body.
- * @param {string} theme - The theme to apply ('dark' or 'light').
- */
 const applyTheme = (theme) => {
   if (theme === 'dark') {
-    // Add 'dark-mode' class to the body to activate dark theme styles
     body.classList.add('dark-mode');
   } else {
-    // Remove 'dark-mode' class to revert to light theme styles
     body.classList.remove('dark-mode');
   }
 };
 
-/**
- * Toggles the theme between light and dark and saves the preference.
- */
 const toggleTheme = () => {
-  // Determine the new theme based on the current one
   const newTheme = body.classList.contains('dark-mode') ? 'light' : 'dark';
-  // Apply the new theme
   applyTheme(newTheme);
-  // Save the user's preference to localStorage for persistence across visits
   localStorage.setItem('theme', newTheme);
 };
 
-// Attach the 'click' event listener to every theme toggle button found
 themeToggleBtns.forEach(btn => {
   btn.addEventListener('click', toggleTheme);
 });
 
-
-/**
- * Automatically detects and applies the theme on initial page load.
- * Priority: 1. Saved theme in localStorage, 2. User's OS preference, 3. Default to light.
- */
-(function() {
-  // Check for a previously saved theme in localStorage
+// On load: check saved preference → OS preference → default light
+(function () {
   const savedTheme = localStorage.getItem('theme');
-  // Check if the user's operating system prefers a dark color scheme
   const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   if (savedTheme) {
-    // If a theme is saved, apply it
     applyTheme(savedTheme);
   } else if (prefersDark) {
-    // If no theme is saved but the OS prefers dark, apply dark theme
     applyTheme('dark');
   } else {
-    // Otherwise, default to the light theme
     applyTheme('light');
   }
 })();
 
-// --- SCROLL TO TOP BUTTON SCRIPT ---
+// ---- Scroll to Top Button ----
+// Uses IntersectionObserver instead of scroll listener for performance.
+// Shows the button when the contact section or footer comes into view.
 
-// Get the button element by its ID
 const scrollToTopBtn = document.getElementById("scrollToTopBtn");
 
-/**
- * Shows or hides the 'scroll to top' button based on how close the user is to the bottom of the page.
- */
-const handleScroll = () => {
-  // 1. How far the user has scrolled from the top
-  const scrollPosition = window.scrollY || document.documentElement.scrollTop;
-  
-  // 2. The height of the visible browser window
-  const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-  
-  // 3. The total height of the entire webpage
-  const totalHeight = document.documentElement.scrollHeight;
-  
-  // Show the button if the user has scrolled to a point where the bottom of their view
-  // is within 500 pixels of the total page bottom.
-  // A larger number (e.g., 1000) will make the button appear a bit earlier.
-  // A smaller number (e.g., 200) will make it appear only when the user is very, very close to the footer.
-  if (scrollPosition + windowHeight >= totalHeight - 250) {
-    scrollToTopBtn.classList.add("show");
-  } else {
-    // Otherwise, hide the button
-    scrollToTopBtn.classList.remove("show");
-  }
-};
+if (scrollToTopBtn) {
+  const observerCallback = (entries) => {
+    const isVisible = entries.some(entry => entry.isIntersecting);
+    if (isVisible) {
+      scrollToTopBtn.classList.add("show");
+    } else {
+      scrollToTopBtn.classList.remove("show");
+    }
+  };
 
-/**
- * Smoothly scrolls the window to the top of the page.
- */
-const scrollToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth" // This enables the smooth scrolling animation
+  const observer = new IntersectionObserver(observerCallback, {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.1
   });
-};
 
-// Add event listener to the window to detect scrolling
-window.addEventListener("scroll", handleScroll);
+  const contactSection = document.getElementById("contact");
+  const footer = document.querySelector("footer");
 
-// Add event listener to the button to scroll to top on click
-scrollToTopBtn.addEventListener("click", scrollToTop);
+  if (contactSection) observer.observe(contactSection);
+  if (footer) observer.observe(footer);
 
-/**
- * Closes the hamburger menu if the user clicks outside of it.
- */
-document.addEventListener("click", function(event) {
+  scrollToTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+// Close hamburger menu when clicking outside of it
+document.addEventListener("click", function (event) {
   const menu = document.querySelector(".menu-links");
   const icon = document.querySelector(".hamburger-icon");
 
-  // 1. Check if the menu is currently open
   if (menu.classList.contains("open")) {
-    
-    // 2. Check if the click happened INSIDE the menu or ON the icon
     const isClickInsideMenu = menu.contains(event.target);
     const isClickOnIcon = icon.contains(event.target);
 
-    // 3. If the click was OUTSIDE both, close the menu
     if (!isClickInsideMenu && !isClickOnIcon) {
       toggleMenu();
     }
   }
 });
-

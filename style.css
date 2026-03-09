@@ -1,27 +1,20 @@
-/* ==========================================================================
-   1. GENERAL & SETUP
-   ========================================================================== */
+/* ===== 1. RESET & SETUP ===== */
 
-/* Import Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
-/* Reset default margin and padding for all elements */
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+  box-sizing: border-box;
 }
 
-/* Smooth scrolling behavior for anchor links */
 html {
   scroll-behavior: smooth;
 }
 
-/* ==========================================================================
-   2. THEME & COLOR VARIABLES
-   ========================================================================== */
+/* ===== 2. THEME VARIABLES ===== */
 
-/* Light Mode theme */
+/* Light mode (default) */
 :root {
   --color-bg: white;
   --color-text: black;
@@ -31,10 +24,16 @@ html {
   --color-card-bg: white;
   --color-card-bg-alt: rgb(250, 250, 250);
   --color-menu-shadow: rgba(0, 0, 0, 0.1);
-  --icon-filter: none; /* Default for light mode */
+  --icon-filter: none;
+
+  /* z-index scale — keeps stacking order in one place */
+  --z-canvas: 0;
+  --z-content: 1;
+  --z-scroll-top: 99;
+  --z-mobile-menu: 100;
 }
 
-/* Dark Mode styles, applied when .dark-mode class is present on the body */
+/* Dark mode — toggled via .dark-mode on <body> */
 .dark-mode {
   --color-bg: #1e293b;
   --color-text: #d1d5db;
@@ -44,29 +43,26 @@ html {
   --color-card-bg: #1f2937;
   --color-card-bg-alt: #1f2937;
   --color-menu-shadow: rgba(255, 255, 255, 0.08);
-  --icon-filter: invert(1) grayscale(1) brightness(2); /* Inverts icons to be visible on dark bg */
+  --icon-filter: invert(1) grayscale(1) brightness(2);
 }
 
-/* Apply base font, background, and text colors from variables */
 body {
   font-family: "Poppins", sans-serif;
   background-color: var(--color-bg);
   color: var(--color-text);
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for theme changes */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* ==========================================================================
-   3. TYPOGRAPHY & BASIC ELEMENTS
-   ========================================================================== */
+/* ===== 3. TYPOGRAPHY ===== */
 
 p {
-  color: var(--color-text-secondary); /* Sets a secondary text color for all paragraphs */
+  color: var(--color-text-secondary);
 }
 
 a {
-  color: var(--color-text); /* Link color inherits from theme */
+  color: var(--color-text);
   text-decoration: none;
-  transition: all 300ms ease; /* Smooth transition for hover effects */
+  transition: color 300ms ease, text-decoration-color 300ms ease;
 }
 
 a:hover {
@@ -79,14 +75,11 @@ a:hover {
 .title {
   font-size: 3rem;
   text-align: center;
-  color: var(--color-text); /* Ensure title color updates with theme */
+  color: var(--color-text);
 }
 
-/* ==========================================================================
-   4. NAVIGATION (DESKTOP & HAMBURGER)
-   ========================================================================== */
+/* ===== 4. NAVIGATION ===== */
 
-/* --- General Navigation Styles --- */
 nav {
   display: flex;
   justify-content: space-around;
@@ -99,7 +92,7 @@ nav {
   gap: 2rem;
   list-style: none;
   font-size: 1.5rem;
-  align-items: center; /* Vertically align items in the nav bar */
+  align-items: center;
 }
 
 .logo {
@@ -111,20 +104,35 @@ nav {
   cursor: default;
 }
 
-/* --- Desktop Navigation --- */
+/* Desktop nav shown by default, hamburger hidden */
 #desktop-nav {
-  display: flex; /* Default display is flex, will be hidden on smaller screens */
+  display: flex;
 }
 
-/* --- Hamburger Navigation (for mobile) --- */
 #hamburger-nav {
-  display: none; /* Hidden by default */
+  display: none;
 }
 
+/* Swap navs on tablet/mobile */
+@media screen and (max-width: 1200px) {
+  #desktop-nav {
+    display: none !important;
+  }
+
+  #hamburger-nav {
+    display: flex !important;
+  }
+
+  #theme-toggle-mobile {
+    display: flex !important;
+  }
+}
+
+/* Holds the theme toggle + hamburger icon side by side */
 .nav-right-container {
   display: flex;
   align-items: center;
-  gap: 1.5rem; /* Space between theme button and hamburger icon */
+  gap: 1.5rem;
 }
 
 .hamburger-menu {
@@ -145,10 +153,10 @@ nav {
   width: 100%;
   height: 2px;
   background-color: var(--color-text);
-  transition: all 0.3s ease-in-out; /* Smooth animation for the "X" shape */
+  transition: all 0.3s ease-in-out;
 }
 
-/* --- Hamburger Menu Dropdown --- */
+/* Dropdown that slides open on click */
 .menu-links {
   position: absolute;
   top: 100%;
@@ -160,11 +168,11 @@ nav {
   transition: max-height 0.3s ease-in-out;
   border-radius: 1rem;
   box-shadow: 0 8px 16px var(--color-menu-shadow);
-  z-index: 100; /* Ensures menu appears above other content */
+  z-index: var(--z-mobile-menu);
 }
 
 .menu-links.open {
-  max-height: 350px; /* Reveals the menu */
+  max-height: 350px;
 }
 
 .menu-links ul {
@@ -181,10 +189,10 @@ nav {
 }
 
 .menu-links a:hover {
-  text-underline-offset: 0.5rem; /* Smaller offset for menu links */
+  text-underline-offset: 0.5rem;
 }
 
-/* --- Hamburger Icon Animation to "X" --- */
+/* Hamburger → X animation */
 .hamburger-icon.open span:first-child {
   transform: rotate(45deg) translate(10px, 5px);
 }
@@ -197,12 +205,11 @@ nav {
   transform: rotate(-45deg) translate(10px, -5px);
 }
 
-/* ==========================================================================
-   5. THEME TOGGLE BUTTON
-   ========================================================================== */
+/* ===== 5. THEME TOGGLE ===== */
 
+/* Mobile toggle hidden by default, shown via media query above */
 #theme-toggle-mobile {
-  display: none; /* Hide mobile button by default */
+  display: none;
 }
 
 .theme-toggle-btn {
@@ -214,7 +221,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-text); /* SVG icons inherit this color */
+  color: var(--color-text);
   transition: transform 300ms ease;
 }
 
@@ -227,23 +234,24 @@ nav {
   height: 100%;
 }
 
-/* Logic for showing/hiding sun/moon icons based on theme */
+/* Show sun in dark mode, moon in light mode */
 .sun-icon {
   display: block;
 }
+
 .moon-icon {
   display: none;
 }
+
 .dark-mode .sun-icon {
   display: none;
 }
+
 .dark-mode .moon-icon {
   display: block;
 }
 
-/* ==========================================================================
-   6. SECTIONS & LAYOUT
-   ========================================================================== */
+/* ===== 6. SECTION LAYOUT ===== */
 
 section {
   padding-top: 4vh;
@@ -256,6 +264,23 @@ section {
   display: flex;
   gap: 4rem;
   height: 80%;
+}
+
+/* Tablet: stack sections vertically, reduce side margins */
+@media screen and (max-width: 1200px) {
+
+  section,
+  .section-container {
+    height: fit-content;
+  }
+
+  .section-container {
+    display: block;
+  }
+
+  section {
+    margin: 0 5%;
+  }
 }
 
 .section__text {
@@ -273,6 +298,20 @@ section {
   margin-bottom: 1rem;
 }
 
+@media screen and (max-width: 600px) {
+  .section__text__p2 {
+    font-size: 1.25rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+}
+
 .section__pic-container {
   display: flex;
   height: 400px;
@@ -280,22 +319,43 @@ section {
   margin: auto 0;
 }
 
-/* ==========================================================================
-   7. COMPONENTS (Buttons, Icons, Cards)
-   ========================================================================== */
+@media screen and (max-width: 1200px) {
+  .section__pic-container {
+    width: 275px;
+    height: 275px;
+    margin: 0 auto 2rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .section__pic-container {
+    width: auto;
+    height: 46vw;
+    justify-content: center;
+  }
+}
+
+/* ===== 7. COMPONENTS ===== */
 
 /* --- Icons --- */
 .icon {
   cursor: pointer;
   height: 2rem;
-  filter: var(--icon-filter); /* Applies the dark mode filter */
+  filter: var(--icon-filter);
   transition: filter 300ms ease;
 }
 
+/* Section navigation arrows — sit just outside the content margin */
 .arrow {
   position: absolute;
   right: -5rem;
   bottom: 2.5rem;
+}
+
+@media screen and (max-width: 1200px) {
+  .arrow {
+    display: none;
+  }
 }
 
 /* --- Buttons --- */
@@ -311,7 +371,7 @@ section {
   width: 8rem;
   border-radius: 2rem;
   border: var(--color-border) 0.1rem solid;
-  transition: all 300ms ease;
+  transition: background-color 300ms ease, color 300ms ease, border-color 300ms ease;
 }
 
 .btn:hover {
@@ -338,7 +398,14 @@ section {
   border-color: var(--color-text);
 }
 
-/* --- Cards / Containers --- */
+@media screen and (max-width: 600px) {
+  .btn-container {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+
+/* --- Cards --- */
 .details-container {
   padding: 1.5rem;
   flex: 1;
@@ -354,16 +421,67 @@ section {
   background: var(--color-card-bg-alt);
 }
 
-/* ==========================================================================
-   8. PAGE-SPECIFIC SECTIONS
-   ========================================================================== */
+/* ===== 8. PAGE SECTIONS ===== */
 
-/* --- Profile Section --- */
+/* --- Hero / Profile ---
+   Full-width so the particle canvas can bleed to screen edges.
+   margin: 0 overrides the default section margin. */
 #profile {
   display: flex;
   justify-content: center;
   gap: 5rem;
   height: 80vh;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  width: 100%;
+}
+
+@media screen and (max-width: 1400px) {
+  #profile {
+    height: 83vh;
+    margin-bottom: 6rem;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #profile {
+    display: block;
+    height: fit-content;
+    margin: 0 5%;
+    width: auto;
+    text-align: center;
+  }
+
+  #profile .section__text {
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #profile {
+    height: 83vh;
+    margin-bottom: 0;
+  }
+}
+
+/* Three.js particle canvas — absolutely positioned behind content */
+#particle-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--z-canvas);
+  pointer-events: none;
+  display: block;
+  will-change: transform;
+}
+
+/* Everything inside #profile sits above the particle canvas */
+#profile>*:not(#particle-bg) {
+  position: relative;
+  z-index: var(--z-content);
 }
 
 #socials-container {
@@ -373,7 +491,7 @@ section {
   gap: 1rem;
 }
 
-/* --- About Section --- */
+/* --- About --- */
 #about {
   position: relative;
 }
@@ -388,6 +506,25 @@ section {
   gap: 2rem;
   margin-bottom: 2rem;
   margin-top: 2rem;
+}
+
+@media screen and (max-width: 1400px) {
+  .about-containers {
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .about-containers {
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .about-containers {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
 }
 
 #about .about-containers {
@@ -406,14 +543,22 @@ section {
   border-radius: 2rem;
 }
 
+/* Bio text — kept narrower for readability */
 #about .text-container {
-  max-width: 800px;
+  max-width: 600px;
   margin-left: auto;
   margin-right: auto;
   text-align: justify;
 }
 
-/* --- Key Skills Section --- */
+@media screen and (max-width: 600px) {
+  #about .text-container {
+    text-align: justify;
+    padding: 0 1rem;
+  }
+}
+
+/* --- Key Skills --- */
 #skills {
   position: relative;
 }
@@ -431,20 +576,74 @@ section {
   flex-direction: column;
 }
 
-/* FIX: Center the Key Skills cards on ultra-wide screens */
+@media screen and (max-width: 1200px) {
+
+  #experience,
+  .experience-details-container {
+    margin-top: 2rem;
+  }
+}
+
+/* Cap the cards' container width and center them */
 #skills .about-containers {
   gap: 2rem;
   max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
-  justify-content: center; /* This correctly centers the flex items */
+  justify-content: center;
 }
 
+/* Tablet: 2 cards per row with a min-width */
+@media screen and (max-width: 1200px) {
+  #skills .about-containers .details-container {
+    flex: 0 1 calc(50% - 2rem);
+    min-width: 280px;
+  }
+}
+
+/* Phone: stack cards 1 per row at 90% width */
+@media screen and (max-width: 600px) {
+  #skills .about-containers {
+    flex-direction: column;
+  }
+
+  #skills .about-containers .details-container {
+    flex: none;
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+/* Each skill item (icon + text) inside a card */
 .article-container {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  align-items: flex-start;
+  align-items: center;
+}
+
+/* Tablet: 2 skill items per row */
+@media screen and (max-width: 1200px) {
+  .article-container {
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  article {
+    width: calc(50% - 1rem);
+  }
+}
+
+/* Phone: back to 1 per row */
+@media screen and (max-width: 600px) {
+  .article-container {
+    flex-direction: column;
+  }
+
+  article {
+    width: 100%;
+  }
 }
 
 article {
@@ -462,8 +661,17 @@ article .icon {
   text-align: left;
 }
 
-/* --- Projects Section --- */
-/* FIX: Use Flexbox to center the last item in the row */
+@media screen and (max-width: 600px) {
+  article {
+    font-size: 1rem;
+  }
+
+  .experience-sub-title {
+    font-size: 1.25rem;
+  }
+}
+
+/* --- Featured Projects --- */
 #projects .about-containers {
   display: flex;
   flex-wrap: wrap;
@@ -479,9 +687,27 @@ article .icon {
   flex-direction: column;
   justify-content: space-between;
   min-height: 520px;
-  /* Add a flexible basis and max-width for the cards */
-  flex: 1 1 295px; /* Flex-grow, flex-shrink, flex-basis */
-  max-width: 450px; /* Optional: Constrain max card width */
+  flex: 1 1 280px;
+  min-width: 280px;
+  max-width: 450px;
+}
+
+@media screen and (max-width: 1200px) {
+  .project-card {
+    flex: 1 1 280px;
+    min-width: 280px;
+    max-width: 450px;
+  }
+}
+
+/* Phone: full-width cards */
+@media screen and (max-width: 600px) {
+  .project-card {
+    flex: none;
+    width: 90%;
+    max-width: none;
+    margin: 0 auto;
+  }
 }
 
 .project-img {
@@ -496,6 +722,7 @@ article .icon {
   color: var(--color-text);
 }
 
+/* Pushes the button to the bottom of the card */
 .project-description {
   flex-grow: 1;
   margin-bottom: 1rem;
@@ -506,7 +733,7 @@ article .icon {
   border-color: var(--color-border-light);
 }
 
-/* --- Contact Section --- */
+/* --- Contact --- */
 #contact {
   display: flex;
   justify-content: center;
@@ -527,6 +754,31 @@ article .icon {
   flex-wrap: wrap;
 }
 
+@media screen and (max-width: 1400px) {
+  #contact {
+    height: fit-content;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #contact {
+    height: 40vh;
+  }
+
+  .contact-info-upper-container {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .contact-info-container {
+    margin: 0;
+  }
+
+  .contact-info-container p {
+    font-size: 1rem;
+  }
+}
+
 .contact-info-container {
   display: flex;
   align-items: center;
@@ -545,9 +797,7 @@ article .icon {
   height: 2.5rem;
 }
 
-/* ==========================================================================
-   9. FOOTER
-   ========================================================================== */
+/* ===== 9. FOOTER ===== */
 
 footer {
   height: 26vh;
@@ -567,15 +817,35 @@ footer p {
   color: var(--color-text-secondary);
 }
 
-/* ==========================================================================
-   10. SCROLL TO TOP BUTTON
-   ========================================================================== */
+@media screen and (max-width: 600px) {
+  footer {
+    height: 40vh;
+  }
 
+  footer nav {
+    height: fit-content;
+    margin-bottom: 2rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .nav-links li a {
+    font-size: 1rem;
+  }
+}
+
+/* ===== 10. SCROLL TO TOP ===== */
+
+/* Hidden by default, shown via JS (.show class) when near footer */
 #scrollToTopBtn {
   position: fixed;
   bottom: 5rem;
   right: 5rem;
-  z-index: 99;
+  z-index: var(--z-scroll-top);
   border: none;
   outline: none;
   background-color: var(--color-border);
@@ -591,7 +861,14 @@ footer p {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease;
+}
+
+@media screen and (max-width: 1200px) {
+  #scrollToTopBtn {
+    right: 2.5rem;
+    bottom: 2.5rem;
+  }
 }
 
 #scrollToTopBtn.show {

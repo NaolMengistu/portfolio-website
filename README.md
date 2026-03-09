@@ -13,7 +13,7 @@ This repository contains the source code for my website. It serves as both my pr
 
 This repository houses two distinct websites, both deployed from the `main` branch:
 
-*   **Portfolio (`naol.dev`):** A modern, responsive static site built with HTML, CSS, and JavaScript. It details my professional profile, and highlights my major projects.
+*   **Portfolio (`naol.dev`):** A modern, responsive static site built with HTML, CSS, and JavaScript. It details my professional profile and highlights my major projects. The hero section features an interactive particle background built with Three.js and custom GLSL shaders, inspired by the animation on [antigravity.google](https://antigravity.google).
 *   **Technical Blog (`blog.naol.dev`):** A blog site built with the Hugo static site generator and the Blowfish theme. This is where I publish hands-on research, technical tutorials, and articles on topics ranging from digital forensics and GRC to cloud security and AI.
 
 ## Technical Architecture Showcase
@@ -30,7 +30,7 @@ This project is a practical showcase of a complete development and deployment wo
 
 | Category                 | Technologies                                           |
 | :----------------------- | :----------------------------------------------------- |
-| **Portfolio (Frontend)** | `HTML5`, `CSS3`, `JavaScript`                            |
+| **Portfolio (Frontend)** | `HTML5`, `CSS3`, `JavaScript`, `Three.js`, `GLSL`        |
 | **Blog (SSG)**           | `Hugo`, `Markdown`, `Blowfish Theme`                     |
 | **Platform & DevOps**    | `Git`, `GitHub Actions`, `Cloudflare Pages`, `Cloudflare DNS` |
 
@@ -46,7 +46,14 @@ You are welcome to clone this repository and use its structure as a template for
 
 ### Running the Portfolio Locally
 
-The portfolio is a simple static site. To view it, you can just open the `index.html` file in your web browser.
+The portfolio is a static site that loads Three.js via an [import map](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap) from a CDN — no build step or `npm install` needed. Just serve the files with any local HTTP server:
+
+```bash
+# Using VS Code Live Server, Python, or npx:
+npx serve .
+```
+
+Then open `http://localhost:3000` (or whichever port your server uses).
 
 ### Running the Blog Locally
 
