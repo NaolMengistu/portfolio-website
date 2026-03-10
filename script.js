@@ -1,4 +1,4 @@
-// Toggle mobile hamburger menu open/closed
+// Hamburger menu toggle
 function toggleMenu() {
   const menu = document.querySelector(".menu-links");
   const icon = document.querySelector(".hamburger-icon");
@@ -6,7 +6,7 @@ function toggleMenu() {
   icon.classList.toggle("open");
 }
 
-// Set the copyright year in the footer automatically
+// Footer copyright year
 (function () {
   const year = new Date().getFullYear();
   const yearElement = document.getElementById("current-year");
@@ -15,7 +15,7 @@ function toggleMenu() {
   }
 })();
 
-// ---- Dark Mode Toggle ----
+// Dark mode
 
 const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
 const body = document.body;
@@ -38,7 +38,7 @@ themeToggleBtns.forEach(btn => {
   btn.addEventListener('click', toggleTheme);
 });
 
-// On load: check saved preference → OS preference → default light
+// Pick theme: saved > OS preference > light
 (function () {
   const savedTheme = localStorage.getItem('theme');
   const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -52,9 +52,8 @@ themeToggleBtns.forEach(btn => {
   }
 })();
 
-// ---- Scroll to Top Button ----
-// Uses IntersectionObserver instead of scroll listener for performance.
-// Shows the button when the contact section or footer comes into view.
+// Scroll-to-top button
+// Shows up when the contact section or footer is visible (uses IntersectionObserver).
 
 const scrollToTopBtn = document.getElementById("scrollToTopBtn");
 
@@ -85,7 +84,7 @@ if (scrollToTopBtn) {
   });
 }
 
-// Close hamburger menu when clicking outside of it
+// Close the menu if user clicks anywhere outside it
 document.addEventListener("click", function (event) {
   const menu = document.querySelector(".menu-links");
   const icon = document.querySelector(".hamburger-icon");

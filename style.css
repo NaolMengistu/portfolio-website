@@ -1,4 +1,4 @@
-/* ===== 1. RESET & SETUP ===== */
+/* Reset & base */
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
@@ -12,9 +12,9 @@ html {
   scroll-behavior: smooth;
 }
 
-/* ===== 2. THEME VARIABLES ===== */
+/* Theme colors */
 
-/* Light mode (default) */
+/* Light (default) */
 :root {
   --color-bg: white;
   --color-text: black;
@@ -26,14 +26,14 @@ html {
   --color-menu-shadow: rgba(0, 0, 0, 0.1);
   --icon-filter: none;
 
-  /* z-index scale — keeps stacking order in one place */
+  /* z-index layers */
   --z-canvas: 0;
   --z-content: 1;
   --z-scroll-top: 99;
   --z-mobile-menu: 100;
 }
 
-/* Dark mode — toggled via .dark-mode on <body> */
+/* Dark mode */
 .dark-mode {
   --color-bg: #1e293b;
   --color-text: #d1d5db;
@@ -53,7 +53,7 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* ===== 3. TYPOGRAPHY ===== */
+/* Type */
 
 p {
   color: var(--color-text-secondary);
@@ -78,7 +78,21 @@ a:hover {
   color: var(--color-text);
 }
 
-/* ===== 4. NAVIGATION ===== */
+/* Tablet */
+@media screen and (max-width: 1200px) {
+  .title {
+    font-size: 2.5rem;
+  }
+}
+
+/* Phone */
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+}
+
+/* Nav */
 
 nav {
   display: flex;
@@ -95,6 +109,14 @@ nav {
   align-items: center;
 }
 
+/* Tablet */
+@media screen and (max-width: 1200px) {
+  .nav-links {
+    gap: 1.25rem;
+    font-size: 1.25rem;
+  }
+}
+
 .logo {
   font-size: 2rem;
   color: var(--color-text);
@@ -104,7 +126,25 @@ nav {
   cursor: default;
 }
 
-/* Desktop nav shown by default, hamburger hidden */
+/* Tablet */
+@media screen and (max-width: 1200px) {
+  .logo {
+    font-size: 1.75rem;
+  }
+}
+
+/* Phone: smaller logo */
+@media screen and (max-width: 768px) {
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  nav {
+    height: 14vh;
+  }
+}
+
+/* Desktop nav visible by default, hamburger hidden */
 #desktop-nav {
   display: flex;
 }
@@ -113,7 +153,7 @@ nav {
   display: none;
 }
 
-/* Swap navs on tablet/mobile */
+/* Swap to hamburger on smaller screens */
 @media screen and (max-width: 1200px) {
   #desktop-nav {
     display: none !important;
@@ -128,7 +168,7 @@ nav {
   }
 }
 
-/* Holds the theme toggle + hamburger icon side by side */
+/* Theme toggle + hamburger sit side by side */
 .nav-right-container {
   display: flex;
   align-items: center;
@@ -156,7 +196,7 @@ nav {
   transition: all 0.3s ease-in-out;
 }
 
-/* Dropdown that slides open on click */
+/* Menu dropdown */
 .menu-links {
   position: absolute;
   top: 100%;
@@ -188,11 +228,19 @@ nav {
   color: var(--color-text);
 }
 
+/* Phone: smaller menu link text */
+@media screen and (max-width: 768px) {
+  .menu-links a {
+    font-size: 1.25rem;
+    padding: 8px;
+  }
+}
+
 .menu-links a:hover {
   text-underline-offset: 0.5rem;
 }
 
-/* Hamburger → X animation */
+/* Hamburger -> X */
 .hamburger-icon.open span:first-child {
   transform: rotate(45deg) translate(10px, 5px);
 }
@@ -205,9 +253,9 @@ nav {
   transform: rotate(-45deg) translate(10px, -5px);
 }
 
-/* ===== 5. THEME TOGGLE ===== */
+/* Theme toggle */
 
-/* Mobile toggle hidden by default, shown via media query above */
+/* Hidden on desktop, shown via media query */
 #theme-toggle-mobile {
   display: none;
 }
@@ -234,7 +282,7 @@ nav {
   height: 100%;
 }
 
-/* Show sun in dark mode, moon in light mode */
+/* Sun in dark mode, moon in light */
 .sun-icon {
   display: block;
 }
@@ -251,7 +299,7 @@ nav {
   display: block;
 }
 
-/* ===== 6. SECTION LAYOUT ===== */
+/* Layout */
 
 section {
   padding-top: 4vh;
@@ -260,26 +308,42 @@ section {
   position: relative;
 }
 
+/* Tablet */
+@media screen and (max-width: 1200px) {
+  section {
+    margin: 0 5%;
+    height: fit-content;
+    min-height: unset;
+  }
+}
+
+/* Phone: tighter margins and padding */
+@media screen and (max-width: 768px) {
+  section {
+    margin: 0 4%;
+    padding-top: 3vh;
+    min-height: unset;
+  }
+}
+
 .section-container {
   display: flex;
   gap: 4rem;
   height: 80%;
 }
 
-/* Tablet: stack sections vertically, reduce side margins */
+/* Tablet: stack to column, reduce gap */
 @media screen and (max-width: 1200px) {
-
-  section,
-  .section-container {
-    height: fit-content;
-  }
-
   .section-container {
     display: block;
+    height: fit-content;
   }
+}
 
-  section {
-    margin: 0 5%;
+/* Phone: tighter */
+@media screen and (max-width: 768px) {
+  .section-container {
+    gap: 1.5rem;
   }
 }
 
@@ -298,17 +362,17 @@ section {
   margin-bottom: 1rem;
 }
 
-@media screen and (max-width: 600px) {
+/* Tablet */
+@media screen and (max-width: 1200px) {
+  .section__text__p2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Phone */
+@media screen and (max-width: 768px) {
   .section__text__p2 {
     font-size: 1.25rem;
-  }
-
-  .title {
-    font-size: 2rem;
-  }
-
-  .logo {
-    font-size: 1.5rem;
   }
 }
 
@@ -319,6 +383,7 @@ section {
   margin: auto 0;
 }
 
+/* Tablet */
 @media screen and (max-width: 1200px) {
   .section__pic-container {
     width: 275px;
@@ -327,7 +392,8 @@ section {
   }
 }
 
-@media screen and (max-width: 600px) {
+/* Phone */
+@media screen and (max-width: 768px) {
   .section__pic-container {
     width: auto;
     height: 46vw;
@@ -335,9 +401,9 @@ section {
   }
 }
 
-/* ===== 7. COMPONENTS ===== */
+/* Components */
 
-/* --- Icons --- */
+/* Icons */
 .icon {
   cursor: pointer;
   height: 2rem;
@@ -345,24 +411,26 @@ section {
   transition: filter 300ms ease;
 }
 
-/* Section navigation arrows — sit just outside the content margin */
+/* Arrow links (bottom-right of sections) */
 .arrow {
   position: absolute;
   right: -5rem;
   bottom: 2.5rem;
 }
 
+/* Hide arrows on smaller screens */
 @media screen and (max-width: 1200px) {
   .arrow {
     display: none;
   }
 }
 
-/* --- Buttons --- */
+/* Buttons */
 .btn-container {
   display: flex;
   justify-content: center;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .btn {
@@ -398,14 +466,7 @@ section {
   border-color: var(--color-text);
 }
 
-@media screen and (max-width: 600px) {
-  .btn-container {
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-}
-
-/* --- Cards --- */
+/* Cards */
 .details-container {
   padding: 1.5rem;
   flex: 1;
@@ -421,11 +482,9 @@ section {
   background: var(--color-card-bg-alt);
 }
 
-/* ===== 8. PAGE SECTIONS ===== */
+/* Page sections */
 
-/* --- Hero / Profile ---
-   Full-width so the particle canvas can bleed to screen edges.
-   margin: 0 overrides the default section margin. */
+/* Hero section -- full width for the particle canvas */
 #profile {
   display: flex;
   justify-content: center;
@@ -440,19 +499,41 @@ section {
   padding-bottom: 25vh;
 }
 
+/* Large desktop */
 @media screen and (max-width: 1400px) {
   #profile {
     height: 83vh;
     margin-bottom: 6rem;
+    padding-bottom: 25vh;
   }
 }
 
+/* Tablet */
 @media screen and (max-width: 1200px) {
   #profile {
     display: block;
     height: fit-content;
+    min-height: 75vh;
     margin: 0 5%;
     width: auto;
+    text-align: center;
+    padding-bottom: 4rem;
+    padding-top: 6rem;
+  }
+
+  #profile .section__text {
+    margin: 0 auto;
+  }
+}
+
+/* Phone */
+@media screen and (max-width: 768px) {
+  #profile {
+    height: 83vh;
+    margin: 0;
+    width: 100%;
+    padding-bottom: 0;
+    padding-top: 4vh;
     text-align: center;
   }
 
@@ -461,16 +542,7 @@ section {
   }
 }
 
-@media screen and (max-width: 600px) {
-  #profile {
-    height: 83vh;
-    margin-bottom: 0;
-    padding-bottom: 0;
-    padding-top: 4vh;
-  }
-}
-
-/* Three.js particle canvas — absolutely positioned behind content */
+/* Particle canvas -- sits behind all content */
 #particle-bg {
   position: absolute;
   top: 0;
@@ -483,7 +555,23 @@ section {
   will-change: transform;
 }
 
-/* Everything inside #profile sits above the particle canvas */
+/* Tablet: shift canvas up to frame the hero text */
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+  #particle-bg {
+    top: -10%;
+    height: 160%;
+  }
+}
+
+/* Phone: same idea */
+@media screen and (max-width: 768px) {
+  #particle-bg {
+    top: -5%;
+    height: 150%;
+  }
+}
+
+/* Keep hero content above the canvas */
 #profile>*:not(#particle-bg) {
   position: relative;
   z-index: var(--z-content);
@@ -496,7 +584,7 @@ section {
   gap: 1rem;
 }
 
-/* --- About --- */
+/* About */
 #about {
   position: relative;
 }
@@ -513,22 +601,27 @@ section {
   margin-top: 2rem;
 }
 
+/* Large desktop: wrap cards */
 @media screen and (max-width: 1400px) {
   .about-containers {
     flex-wrap: wrap;
   }
 }
 
+/* Tablet */
 @media screen and (max-width: 1200px) {
   .about-containers {
     margin-top: 0;
+    gap: 1.5rem;
   }
 }
 
-@media screen and (max-width: 600px) {
+/* Phone: stack, tighter gap */
+@media screen and (max-width: 768px) {
   .about-containers {
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 1rem;
+    margin-bottom: 1rem;
   }
 }
 
@@ -548,7 +641,7 @@ section {
   border-radius: 2rem;
 }
 
-/* List items inside the Experience / Education cards */
+/* About card lists (Experience/Education) */
 .about-card-list {
   list-style: none !important;
   list-style-type: none !important;
@@ -570,7 +663,7 @@ section {
   padding: 1rem 1.25rem;
 }
 
-/* Bio text — kept narrower for readability */
+/* Bio text */
 #about .text-container {
   max-width: 600px;
   margin-left: auto;
@@ -578,14 +671,15 @@ section {
   text-align: justify;
 }
 
-@media screen and (max-width: 600px) {
+/* Phone: add side padding */
+@media screen and (max-width: 768px) {
   #about .text-container {
-    text-align: justify;
-    padding: 0 1rem;
+    padding: 0 0.5rem;
+    font-size: 0.95rem;
   }
 }
 
-/* --- Key Skills --- */
+/* Skills */
 #skills {
   position: relative;
 }
@@ -595,6 +689,14 @@ section {
   font-weight: 600;
   font-size: 1.75rem;
   margin-bottom: 2rem;
+}
+
+/* Phone: smaller card headings */
+@media screen and (max-width: 768px) {
+  .experience-sub-title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
 }
 
 .experience-details-container {
@@ -611,7 +713,7 @@ section {
   }
 }
 
-/* Cap the cards' container width and center them */
+/* Cap card width and center */
 #skills .about-containers {
   gap: 2rem;
   max-width: 950px;
@@ -620,7 +722,7 @@ section {
   justify-content: center;
 }
 
-/* Tablet: 2 cards per row with a min-width */
+/* Tablet: 2 cards per row */
 @media screen and (max-width: 1200px) {
   #skills .about-containers .details-container {
     flex: 0 1 calc(50% - 2rem);
@@ -628,20 +730,22 @@ section {
   }
 }
 
-/* Phone: stack cards 1 per row at 90% width */
-@media screen and (max-width: 600px) {
+/* Phone: 1 card per row, full width */
+@media screen and (max-width: 768px) {
   #skills .about-containers {
     flex-direction: column;
+    gap: 1rem;
   }
 
   #skills .about-containers .details-container {
     flex: none;
-    width: 90%;
+    width: 92%;
     margin: 0 auto;
+    min-width: unset;
   }
 }
 
-/* Each skill item (icon + text) inside a card */
+/* Skill items inside each card */
 .article-container {
   display: flex;
   flex-direction: column;
@@ -649,7 +753,7 @@ section {
   align-items: center;
 }
 
-/* Tablet: 2 skill items per row */
+/* Tablet: 2 skill items per row inside each card */
 @media screen and (max-width: 1200px) {
   .article-container {
     flex-wrap: wrap;
@@ -662,14 +766,16 @@ section {
   }
 }
 
-/* Phone: back to 1 per row */
-@media screen and (max-width: 600px) {
+/* Phone: 1 skill item per row, smaller text */
+@media screen and (max-width: 768px) {
   .article-container {
     flex-direction: column;
+    gap: 0.75rem;
   }
 
   article {
     width: 100%;
+    font-size: 0.95rem;
   }
 }
 
@@ -688,17 +794,7 @@ article .icon {
   text-align: left;
 }
 
-@media screen and (max-width: 600px) {
-  article {
-    font-size: 1rem;
-  }
-
-  .experience-sub-title {
-    font-size: 1.25rem;
-  }
-}
-
-/* --- Featured Projects --- */
+/* Projects */
 #projects .about-containers {
   display: flex;
   flex-wrap: wrap;
@@ -719,21 +815,32 @@ article .icon {
   max-width: 450px;
 }
 
+/* Tablet: keep same sizing, cards wrap naturally */
 @media screen and (max-width: 1200px) {
   .project-card {
     flex: 1 1 280px;
     min-width: 280px;
-    max-width: 450px;
+    max-width: 420px;
+  }
+
+  #projects .about-containers {
+    gap: 1.5rem;
   }
 }
 
-/* Phone: full-width cards */
-@media screen and (max-width: 600px) {
+/* Phone: full-width cards, one per row */
+@media screen and (max-width: 768px) {
   .project-card {
     flex: none;
-    width: 90%;
+    width: 92%;
     max-width: none;
+    min-width: unset;
+    min-height: unset;
     margin: 0 auto;
+  }
+
+  #projects .about-containers {
+    gap: 1rem;
   }
 }
 
@@ -744,15 +851,30 @@ article .icon {
   object-fit: cover;
 }
 
+/* Phone: less square image ratio to save vertical space */
+@media screen and (max-width: 768px) {
+  .project-img {
+    aspect-ratio: 16 / 9;
+  }
+}
+
 .project-title {
   margin: 1rem 0;
   color: var(--color-text);
 }
 
-/* Pushes the button to the bottom of the card */
+/* Push button to card bottom */
 .project-description {
   flex-grow: 1;
   margin-bottom: 1rem;
+}
+
+/* Phone: smaller description text */
+@media screen and (max-width: 768px) {
+  .project-description {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
 }
 
 .project-btn {
@@ -760,7 +882,7 @@ article .icon {
   border-color: var(--color-border-light);
 }
 
-/* --- Contact --- */
+/* Contact */
 #contact {
   display: flex;
   justify-content: center;
@@ -781,20 +903,30 @@ article .icon {
   flex-wrap: wrap;
 }
 
+/* Large desktop: contact section shrinks */
 @media screen and (max-width: 1400px) {
   #contact {
     height: fit-content;
   }
 }
 
-@media screen and (max-width: 600px) {
+/* Tablet */
+@media screen and (max-width: 1200px) {
   #contact {
-    height: 40vh;
+    padding-bottom: 4rem;
+  }
+}
+
+/* Phone */
+@media screen and (max-width: 768px) {
+  #contact {
+    padding-bottom: 3rem;
   }
 
   .contact-info-upper-container {
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 1rem;
+    padding: 1rem;
   }
 
   .contact-info-container {
@@ -824,7 +956,7 @@ article .icon {
   height: 2.5rem;
 }
 
-/* ===== 9. FOOTER ===== */
+/* Footer */
 
 footer {
   height: 26vh;
@@ -844,14 +976,22 @@ footer p {
   color: var(--color-text-secondary);
 }
 
-@media screen and (max-width: 600px) {
+/* Tablet */
+@media screen and (max-width: 1200px) {
   footer {
-    height: 40vh;
+    height: 30vh;
+  }
+}
+
+/* Phone: taller footer, stacked nav links */
+@media screen and (max-width: 768px) {
+  footer {
+    height: fit-content;
+    padding: 2rem 1rem;
   }
 
   footer nav {
-    height: fit-content;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
 
   .nav-links {
@@ -865,9 +1005,9 @@ footer p {
   }
 }
 
-/* ===== 10. SCROLL TO TOP ===== */
+/* Scroll to top */
 
-/* Hidden by default, shown via JS (.show class) when near footer */
+/* Hidden by default, .show toggled via JS */
 #scrollToTopBtn {
   position: fixed;
   bottom: 5rem;
@@ -891,10 +1031,22 @@ footer p {
   transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease;
 }
 
+/* Tablet: move button inward */
 @media screen and (max-width: 1200px) {
   #scrollToTopBtn {
     right: 2.5rem;
     bottom: 2.5rem;
+  }
+}
+
+/* Phone: smaller button, closer to corner */
+@media screen and (max-width: 768px) {
+  #scrollToTopBtn {
+    right: 1.25rem;
+    bottom: 1.25rem;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
   }
 }
 

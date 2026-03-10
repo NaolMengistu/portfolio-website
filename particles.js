@@ -1,26 +1,25 @@
 import * as THREE from 'three';
 
 /*
-  Particle background effect for the hero section.
-  Inspired by the ambient particle animation on the Google Antigravity landing page
-  (antigravity.google) — reverse-engineered and rebuilt as a standalone Three.js
-  instanced mesh system with custom GLSL vertex and fragment shaders. Particles
-  drift autonomously via layered sine/cosine displacement and form a breathing
-  halo ring that reacts to mouse movement.
+  Three.js particle background for the hero section.
+  Builds an instanced mesh grid with custom GLSL shaders.
+  Particles drift on sine/cosine waves and form a halo ring
+  that follows the cursor. Based on the effect at antigravity.google.
 */
 
 
 const PROFILE_SELECTOR = '#profile';
 const CANVAS_ID = 'particle-bg';
 
-const isMobile = window.innerWidth < 768;
+const isMobile = window.matchMedia('(max-width: 768px)').matches;
+const isTablet = window.matchMedia('(min-width: 769px) and (max-width: 1200px)').matches;
 const hasCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
 
-// Fewer particles on mobile for performance
-const countX = isMobile ? 50 : 100;
-const countY = isMobile ? 35 : 55;
+// Grid density per device tier
+const countX = isMobile ? 50 : (isTablet ? 85 : 100);
+const countY = isMobile ? 35 : (isTablet ? 50 : 55);
 
-// Tuned to match the antigravity.google reference
+// Particle & halo defaults (desktop values scaled down for smaller screens)
 const DEFAULTS = {
     cursor: {
         radius: 0.065,
@@ -30,18 +29,19 @@ const DEFAULTS = {
     halo: {
         outerOscFrequency: 2.6,
         outerOscAmplitude: 0.76,
-        radiusBase: 2.4,
+        radiusBase: isMobile ? 1.2 : (isTablet ? 1.6 : 2.4),
         radiusAmplitude: 0.5,
         shapeAmplitude: 0.75,
-        rimWidth: 1.8,
+        rimWidth: isMobile ? 1.0 : (isTablet ? 1.3 : 1.8),
         outerStartOffset: 0.4,
         outerEndOffset: 2.2,
-        scaleX: 1.3,
+        scaleX: isMobile ? 1.0 : (isTablet ? 1.1 : 1.3),
         scaleY: 1,
+        yBias: isMobile ? 1.5 : (isTablet ? 1.0 : 0),
     },
     particles: {
-        baseSize: isMobile ? 0.008 : 0.016,   // 50% smaller on mobile
-        activeSize: isMobile ? 0.022 : 0.044,
+        baseSize: isMobile ? 0.008 : (isTablet ? 0.012 : 0.016),
+        activeSize: isMobile ? 0.022 : (isTablet ? 0.032 : 0.044),
         blobScaleX: 1,
         blobScaleY: 0.6,
         rotationSpeed: 0.1,
@@ -58,7 +58,7 @@ let clock = new THREE.Clock();
 
 let isDarkMode = document.body.classList.contains('dark-mode');
 
-// Smooth mouse tracking — target vs current position
+// Mouse tracking
 let targetMouseX = null;
 let targetMouseY = null;
 let isInteracting = false;
@@ -67,7 +67,7 @@ function init() {
     const profileSection = document.querySelector(PROFILE_SELECTOR);
     if (!profileSection) return;
 
-    // Remove any leftover canvas from hot reload
+    // Clean up leftover canvas (hot reload)
     const existing = document.getElementById(CANVAS_ID);
     if (existing) existing.remove();
 
@@ -86,8 +86,7 @@ function init() {
     camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
     camera.position.z = 5;
 
-    // ---- Vertex Shader ----
-    // Handles particle drift, halo rim effect, and cursor interaction
+    // Vertex shader: drift, halo ring, cursor interaction
     const vertexShader = `
         uniform float uTime;
         uniform vec2 uMouse;
@@ -118,7 +117,7 @@ function init() {
 
         #define PI 3.14159265359
 
-        // Simple 2D hash and noise for organic shape variation
+        // 2D hash + noise for organic variation
         float hash(vec2 p) {
             return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453);
         }
@@ -139,13 +138,13 @@ function init() {
             vec3 pos = aOffset;
             float driftSpeed = uTime * 0.15;
             
-            // Organic drift from layered sine waves
+            // Layered sine drift
             float dx = sin(driftSpeed + pos.y * 0.5) + sin(driftSpeed * 0.5 + pos.y * 2.0);
             float dy = cos(driftSpeed + pos.x * 0.5) + cos(driftSpeed * 0.5 + pos.x * 2.0);
             pos.x += dx * 0.25; 
             pos.y += dy * 0.25;
 
-            // Halo effect — particles near the cursor form a glowing ring
+            // Halo ring around cursor
             vec2 relToMouse = pos.xy - uMouse;
             vec2 haloScale = max(vec2(uHaloScaleX, uHaloScaleY), vec2(0.0001));
             float distFromMouse = length(relToMouse / haloScale);
@@ -157,19 +156,19 @@ function init() {
             float baseRadius = uHaloRadiusBase + breathCycle * uHaloRadiusAmplitude;
             float currentRadius = baseRadius + (shapeFactor * uHaloShapeAmplitude);
             
-            // Rim push — particles on the ring edge get pushed outward
+            // Push particles outward along the ring edge
             float rimInfluence = smoothstep(uHaloRimWidth, 0.0, abs(distFromMouse - currentRadius));
             vec2 pushDir = normalize(relToMouse + vec2(0.0001, 0.0));
             float pushAmt = (breathCycle * 0.5 + 0.5) * 0.5;
             pos.xy += pushDir * pushAmt * rimInfluence;
             pos.z += rimInfluence * 0.3 * sin(uTime);
 
-            // Outer oscillation — subtle wave on particles far from cursor
+            // Subtle wave on particles far from the ring
             float outerInfluence = smoothstep(baseRadius + uHaloOuterStartOffset, baseRadius + uHaloOuterEndOffset, distFromMouse);
             float outerOsc = sin(uTime * uOuterOscFrequency + pos.x * 0.6 + pos.y * 0.6);
             pos.xy += normalize(relToMouse + vec2(0.0001, 0.0)) * outerOsc * uOuterOscAmplitude * outerInfluence;
 
-            // Size — particles near the cursor grow bigger
+            // Scale up near cursor
             float baseSize = uParticleBaseSize + (sin(uTime + pos.x)*0.003);
             float currentScale = baseSize + (rimInfluence * uParticleActiveSize);
             float stretch = rimInfluence * 0.02;
@@ -181,7 +180,7 @@ function init() {
             vSize = rimInfluence;
             vPos = pos.xy;
             
-            // Rotation jitter — particles rotate toward the cursor with some wobble
+            // Rotation wobble toward cursor
             float dirLen = max(length(relToMouse), 0.0001);
             vec2 dir = relToMouse / dirLen;
             float oscPhase = aRandom * 6.28318530718;
@@ -202,8 +201,7 @@ function init() {
         }
     `;
 
-    // ---- Fragment Shader ----
-    // Colors particles using Google-inspired palette, fading at edges
+    // Fragment shader: Google-palette coloring + soft edges
     const fragmentShader = `
         uniform float uTime;
         uniform float uDarkMode;
@@ -216,13 +214,13 @@ function init() {
             vec2 center = vec2(0.5);
             vec2 pos = abs(vUv - center) * 2.0; 
             
-            // Squircle shape with soft edge
+            // Squircle mask
             float d = pow(pow(pos.x, 2.6) + pow(pos.y, 2.6), 1.0/2.6);
             float alpha = 1.0 - smoothstep(0.8, 1.0, d);
             
             if (alpha < 0.01) discard;
 
-            // Google-inspired color palette
+            // Color palette
             vec3 baseColor = vec3(0.00, 0.00, 1.00);
             vec3 colorOne = vec3(0.26, 0.52, 0.96);
             vec3 colorTwo = vec3(0.92, 0.26, 0.21);
@@ -277,12 +275,12 @@ function init() {
     const offsets = new Float32Array(count * 3);
     const randoms = new Float32Array(count);
 
-    // Grid dimensions — wide enough to cover ultrawide screens
+    // Spawn grid (sized for ultrawide)
     const gridWidth = 60;
     const gridHeight = 22;
     const jitter = 0.25;
 
-    // Scale X-spread by aspect ratio so particles fill the full width
+    // Stretch horizontally by aspect ratio
     const aspect = profileSection.clientWidth / profileSection.clientHeight;
 
     let i = 0;
@@ -291,7 +289,9 @@ function init() {
             const u = x / (countX - 1);
             const v = y / (countY - 1);
 
-            let px = (u - 0.5) * gridWidth * (aspect / 1.8);
+            // Wider spread on narrow screens
+            const aspectDivisor = isMobile ? 1.4 : (isTablet ? 1.2 : 1.8);
+            let px = (u - 0.5) * gridWidth * (aspect / aspectDivisor);
             let py = (v - 0.5) * gridHeight;
 
             px += (Math.random() - 0.5) * jitter;
@@ -312,7 +312,7 @@ function init() {
     instancedMesh = new THREE.InstancedMesh(geometry, material, count);
     scene.add(instancedMesh);
 
-    // Event listeners
+    // Events
     window.addEventListener('resize', onResize);
     document.addEventListener('visibilitychange', onVisibilityChange);
 
@@ -326,7 +326,7 @@ function init() {
         profileSection.addEventListener('mouseenter', () => { isInteracting = true; });
     }
 
-    // Watch for dark mode toggle to update shader uniform
+    // Track dark mode changes for the shader
     const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
             if (mutation.attributeName === 'class') {
@@ -336,7 +336,7 @@ function init() {
     });
     observer.observe(document.body, { attributes: true });
 
-    // Pause rendering when the hero section scrolls off-screen (saves GPU)
+    // Pause when hero is off-screen to save GPU
     const onIntersection = (entries) => {
         entries.forEach(entry => {
             isPaused = (!entry.isIntersecting || document.hidden);
@@ -350,7 +350,7 @@ function init() {
     render();
 }
 
-// Calculate visible world-space dimensions at z=0
+// World-space viewport size at z=0
 function getViewportAtZ0() {
     const vFov = (camera.fov * Math.PI) / 180;
     const viewportHeight = 2 * Math.tan(vFov / 2) * camera.position.z;
@@ -358,7 +358,7 @@ function getViewportAtZ0() {
     return { width: viewportWidth, height: viewportHeight };
 }
 
-// Convert screen coordinates to world-space mouse position
+// Screen coords -> world-space position
 function updateMouse(clientX, clientY) {
     const rect = renderer.domElement.getBoundingClientRect();
     const nx = ((clientX - rect.left) / rect.width) * 2 - 1;
@@ -397,7 +397,7 @@ function onVisibilityChange() {
     isPaused = document.hidden;
 }
 
-// Main render loop
+// Render loop
 function render() {
     animationId = requestAnimationFrame(render);
     if (isPaused) return;
@@ -407,11 +407,11 @@ function render() {
     if (material) {
         material.uniforms.uTime.value = t;
 
-        // Smoothly transition dark mode uniform
+        // Lerp dark mode uniform
         const targetDarkMode = isDarkMode ? 1.0 : 0.0;
         material.uniforms.uDarkMode.value += (targetDarkMode - material.uniforms.uDarkMode.value) * 0.05;
 
-        // Mouse trailing — cursor drags behind with jitter for organic feel
+        // Cursor trail with some jitter so it feels organic
         let tX = targetMouseX;
         let tY = targetMouseY;
 
@@ -430,21 +430,22 @@ function render() {
 
         const current = material.uniforms.uMouse.value;
         const dragFactor = DEFAULTS.cursor.dragFactor;
+        const yBias = DEFAULTS.halo.yBias;
 
         if (tX !== null && tY !== null) {
             current.x += (tX - current.x) * dragFactor;
-            current.y += (tY - current.y) * dragFactor;
+            current.y += ((tY + yBias) - current.y) * dragFactor;
         } else {
-            // Drift back to center when mouse leaves
+            // Ease back to center
             current.x += (0 - current.x) * dragFactor * 0.5;
-            current.y += (0 - current.y) * dragFactor * 0.5;
+            current.y += (yBias - current.y) * dragFactor * 0.5;
         }
     }
 
     renderer.render(scene, camera);
 }
 
-// Cleanup — call this if you ever need to tear down the effect
+// Teardown (if needed)
 export function disconnect() {
     if (animationId) cancelAnimationFrame(animationId);
     window.removeEventListener('resize', onResize);
@@ -460,7 +461,7 @@ export function disconnect() {
     if (instancedMesh) instancedMesh.geometry.dispose();
 }
 
-// Boot
+// Go
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
 } else {
