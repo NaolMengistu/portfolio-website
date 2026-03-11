@@ -1,4 +1,4 @@
-// Hamburger menu toggle
+// Toggles the mobile hamburger menu open and closed
 function toggleMenu() {
   const menu = document.querySelector(".menu-links");
   const icon = document.querySelector(".hamburger-icon");
@@ -6,7 +6,7 @@ function toggleMenu() {
   icon.classList.toggle("open");
 }
 
-// Footer copyright year
+// Automatically update the footer copyright year so we never have to hardcode it
 (function () {
   const year = new Date().getFullYear();
   const yearElement = document.getElementById("current-year");
@@ -15,7 +15,7 @@ function toggleMenu() {
   }
 })();
 
-// Dark mode
+// Theme Manager: Handles saving and toggling Dark/Light mode
 
 const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
 const body = document.body;
@@ -38,7 +38,7 @@ themeToggleBtns.forEach(btn => {
   btn.addEventListener('click', toggleTheme);
 });
 
-// Pick theme: saved > OS preference > light
+// On initial load: Check localStorage first, then OS preferences, else default to Light
 (function () {
   const savedTheme = localStorage.getItem('theme');
   const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -52,8 +52,8 @@ themeToggleBtns.forEach(btn => {
   }
 })();
 
-// Scroll-to-top button
-// Shows up when the contact section or footer is visible (uses IntersectionObserver).
+// Scroll-to-Top Button Logic
+// We use an IntersectionObserver so it only pops up when the user reaches the Contact or Footer sections.
 
 const scrollToTopBtn = document.getElementById("scrollToTopBtn");
 
@@ -84,7 +84,7 @@ if (scrollToTopBtn) {
   });
 }
 
-// Close the menu if user clicks anywhere outside it
+// Close the mobile menu if the user clicks anywhere outside of it
 document.addEventListener("click", function (event) {
   const menu = document.querySelector(".menu-links");
   const icon = document.querySelector(".hamburger-icon");
@@ -98,3 +98,29 @@ document.addEventListener("click", function (event) {
     }
   }
 });
+
+// Project Card Height Equalizer
+// Since we use Flexbox wrapping, this forces all project cards globally to match the height of the tallest card.
+function equalizeProjectCardHeights() {
+  const cards = document.querySelectorAll('.project-card');
+  if (!cards.length) return;
+
+  // Temporarily reset to auto so we can measure their natural flowing height
+  cards.forEach(card => card.style.height = 'auto');
+
+  // Scan through all cards to find the absolute tallest one
+  let maxHeight = 0;
+  cards.forEach(card => {
+    if (card.offsetHeight > maxHeight) {
+      maxHeight = card.offsetHeight;
+    }
+  });
+
+  // Enforce that maximum height across the board
+  cards.forEach(card => {
+    card.style.height = maxHeight + 'px';
+  });
+}
+
+window.addEventListener('load', equalizeProjectCardHeights);
+window.addEventListener('resize', equalizeProjectCardHeights);

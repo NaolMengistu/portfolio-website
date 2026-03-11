@@ -12,7 +12,10 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Theme colors */
+/* =========================================
+   Adjustable Global Theme Variables 
+   Modify these hex/rgb values to tweak colors 
+   ========================================= */
 
 /* Light (default) */
 :root {
@@ -26,14 +29,14 @@ html {
   --color-menu-shadow: rgba(0, 0, 0, 0.1);
   --icon-filter: none;
 
-  /* z-index layers */
+  /* Z-index layers (Control what overlaps what) */
   --z-canvas: 0;
   --z-content: 1;
   --z-scroll-top: 99;
   --z-mobile-menu: 100;
 }
 
-/* Dark mode */
+/* Dark Mode Override Variables */
 .dark-mode {
   --color-bg: #1e293b;
   --color-text: #d1d5db;
@@ -53,7 +56,7 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Type */
+/* Typography & Links */
 
 p {
   color: var(--color-text-secondary);
@@ -78,21 +81,21 @@ a:hover {
   color: var(--color-text);
 }
 
-/* Tablet */
+/* [Adjustable Breakpoint] Tablet layout adjustments trigger below 1200px */
 @media screen and (max-width: 1200px) {
   .title {
     font-size: 2.5rem;
   }
 }
 
-/* Phone */
+/* [Adjustable Breakpoint] Mobile phone typography tweaks trigger below 768px */
 @media screen and (max-width: 768px) {
   .title {
     font-size: 2rem;
   }
 }
 
-/* Nav */
+/* Navigation Bar Styling */
 
 nav {
   display: flex;
@@ -144,7 +147,7 @@ nav {
   }
 }
 
-/* Desktop nav visible by default, hamburger hidden */
+/* Desktop Nav visibly overrides mobile by default */
 #desktop-nav {
   display: flex;
 }
@@ -153,7 +156,7 @@ nav {
   display: none;
 }
 
-/* Swap to hamburger on smaller screens */
+/* Switch to Hamburger Menu layout on tablets/phones */
 @media screen and (max-width: 1200px) {
   #desktop-nav {
     display: none !important;
@@ -299,7 +302,7 @@ nav {
   display: block;
 }
 
-/* Layout */
+/* Core Layout Constraints */
 
 section {
   padding-top: 4vh;
@@ -308,7 +311,7 @@ section {
   position: relative;
 }
 
-/* Tablet */
+/* [Adjustable Breakpoint] Tablet layout adjustments trigger below 1200px */
 @media screen and (max-width: 1200px) {
   section {
     margin: 0 5%;
@@ -317,7 +320,7 @@ section {
   }
 }
 
-/* Phone: tighter margins and padding */
+/* [Adjustable Breakpoint] Mobile phone spacing kicks in below 768px */
 @media screen and (max-width: 768px) {
   section {
     margin: 0 4%;
@@ -332,7 +335,7 @@ section {
   height: 80%;
 }
 
-/* Tablet: stack to column, reduce gap */
+/* [Adjustable Breakpoint] Tablet flex layout stacks to columns below 1200px */
 @media screen and (max-width: 1200px) {
   .section-container {
     display: block;
@@ -340,7 +343,7 @@ section {
   }
 }
 
-/* Phone: tighter */
+/* [Adjustable Breakpoint] Mobile row gap tightens below 768px */
 @media screen and (max-width: 768px) {
   .section-container {
     gap: 1.5rem;
@@ -401,7 +404,7 @@ section {
   }
 }
 
-/* Components */
+/* Reusable Components */
 
 /* Icons */
 .icon {
@@ -466,7 +469,7 @@ section {
   border-color: var(--color-text);
 }
 
-/* Cards */
+/* UI Cards */
 .details-container {
   padding: 1.5rem;
   flex: 1;
@@ -482,9 +485,11 @@ section {
   background: var(--color-card-bg-alt);
 }
 
-/* Page sections */
+/* =========================================
+   Individual Page Sections
+   ========================================= */
 
-/* Hero section -- full width for the particle canvas */
+/* Hero Section (Includes Particle Background Canvas) */
 #profile {
   display: flex;
   justify-content: center;
@@ -542,7 +547,7 @@ section {
   }
 }
 
-/* Particle canvas -- sits behind all content */
+/* Particle Background Canvas (Sits behind everything) */
 #particle-bg {
   position: absolute;
   top: 0;
@@ -555,7 +560,7 @@ section {
   will-change: transform;
 }
 
-/* Tablet: shift canvas up to frame the hero text */
+/* [Adjustable Breakpoint] Tablet: shift particle canvas up to frame hero text */
 @media screen and (min-width: 769px) and (max-width: 1200px) {
   #particle-bg {
     top: -10%;
@@ -563,7 +568,7 @@ section {
   }
 }
 
-/* Phone: same idea */
+/* [Adjustable Breakpoint] Mobile: shift particle canvas up */
 @media screen and (max-width: 768px) {
   #particle-bg {
     top: -5%;
@@ -571,7 +576,7 @@ section {
   }
 }
 
-/* Keep hero content above the canvas */
+/* Z-Index: Keep hero text above the particle background */
 #profile>*:not(#particle-bg) {
   position: relative;
   z-index: var(--z-content);
@@ -584,7 +589,9 @@ section {
   gap: 1rem;
 }
 
-/* About */
+/* =========================================
+   About Me Section
+   ========================================= */
 #about {
   position: relative;
 }
@@ -601,7 +608,7 @@ section {
   margin-top: 2rem;
 }
 
-/* Large desktop: wrap cards */
+/* [Adjustable Breakpoint] Large Desktop: allow About cards to wrap below 1400px */
 @media screen and (max-width: 1400px) {
   .about-containers {
     flex-wrap: wrap;
@@ -616,12 +623,25 @@ section {
   }
 }
 
-/* Phone: stack, tighter gap */
+/* [Adjustable Breakpoint] Mobile phone layout kicks in below 768px */
 @media screen and (max-width: 768px) {
   .about-containers {
     flex-direction: column;
     gap: 1rem;
     margin-bottom: 1rem;
+  }
+
+  /* Keep About cards side-by-side */
+  #about .about-containers {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+}
+
+/* Small Phone: stack About cards */
+@media screen and (max-width: 470px) {
+  #about .about-containers {
+    flex-direction: column;
   }
 }
 
@@ -641,7 +661,7 @@ section {
   border-radius: 2rem;
 }
 
-/* About card lists (Experience/Education) */
+/* Experience & Education Card Lists */
 .about-card-list {
   list-style: none !important;
   list-style-type: none !important;
@@ -671,7 +691,7 @@ section {
   text-align: justify;
 }
 
-/* Phone: add side padding */
+/* [Adjustable Breakpoint] Mobile: Add side padding to biography text */
 @media screen and (max-width: 768px) {
   #about .text-container {
     padding: 0 0.5rem;
@@ -679,7 +699,9 @@ section {
   }
 }
 
-/* Skills */
+/* =========================================
+   Key Skills Section
+   ========================================= */
 #skills {
   position: relative;
 }
@@ -691,7 +713,7 @@ section {
   margin-bottom: 2rem;
 }
 
-/* Phone: smaller card headings */
+/* [Adjustable Breakpoint] Mobile: Shrink skill card titles down */
 @media screen and (max-width: 768px) {
   .experience-sub-title {
     font-size: 1.25rem;
@@ -703,6 +725,7 @@ section {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  width: 100%;
 }
 
 @media screen and (max-width: 1200px) {
@@ -722,15 +745,21 @@ section {
   justify-content: center;
 }
 
-/* Tablet: 2 cards per row */
+/* Constrain skill cards so they don't stretch too wide on large screens */
+#skills .about-containers .details-container {
+  max-width: 380px;
+}
+
+/* [Adjustable Breakpoint] Tablet: Force 2 skill cards per row */
 @media screen and (max-width: 1200px) {
   #skills .about-containers .details-container {
     flex: 0 1 calc(50% - 2rem);
     min-width: 280px;
+    max-width: 380px;
   }
 }
 
-/* Phone: 1 card per row, full width */
+/* [Adjustable Breakpoint] Mobile: Force 1 skill card per row to stack */
 @media screen and (max-width: 768px) {
   #skills .about-containers {
     flex-direction: column;
@@ -753,7 +782,7 @@ section {
   align-items: center;
 }
 
-/* Tablet: 2 skill items per row inside each card */
+/* [Adjustable Breakpoint] Tablet: Two internal skill bullets per row */
 @media screen and (max-width: 1200px) {
   .article-container {
     flex-wrap: wrap;
@@ -794,11 +823,15 @@ article .icon {
   text-align: left;
 }
 
-/* Projects */
+/* =========================================
+   Featured Projects Section
+   ========================================= */
 #projects .about-containers {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: stretch;
+  width: 100%;
   gap: 2rem;
   max-width: 1600px;
   margin-left: auto;
@@ -809,17 +842,15 @@ article .icon {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 520px;
-  flex: 1 1 280px;
-  min-width: 280px;
-  max-width: 450px;
+  height: auto;
+  flex: 1 1 250px;
+  max-width: 380px;
+  margin: 0 auto;
 }
 
-/* Tablet: keep same sizing, cards wrap naturally */
+/* [Adjustable Breakpoint] Tablet layout adjustments trigger below 1200px */
 @media screen and (max-width: 1200px) {
   .project-card {
-    flex: 1 1 280px;
-    min-width: 280px;
     max-width: 420px;
   }
 
@@ -828,19 +859,18 @@ article .icon {
   }
 }
 
-/* Phone: full-width cards, one per row */
+/* [Adjustable Breakpoint] Mobile phone layout kicks in below 768px */
 @media screen and (max-width: 768px) {
+  #projects .about-containers {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
   .project-card {
     flex: none;
     width: 92%;
-    max-width: none;
-    min-width: unset;
-    min-height: unset;
+    max-width: 400px;
     margin: 0 auto;
-  }
-
-  #projects .about-containers {
-    gap: 1rem;
   }
 }
 
@@ -851,25 +881,20 @@ article .icon {
   object-fit: cover;
 }
 
-/* Phone: less square image ratio to save vertical space */
-@media screen and (max-width: 768px) {
-  .project-img {
-    aspect-ratio: 16 / 9;
-  }
-}
+/* Note: Images strictly maintain a 1:1 square ratio universally */
 
 .project-title {
   margin: 1rem 0;
   color: var(--color-text);
 }
 
-/* Push button to card bottom */
+/* Flexbox spacer to force the button down to the bottom */
 .project-description {
   flex-grow: 1;
   margin-bottom: 1rem;
 }
 
-/* Phone: smaller description text */
+/* [Adjustable Breakpoint] Mobile: Shrink project text size further */
 @media screen and (max-width: 768px) {
   .project-description {
     font-size: 0.9rem;
@@ -882,7 +907,15 @@ article .icon {
   border-color: var(--color-border-light);
 }
 
-/* Contact */
+/* Prevent Github button from shrinking against dense text */
+.project-card .btn-container {
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
+/* =========================================
+   Contact Me Section
+   ========================================= */
 #contact {
   display: flex;
   justify-content: center;
@@ -903,22 +936,22 @@ article .icon {
   flex-wrap: wrap;
 }
 
-/* Large desktop: contact section shrinks */
+/* [Adjustable Breakpoint] Large Desktop: Resize contact height */
 @media screen and (max-width: 1400px) {
   #contact {
     height: fit-content;
   }
 }
 
-/* Tablet */
+/* [Adjustable Breakpoint] Tablet context adjustments */
 @media screen and (max-width: 1200px) {
   #contact {
     padding-bottom: 4rem;
   }
 }
 
-/* Phone */
-@media screen and (max-width: 768px) {
+/* [Adjustable Breakpoint] Ultra-Small Mobile: Stack contact details */
+@media screen and (max-width: 300px) {
   #contact {
     padding-bottom: 3rem;
   }
@@ -956,7 +989,9 @@ article .icon {
   height: 2.5rem;
 }
 
-/* Footer */
+/* =========================================
+   Site Footer
+   ========================================= */
 
 footer {
   height: 26vh;
@@ -974,16 +1009,17 @@ footer .nav-links {
 footer p {
   text-align: center;
   color: var(--color-text-secondary);
+  margin-top: 1rem;
 }
 
-/* Tablet */
+/* [Adjustable Breakpoint] Tablet adjustments */
 @media screen and (max-width: 1200px) {
   footer {
     height: 30vh;
   }
 }
 
-/* Phone: taller footer, stacked nav links */
+/* [Adjustable Breakpoint] Mobile: Stack footer nav links */
 @media screen and (max-width: 768px) {
   footer {
     height: fit-content;
@@ -1005,9 +1041,11 @@ footer p {
   }
 }
 
-/* Scroll to top */
+/* =========================================
+   Scroll-To-Top Component
+   ========================================= */
 
-/* Hidden by default, .show toggled via JS */
+/* Button remains hidden until enough scroll triggers JS `.show` class */
 #scrollToTopBtn {
   position: fixed;
   bottom: 5rem;
@@ -1031,7 +1069,7 @@ footer p {
   transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease;
 }
 
-/* Tablet: move button inward */
+/* [Adjustable Breakpoint] Tablet: shift button inward from edge */
 @media screen and (max-width: 1200px) {
   #scrollToTopBtn {
     right: 2.5rem;
@@ -1039,7 +1077,7 @@ footer p {
   }
 }
 
-/* Phone: smaller button, closer to corner */
+/* [Adjustable Breakpoint] Mobile: shrink button and push closer to screen edge */
 @media screen and (max-width: 768px) {
   #scrollToTopBtn {
     right: 1.25rem;
