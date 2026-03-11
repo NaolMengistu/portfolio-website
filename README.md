@@ -1,6 +1,6 @@
 # Portfolio & Technical Blog Website Monorepo
 
-This repository contains the source code for my personal website. It serves as both my professional online presence and a live demonstration of my skills in DevOps, cloud infrastructure, and security engineering — showcasing a modern, hybrid CI/CD pipeline that manages two distinct projects from a single repository.
+This repository contains the source code for my personal website. It serves as both my professional online presence and a live demonstration of my skills in DevOps, cloud infrastructure, and security engineering, showcasing a modern, hybrid CI/CD pipeline that manages two distinct projects from a single repository.
 
 | Site               | URL                                                    | Hosting Platform |
 | :----------------- | :----------------------------------------------------- | :--------------- |
@@ -13,7 +13,7 @@ This repository contains the source code for my personal website. It serves as b
 
 This repository houses two distinct websites, both deployed from the `main` branch:
 
-*   **Portfolio (`naol.dev`):** A modern, responsive static site built with HTML, CSS, and JavaScript. It covers my professional profile and featured projects. The hero section features an interactive particle background powered by [Three.js `v0.169.0`](https://threejs.org/) with custom GLSL shaders, inspired by the animation on [antigravity.google](https://antigravity.google). Three.js is loaded via an [import map](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap) from a CDN — no build step required.
+*   **Portfolio (`naol.dev`):** A modern, responsive static site built with HTML, CSS, and JavaScript. It covers my professional profile and featured projects. The hero section features an interactive particle background powered by [Three.js `v0.169.0`](https://threejs.org/) with custom GLSL shaders, inspired by the animation on [antigravity.google](https://antigravity.google). Three.js is loaded via an [import map](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap) from a CDN, no build step required.
 *   **Technical Blog (`blog.naol.dev`):** A blog built with the [Hugo](https://gohugo.io/) static site generator and the [Blowfish](https://github.com/nunocoracao/blowfish) theme (included as a Git submodule). I publish hands-on research and articles on digital forensics, GRC, cloud security, and AI.
 
 ## Technical Architecture
@@ -45,7 +45,7 @@ You are welcome to clone this repository and use its structure as a template for
 ### Prerequisites
 
 *   [Git](https://git-scm.com/downloads)
-*   [Hugo (Extended Version)](https://gohugo.io/installation/) — only required to run the blog locally.
+*   [Hugo (Extended Version)](https://gohugo.io/installation/), only needed if you want to run the blog locally.
 *   Any local HTTP server for the portfolio (options below).
 
 ### 1. Clone the Repository
@@ -62,13 +62,13 @@ cd portfolio-website
 The portfolio is a fully static site. Three.js is loaded from a CDN via an import map, so there is **no build step or `npm install` needed**. Just serve the root directory with any local HTTP server:
 
 ```bash
-# Option A — npx (no global install needed):
+# Option A: npx (no global install needed)
 npx serve .
 
-# Option B — Python 3:
+# Option B: Python 3
 python -m http.server 8080
 
-# Option C — VS Code Live Server extension (open index.html, click "Go Live")
+# Option C: VS Code Live Server extension (open index.html, click "Go Live")
 ```
 
 Then open `http://localhost:3000` (or whichever port your server uses) in your browser.
@@ -76,6 +76,8 @@ Then open `http://localhost:3000` (or whichever port your server uses) in your b
 > **Why a server and not just opening `index.html` directly?** Browsers block ES module imports (used by Three.js) when loading files from the local filesystem (`file://` protocol). A local HTTP server is the way to go.
 
 ### 3. Running the Blog Locally
+
+The blog requires [Hugo (Extended Version)](https://gohugo.io/installation/) to be installed. See the [Hugo installation guide](https://gohugo.io/installation/) for your OS.
 
 ```bash
 # Navigate to the blog directory:
@@ -85,4 +87,4 @@ cd blog
 hugo server
 ```
 
-Then open `http://localhost:1313` to see the blog live with hot-reloading.
+Then open `http://localhost:1313` to see the blog live.
