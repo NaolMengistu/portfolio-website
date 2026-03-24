@@ -1,10 +1,14 @@
 ---
-title: "Browser Extensions and the Trust Lifecycle: A Security Engineer's Perspective"
+title: "Browser Extensions and the Trust Lifecycle"
 description: "A security-focused reflection on how browser extensions accumulate trust over time, why silent updates change the risk model, and how reducing dependency surface led me to build NeatTube."
 categories: ["Security", "Engineering"]
 tags: ["Browser Extensions", "Chrome", "Supply Chain Security", "Open Source"]
 date: 2026-03-21
 ---
+
+On Christmas Eve 2024, attackers sent a phishing email to a developer at Cyberhaven, a US-based data security company. The employee authorized a malicious OAuth application, handing over access to the company's Chrome Web Store account [5]. By Christmas morning, a tampered update had been silently pushed to roughly 400,000 enterprise users. The extension those users had installed to protect their browsing was now exfiltrating their session cookies and authentication tokens [5]. Cyberhaven was one of dozens of extensions compromised in a coordinated campaign that ran through December 2024, all delivered through the same mechanism: the automatic, silent extension update [4], [5].
+
+Consumer users were not spared either. The same pattern has repeatedly surfaced in consumer-facing extensions used by ordinary users with no corporate security team watching the update feed [1], [4]. In 2019, security researcher Sam Jadali documented DataSpii, in which eight widely installed browser extensions, including tools for image hovering, page unlocking, and coupon discovery, were covertly harvesting the browsing activity of over four million Chrome and Firefox users and selling it in near real-time to a data broker called Nacho Analytics [6]. Users had installed these extensions for entirely ordinary reasons [6].
 
 You install a browser extension. It solves a small annoyance, stays quiet, and works exactly as promised. A month passes, then a year, and eventually it becomes part of the background of your browser.
 
@@ -59,7 +63,7 @@ At some point, I stopped looking at my browser extensions as isolated convenienc
 
 When I audited what I had installed, I noticed redundancy. Several extensions were solving adjacent YouTube-related annoyances: interface cleanup, Shorts removal, dislike visibility, picture-in-picture shortcuts, and quality preferences. Each one had its own update lifecycle, maintenance history, and trust assumptions. That did not feel elegant from an engineering perspective, and it did not feel ideal from a security perspective either.
 
-So instead of accepting that stack as normal, I reduced it. I programmed the features I was using those extensions for, and that became NeatTube.
+So instead of accepting that stack as normal, I reduced it. I programmed the features I was using those extensions for, and that became [NeatTube](https://neattube.app/).
 
 ## Building NeatTube as a case study
 
@@ -75,9 +79,9 @@ The design principles were straightforward:
 - Avoid remote code execution patterns such as `eval`.
 - Keep the feature scope specific instead of turning it into a general-purpose browser utility.
 
-In its current form, the extension focuses on a constrained problem space: cleaning up YouTube, hiding Shorts and members-only clutter, restoring dislike counts through the Return YouTube Dislike API, setting preferred video quality, and enabling a keyboard shortcut for Picture-in-Picture. The repository documents a minimal-permissions model, a Manifest V3 architecture, and explicit design and security principles such as no remote code execution and no `externally_connectable` entry points.
-
 That matters to me because security is often less about claiming perfection and more about making trade-offs visible. A user should be able to ask: What does this extension do? What permissions does it need? What external services does it depend on? How much of its behavior can be inspected?
+
+The full design rationale and permission model are documented in the [GitHub repository](https://github.com/NaolMengistu/NeatTube).
 
 ## Open source and trust
 
@@ -91,7 +95,7 @@ I think that distinction is important. Security maturity is not pretending every
 
 ## Practical takeaways
 
-If you use browser extensions regularly, a few habits make a real difference:
+If you use browser extensions, a few habits make a real difference:
 
 - Audit your extensions periodically instead of treating installation as a permanent approval.
 - Remove anything you no longer use.
@@ -122,11 +126,15 @@ That, to me, is the more durable lesson: sometimes the best security improvement
 
 ## References
 
-[1] N. Pantelaios, N. Nikiforakis, and A. Kapravelos, "You've Changed: Detecting Malicious Browser Extensions through their Update Deltas," in *Proc. ACM SIGSAC Conf. Computer and Communications Security (CCS)*, 2020. [Online]. Available: https://kapravelos.com/publications/extensiondeltas-CCS20.pdf.
+[1] N. Pantelaios, N. Nikiforakis, and A. Kapravelos, "You've Changed: Detecting Malicious Browser Extensions through their Update Deltas," in *Proc. ACM SIGSAC Conf. Computer and Communications Security (CCS)*, 2020. [Online]. Available: [https://kapravelos.com/publications/extensiondeltas-CCS20.pdf](https://kapravelos.com/publications/extensiondeltas-CCS20.pdf).
 
-[2] B. Eriksson, P. Picazo-Sanchez, and A. Sabelfeld, "Hardening the Security Analysis of Browser Extensions," in *Proc. ACM Symposium on Applied Computing (SAC '22)*, Apr. 2022. [Online]. Available: https://research.chalmers.se/publication/530531/file/530531_Fulltext.pdf.
+[2] B. Eriksson, P. Picazo-Sanchez, and A. Sabelfeld, "Hardening the Security Analysis of Browser Extensions," in *Proc. ACM Symposium on Applied Computing (SAC '22)*, Apr. 2022. [Online]. Available: [https://research.chalmers.se/publication/530531/file/530531_Fulltext.pdf](https://research.chalmers.se/publication/530531/file/530531_Fulltext.pdf).
 
-[3] A. Nayak, R. Khandelwal, E Fernandez, and K. Fawaz,  "Experimental Security Analysis of Sensitive Data Access by Browser Extensions," in *Proc. The Web Conference (WWW '24)*, 2024. [Online]. Available: https://dl.acm.org/doi/10.1145/3589334.3645683.
+[3] A. Nayak, R. Khandelwal, E. Fernandes, and K. Fawaz, "Experimental Security Analysis of Sensitive Data Access by Browser Extensions," in *Proc. The Web Conference (WWW '24)*, 2024. [Online]. Available: [https://dl.acm.org/doi/10.1145/3589334.3645683](https://dl.acm.org/doi/10.1145/3589334.3645683).
 
-[4] S. Singh, G Varshney, T. K. Singh, V. Mishra, and
-K. Verma, "A Study on Malicious Browser Extensions in 2025," *arXiv*, Mar. 2025. [Online]. Available: https://arxiv.org/pdf/2503.04292.pdf.
+[4] S. Singh, G. Varshney, T. K. Singh, V. Mishra, and
+K. Verma, "A Study on Malicious Browser Extensions in 2025," *arXiv*, 2025. [Online]. Available: [https://arxiv.org/pdf/2503.04292.pdf](https://arxiv.org/pdf/2503.04292.pdf).
+
+[5] Sekoia Threat Intelligence Team, "Targeted Supply Chain Attack Against Chrome Browser Extensions," *Sekoia.io Blog*, Jan. 2025. [Online]. Available: [https://blog.sekoia.io/targeted-supply-chain-attack-against-chrome-browser-extensions/](https://blog.sekoia.io/targeted-supply-chain-attack-against-chrome-browser-extensions/).
+
+[6] S. Jadali, "DataSpii: The Catastrophic Data Leak via Browser Extensions," *SecurityWithSam.com*, Jul. 2019. [Online]. Available: [https://securitywithsam.com/2019/07/dataspii-leak-via-browser-extensions/](https://securitywithsam.com/2019/07/dataspii-leak-via-browser-extensions/).
