@@ -894,6 +894,27 @@ article .icon {
   margin-bottom: 1rem;
 }
 
+.project-inline-link {
+  /* Slightly more "link-like" than the surrounding paragraph text */
+  color: color-mix(in srgb, var(--color-text) 70%, var(--color-text-secondary));
+  text-decoration: none;
+  transition: color 200ms ease, text-shadow 200ms ease;
+}
+
+.project-inline-link:hover,
+.project-inline-link:focus-visible {
+  /* Override global `a:hover` underline */
+  text-decoration: none;
+  text-decoration-color: transparent;
+}
+
+.project-inline-link:hover,
+.project-inline-link:focus-visible {
+  color: var(--color-text);
+  text-shadow: 0 0 10px rgba(127, 127, 127, 0.35);
+  text-shadow: 0 0 10px color-mix(in srgb, var(--color-text) 25%, transparent);
+}
+
 /* [Adjustable Breakpoint] Mobile: Shrink project text size further */
 @media screen and (max-width: 768px) {
   .project-description {
