@@ -128,13 +128,13 @@ That, to me, is the more durable lesson: sometimes the best security improvement
 
 [1] N. Pantelaios, N. Nikiforakis, and A. Kapravelos, "You've Changed: Detecting Malicious Browser Extensions through their Update Deltas," in *Proc. ACM SIGSAC Conf. Computer and Communications Security (CCS)*, 2020. [Online]. Available: [https://kapravelos.com/publications/extensiondeltas-CCS20.pdf](https://kapravelos.com/publications/extensiondeltas-CCS20.pdf).
 
-[2] B. Eriksson, P. Picazo-Sanchez, and A. Sabelfeld, "Hardening the Security Analysis of Browser Extensions," in *Proc. ACM Symposium on Applied Computing (SAC '22)*, Apr. 2022. [Online]. Available: [https://research.chalmers.se/publication/530531/file/530531_Fulltext.pdf](https://research.chalmers.se/publication/530531/file/530531_Fulltext.pdf).
+[2] B. Eriksson, P. Picazo-Sanchez, and A. Sabelfeld, "Hardening the Security Analysis of Browser Extensions," in *Proc. ACM Symposium on Applied Computing (SAC '22)*, 2022. [Online]. Available: [https://research.chalmers.se/publication/530531/file/530531_Fulltext.pdf](https://research.chalmers.se/publication/530531/file/530531_Fulltext.pdf).
 
 [3] A. Nayak, R. Khandelwal, E. Fernandes, and K. Fawaz, "Experimental Security Analysis of Sensitive Data Access by Browser Extensions," in *Proc. The Web Conference (WWW '24)*, 2024. [Online]. Available: [https://dl.acm.org/doi/10.1145/3589334.3645683](https://dl.acm.org/doi/10.1145/3589334.3645683).
 
 [4] S. Singh, G. Varshney, T. K. Singh, V. Mishra, and
 K. Verma, "A Study on Malicious Browser Extensions in 2025," *arXiv*, 2025. [Online]. Available: [https://arxiv.org/pdf/2503.04292.pdf](https://arxiv.org/pdf/2503.04292.pdf).
 
-[5] Sekoia Threat Intelligence Team, "Targeted Supply Chain Attack Against Chrome Browser Extensions," *Sekoia.io Blog*, Jan. 2025. [Online]. Available: [https://blog.sekoia.io/targeted-supply-chain-attack-against-chrome-browser-extensions/](https://blog.sekoia.io/targeted-supply-chain-attack-against-chrome-browser-extensions/).
+[5] Sekoia Threat Intelligence Team, "Targeted Supply Chain Attack Against Chrome Browser Extensions," *Sekoia.io Blog*, 2025. [Online]. Available: [https://blog.sekoia.io/targeted-supply-chain-attack-against-chrome-browser-extensions/](https://blog.sekoia.io/targeted-supply-chain-attack-against-chrome-browser-extensions/).
 
-[6] S. Jadali, "DataSpii: The Catastrophic Data Leak via Browser Extensions," *SecurityWithSam.com*, Jul. 2019. [Online]. Available: [https://securitywithsam.com/2019/07/dataspii-leak-via-browser-extensions/](https://securitywithsam.com/2019/07/dataspii-leak-via-browser-extensions/).
+[6] S. Jadali, "DataSpii: The Catastrophic Data Leak via Browser Extensions," *SecurityWithSam.com*, 2019. [Online]. Available: [https://securitywithsam.com/2019/07/dataspii-leak-via-browser-extensions/](https://securitywithsam.com/2019/07/dataspii-leak-via-browser-extensions/).
