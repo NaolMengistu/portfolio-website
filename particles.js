@@ -66,7 +66,7 @@ let animationId;
 let isPaused = false;
 let clock = new THREE.Clock();
 
-let isDarkMode = document.body.classList.contains('dark-mode');
+let isDarkMode = document.documentElement.classList.contains('dark-mode');
 
 // Cursor coordinates mapped for WebGL interactions
 let targetMouseX = null;
@@ -340,11 +340,11 @@ function init() {
     const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
             if (mutation.attributeName === 'class') {
-                isDarkMode = document.body.classList.contains('dark-mode');
+                isDarkMode = document.documentElement.classList.contains('dark-mode');
             }
         });
     });
-    observer.observe(document.body, { attributes: true });
+    observer.observe(document.documentElement, { attributes: true });
 
     // Performance Saver: Halt all rendering when the user scrolls past the Hero section
     const onIntersection = (entries) => {

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products | Naol Mengistu</title>
+
+    <!-- SEO & Layout Configuration -->
+    <meta name="description"
+        content="Explore the software tools and extensions built by Naol Mengistu, including NeatTube, SVEN, and Macro Text." />
+    <link rel="canonical" href="https://naol.dev/products/products.html" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://naol.dev/products/products.html" />
+    <meta property="og:title" content="Software Products | Naol Mengistu" />
+    <meta property="og:description" content="Explore NeatTube, SVEN, and Macro Text - modern software tools built by Naol Mengistu." />
+    <meta property="og:image" content="https://naol.dev/assets/web-icon.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://naol.dev/products/products.html" />
+    <meta property="twitter:title" content="Software Products | Naol Mengistu" />
+    <meta property="twitter:description" content="Explore NeatTube, SVEN, and Macro Text - modern software tools built by Naol Mengistu." />
+    <meta property="twitter:image" content="https://naol.dev/assets/web-icon.png" />
+
+    <link rel="icon" type="image/png" href="../assets/web-icon.png" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="products.css" />
+
+    <!-- Pre-load Theme to Prevent Flashing -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+            if (theme === 'dark') document.documentElement.classList.add('dark-mode');
+        })();
+    </script>
+</head>
+
+<body>
+    <!-- Desktop Navigation Bar -->
+    <nav id="desktop-nav">
+        <div class="logo"><a href="../index.html" style="color: inherit; text-decoration: none;">Naol Mengistu</a></div>
+        <div>
+            <ul class="nav-links">
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#skills">Key Skills</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="products.html" class="active">Products</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+                <li><a href="https://blog.naol.dev">Blog</a></li>
+                <!-- Dark/Light Mode Button -->
+                <button id="theme-toggle-desktop" class="theme-toggle-btn" title="Toggle theme">
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="7 7 58 58" fill="currentColor">
+                        <path
+                            d="M36 23c7.18 0 13 5.82 13 13s-5.82 13-13 13-13-5.82-13-13S28.82 23 36 23zM40 11c0 .732 0 3.268 0 4 0 2.209-1.791 4-4 4s-4-1.791-4-4c0-.732 0-3.268 0-4 0-2.209 1.791-4 4-4S40 8.791 40 11zM56.506 21.151c-.518.518-2.311 2.311-2.828 2.828-1.562 1.562-4.095 1.562-5.657 0s-1.562-4.095 0-5.657c.518-.518 2.311-2.311 2.828-2.828 1.562-1.562 4.095-1.562 5.657 0S58.068 19.589 56.506 21.151zM61 40c-.732 0-3.268 0-4 0-2.209 0-4-1.791-4-4s1.791-4 4-4c.732 0 3.268 0 4 0 2.209 0 4 1.791 4 4S63.209 40 61 40zM50.849 56.506c-.518-.518-2.311-2.311-2.828-2.828-1.562-1.562-1.562-4.095 0-5.657s4.095-1.562 5.657 0c.518.518 2.311 2.311 2.828 2.828 1.562 1.562 1.562 4.095 0 5.657S52.411 58.068 50.849 56.506zM32 61c0-.732 0-3.268 0-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 .732 0 3.268 0 4 0 2.209-1.791 4-4 4S32 63.209 32 61zM15.494 50.849c.518-.518 2.311-2.311 2.828-2.828 1.562-1.562 4.095-1.562 5.657 0s1.562 4.095 0 5.657c-.518.518-2.311 2.311-2.828 2.828-1.562 1.562-4.095 1.562-5.657 0S13.932 52.411 15.494 50.849zM11 32c.732 0 3.268 0 4 0 2.209 0 4 1.791 4 4s-1.791 4-4 4c-.732 0-3.268 0-4 0-2.209 0-4-1.791-4-4S8.791 32 11 32zM21.151 15.494c.518.518 2.311 2.311 2.828 2.828 1.562 1.562 1.562 4.095 0 5.657s-4.095 1.562-5.657 0c-.518-.518-2.311-2.311-2.828-2.828-1.562-1.562-1.562-4.095 0-5.657S19.589 13.932 21.151 15.494z">
+                        </path>
+                    </svg>
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 004.463-.976a.75.75 0 01.98.98A10.503 10.503 0 0112 22.5C6.202 22.5 1.5 17.798 1.5 12A10.503 10.503 0 019.528 1.718z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Mobile Hamburger Navigation -->
+    <nav id="hamburger-nav">
+        <div class="logo"><a href="../index.html" style="color: inherit; text-decoration: none;">Naol Mengistu</a></div>
+        <div class="nav-right-container">
+            <!-- Dark/Light Mode Button -->
+            <button id="theme-toggle-mobile" class="theme-toggle-btn" title="Toggle theme">
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="7 7 58 58" fill="currentColor">
+                    <path
+                        d="M36 23c7.18 0 13 5.82 13 13s-5.82 13-13 13-13-5.82-13-13S28.82 23 36 23zM40 11c0 .732 0 3.268 0 4 0 2.209-1.791 4-4 4s-4-1.791-4-4c0-.732 0-3.268 0-4 0-2.209 1.791-4 4-4S40 8.791 40 11zM56.506 21.151c-.518.518-2.311 2.311-2.828 2.828-1.562 1.562-4.095 1.562-5.657 0s-1.562-4.095 0-5.657c.518-.518 2.311-2.311 2.828-2.828 1.562-1.562 4.095-1.562 5.657 0S58.068 19.589 56.506 21.151zM61 40c-.732 0-3.268 0-4 0-2.209 0-4-1.791-4-4s1.791-4 4-4c.732 0 3.268 0 4 0 2.209 0 4 1.791 4 4S63.209 40 61 40zM50.849 56.506c-.518-.518-2.311-2.311-2.828-2.828-1.562-1.562-1.562-4.095 0-5.657s4.095-1.562 5.657 0c.518.518 2.311 2.311 2.828 2.828 1.562 1.562 1.562 4.095 0 5.657S52.411 58.068 50.849 56.506zM32 61c0-.732 0-3.268 0-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 .732 0 3.268 0 4 0 2.209-1.791 4-4 4S32 63.209 32 61zM15.494 50.849c.518-.518 2.311-2.311 2.828-2.828 1.562-1.562 4.095-1.562 5.657 0s1.562 4.095 0 5.657c-.518.518-2.311 2.311-2.828 2.828-1.562 1.562-4.095 1.562-5.657 0S13.932 52.411 15.494 50.849zM11 32c.732 0 3.268 0 4 0 2.209 0 4 1.791 4 4s-1.791 4-4 4c-.732 0-3.268 0-4 0-2.209 0-4-1.791-4-4S8.791 32 11 32zM21.151 15.494c.518.518 2.311 2.311 2.828 2.828 1.562 1.562 1.562 4.095 0 5.657s-4.095 1.562-5.657 0c-.518-.518-2.311-2.311-2.828-2.828-1.562-1.562-1.562-4.095 0-5.657S19.589 13.932 21.151 15.494z">
+                    </path>
+                </svg>
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 004.463-.976a.75.75 0 01.98.98A10.503 10.503 0 0112 22.5C6.202 22.5 1.5 17.798 1.5 12A10.503 10.503 0 019.528 1.718z"
+                        clip-rule="evenodd"></path>
+                </svg>
+            </button>
+            <div class="hamburger-menu" title="Menu">
+                <div class="hamburger-icon" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="menu-links">
+                    <ul>
+                        <li><a href="../index.html#about" onclick="toggleMenu()">About</a></li>
+                        <li><a href="../index.html#skills" onclick="toggleMenu()">Key Skills</a></li>
+                        <li><a href="../index.html#projects" onclick="toggleMenu()">Projects</a></li>
+                        <li><a href="products.html" onclick="toggleMenu()">Products</a></li>
+                        <li><a href="../index.html#contact" onclick="toggleMenu()">Contact</a></li>
+                        <li><a href="https://blog.naol.dev" onclick="toggleMenu()">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Products Section -->
+    <section id="products-section" class="reveal">
+        <p class="section__text__p1">Explore My</p>
+        <h1 class="title">Software Products</h1>
+        <br>
+
+        <div class="products-grid">
+
+            <!-- SVEN -->
+            <div class="product-card">
+                <div>
+                    <div class="product-header">
+                        <img src="assets/sven-logo.png" alt="SVEN Logo" class="product-logo" />
+                        <div class="product-title-group">
+                            <h2>SVEN</h2>
+                            <p>Real-time Subtitle Translation</p>
+                        </div>
+                    </div>
+
+                    <div class="product-features">
+                        <span class="feature-tag">Chrome Extension</span>
+                        <span class="feature-tag">Manifest V3</span>
+                        <span class="feature-tag">SaaS</span>
+                        <span class="feature-tag">Language Learning</span>
+                    </div>
+
+                    <p class="product-description">
+                        Real-time subtitle translation built for watching and learning. Renders translated subtitles directly in the player with bilingual viewing, font controls, and per-platform settings. Supports SVT Play, TV4 Play, NRK TV, Yle Areena, UR Play, YouTube, and more.
+                    </p>
+                </div>
+
+                <div class="product-btn-container">
+                    <a href="https://svenpremium.com" target="_blank" class="btn-product">Visit SVEN</a>
+                </div>
+            </div>
+
+            <!-- NeatTube -->
+            <div class="product-card">
+                <div>
+                    <div class="product-header">
+                        <img src="assets/neattube-logo.png" alt="NeatTube Logo" class="product-logo" />
+                        <div class="product-title-group">
+                            <h2>NeatTube</h2>
+                            <p>YouTube without the noise</p>
+                        </div>
+                    </div>
+
+                    <div class="product-features">
+                        <span class="feature-tag">Chrome Extension</span>
+                        <span class="feature-tag">Open Source</span>
+                        <span class="feature-tag">MIT Licensed</span>
+                        <span class="feature-tag">Manifest V3</span>
+                    </div>
+
+                    <p class="product-description">
+                        YouTube without the noise. Hides Shorts, restores dislike counts via Return YouTube Dislike API, filters members-only content, enables Picture-in-Picture (Alt+P), and auto-selects quality up to 8K. MIT licensed and fully open source.
+                    </p>
+                </div>
+
+                <div class="product-btn-container">
+                    <a href="https://neattube.app" target="_blank" class="btn-product">Visit NeatTube</a>
+                </div>
+            </div>
+
+            <!-- Macro Text -->
+            <div class="product-card">
+                <div>
+                    <div class="product-header">
+                        <img src="assets/macro-text-logo.png" alt="Macro Text Logo" class="product-logo" />
+                        <div class="product-title-group">
+                            <h2>Macro Text</h2>
+                            <p>Get more done with smart shortcuts</p>
+                        </div>
+                    </div>
+
+                    <div class="product-features">
+                        <span class="feature-tag">Manifest V3</span>
+                        <span class="feature-tag">Productivity</span>
+                        <span class="feature-tag">Zero Tracking</span>
+                        <span class="feature-tag">Interactive Forms</span>
+                    </div>
+
+                    <p class="product-description">
+                        Stop typing the same things over and over. Create custom shortcuts that expand instantly into templates with dynamic dates, cursor placement, math evaluation, and interactive fill-in forms. Everything saved locally — zero tracking, no external APIs.
+                    </p>
+                </div>
+
+                <div class="product-btn-container">
+                    <a href="https://macrotext.netlify.app" target="_blank" class="btn-product">Visit Macro Text</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Site Footer -->
+    <footer>
+        <nav>
+            <div class="nav-links-container">
+                <ul class="nav-links">
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../index.html#skills">Key Skills</a></li>
+                    <li><a href="../index.html#projects">Projects</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                    <li><a href="https://blog.naol.dev">Blog</a></li>
+                </ul>
+            </div>
+        </nav>
+        <p>© <span id="current-year"></span> Naol Mengistu.</p>
+    </footer>
+
+    <!-- Scroll-to-Top Floating Button -->
+    <button id="scrollToTopBtn" title="Go to top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px">
+            <path
+                d="M12.97 3.97a.75.75 0 011.06 0l6 6a.75.75 0 01-1.06 1.06L13.5 5.56V21a.75.75 0 01-1.5 0V5.56l-5.47 5.47a.75.75 0 01-1.06-1.06l6-6z">
+            </path>
+        </svg>
+    </button>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

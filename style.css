@@ -34,6 +34,11 @@ html {
   --z-content: 1;
   --z-scroll-top: 99;
   --z-mobile-menu: 100;
+
+  /* Glassmorphism Variables */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --glass-blur: 12px;
 }
 
 /* Dark Mode Override Variables */
@@ -45,8 +50,11 @@ html {
   --color-border-light: #374151;
   --color-card-bg: #1f2937;
   --color-card-bg-alt: #1f2937;
-  --color-menu-shadow: rgba(255, 255, 255, 0.08);
   --icon-filter: invert(1) grayscale(1) brightness(2);
+
+  /* Glassmorphism Variables */
+  --glass-bg: rgba(30, 41, 59, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
 }
 
 body {
@@ -73,6 +81,14 @@ a:hover {
   text-decoration: underline;
   text-underline-offset: 1rem;
   text-decoration-color: rgb(181, 181, 181);
+}
+
+/* Suppress underline on mobile menu and button links */
+.menu-links a:hover,
+.btn:hover,
+.btn-color-1:hover,
+.btn-color-2:hover {
+  text-decoration: none;
 }
 
 .title {
@@ -204,23 +220,28 @@ nav {
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: var(--color-bg);
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
   min-width: 200px;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease-in-out;
+  transition: max-height 0.3s ease-in-out, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   border-radius: 1rem;
-  box-shadow: 0 8px 16px var(--color-menu-shadow);
+  border: 0px solid transparent;
+  box-shadow: none;
   z-index: var(--z-mobile-menu);
 }
 
 .menu-links.open {
-  max-height: 350px;
+  max-height: 450px;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px var(--color-menu-shadow);
 }
 
 .menu-links ul {
   list-style: none;
-  padding: 1rem;
+  padding: 1rem 0;
 }
 
 .menu-links a {
@@ -229,6 +250,13 @@ nav {
   text-align: center;
   font-size: 1.5rem;
   color: var(--color-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.menu-links a:hover {
+  background-color: color-mix(in srgb, var(--color-text) 10%, transparent);
+  color: var(--color-text);
+  text-decoration: none;
 }
 
 /* Phone: smaller menu link text */
@@ -304,6 +332,19 @@ nav {
 
 /* Core Layout Constraints */
 
+/* Reveal on Scroll Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 section {
   padding-top: 4vh;
   min-height: 96vh;
@@ -358,6 +399,10 @@ section {
 .section__text__p1 {
   text-align: center;
   font-weight: 600;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
 }
 
 .section__text__p2 {
@@ -411,7 +456,12 @@ section {
   cursor: pointer;
   height: 2rem;
   filter: var(--icon-filter);
-  transition: filter 300ms ease;
+  transition: filter 300ms ease, transform 300ms ease, opacity 300ms ease;
+}
+
+.icon:hover {
+  transform: scale(1.15);
+  opacity: 0.8;
 }
 
 /* Arrow links (bottom-right of sections) */
@@ -469,15 +519,56 @@ section {
   border-color: var(--color-text);
 }
 
+/* Dedicated 'View Products' CTA Button */
+.view-products-btn {
+  width: fit-content !important;
+  padding: 1rem 2.5rem !important;
+  font-size: 1.1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .view-products-btn {
+    padding: 1rem 2rem !important;
+    font-size: 1.05rem;
+  }
+}
+
 /* UI Cards */
 .details-container {
   padding: 1.5rem;
   flex: 1;
-  background: var(--color-card-bg);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
   border-radius: 2rem;
-  border: var(--color-border-light) 0.1rem solid;
+  border: var(--glass-border) 0.1rem solid;
   text-align: center;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.details-container:hover {
+  background: color-mix(in srgb, var(--glass-bg) 80%, white);
+  border-color: var(--color-border);
+  box-shadow: 0 8px 32px var(--color-menu-shadow);
+}
+
+.dark-mode .details-container:hover {
+  background: color-mix(in srgb, var(--glass-bg) 80%, black);
+}
+
+.project-card {
+  min-width: 320px;
+  max-width: 380px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 380px) {
+  .project-card {
+    min-width: unset;
+    width: 100%;
+  }
 }
 
 .color-container {
@@ -544,6 +635,12 @@ section {
 
   #profile .section__text {
     margin: 0 auto;
+  }
+
+  #profile .btn {
+    font-size: 1rem;
+    width: 9rem;
+    padding: 0.8rem;
   }
 }
 
@@ -846,6 +943,13 @@ article .icon {
   flex: 1 1 250px;
   max-width: 380px;
   margin: 0 auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px var(--color-menu-shadow);
+  border-color: var(--color-text);
 }
 
 /* [Adjustable Breakpoint] Tablet layout adjustments trigger below 1200px */
@@ -879,19 +983,28 @@ article .icon {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover .project-img {
+  transform: scale(1.03);
 }
 
 /* Note: Images strictly maintain a 1:1 square ratio universally */
 
 .project-title {
-  margin: 1rem 0;
+  margin: 1.5rem 0 0.5rem;
   color: var(--color-text);
+  font-size: 1.8rem;
 }
 
 /* Flexbox spacer to force the button down to the bottom */
 .project-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin-bottom: 2rem;
   flex-grow: 1;
-  margin-bottom: 1rem;
 }
 
 .project-inline-link {
@@ -917,15 +1030,24 @@ article .icon {
 
 /* [Adjustable Breakpoint] Mobile: Shrink project text size further */
 @media screen and (max-width: 768px) {
+  .project-title {
+    font-size: 1.4rem;
+    margin: 1rem 0 0.5rem;
+  }
+
   .project-description {
     font-size: 0.9rem;
-    margin-bottom: 0.75rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
   }
 }
 
 .project-btn {
+  width: 100%;
   color: var(--color-text);
-  border-color: var(--color-border-light);
+  border-color: var(--color-border);
+  font-size: 1.15rem; /* Larger text */
+  padding: 0.85rem;    /* Reduced padding to keep overall button size same */
 }
 
 /* Prevent Github button from shrinking against dense text */
@@ -949,12 +1071,15 @@ article .icon {
   justify-content: center;
   align-items: center;
   border-radius: 2rem;
-  border: var(--color-border-light) 0.1rem solid;
-  background: var(--color-card-bg-alt);
+  border: var(--glass-border) 0.1rem solid;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
   margin: 2rem auto;
   padding: 1rem 2rem;
   gap: 2rem;
   flex-wrap: wrap;
+  box-shadow: 0 8px 32px var(--color-menu-shadow);
 }
 
 /* [Adjustable Breakpoint] Large Desktop: Resize contact height */
@@ -996,10 +1121,24 @@ article .icon {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
 }
 
 .contact-info-container p {
   font-size: larger;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.contact-info-container:hover .icon {
+  /* Scale removed per user request */
+}
+
+.contact-info-container:hover p {
+  color: var(--color-text);
+  transform: scale(1.05);
+  text-decoration: none;
 }
 
 .contact-icon {
@@ -1072,10 +1211,12 @@ footer p {
   bottom: 5rem;
   right: 5rem;
   z-index: var(--z-scroll-top);
-  border: none;
+  border: var(--glass-border) 1px solid;
   outline: none;
-  background-color: var(--color-border);
-  color: var(--color-bg);
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  color: var(--color-text);
   cursor: pointer;
   padding: 15px;
   border-radius: 50%;
@@ -1084,10 +1225,10 @@ footer p {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 32px var(--color-menu-shadow);
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
 }
 
 /* [Adjustable Breakpoint] Tablet: shift button inward from edge */
@@ -1098,13 +1239,13 @@ footer p {
   }
 }
 
-/* [Adjustable Breakpoint] Mobile: shrink button and push closer to screen edge */
+/* [Adjustable Breakpoint] Mobile: push closer to screen edge but keep size accessible */
 @media screen and (max-width: 768px) {
   #scrollToTopBtn {
     right: 1.25rem;
     bottom: 1.25rem;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     padding: 10px;
   }
 }
@@ -1116,4 +1257,6 @@ footer p {
 
 #scrollToTopBtn:hover {
   background-color: var(--color-text);
+  color: var(--color-bg);
+  transform: scale(1.1);
 }

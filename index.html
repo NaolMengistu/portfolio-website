@@ -12,12 +12,36 @@
         content="Naol is a Cybersecurity Analyst with expertise in GRC (ISO 27001, DORA, NIST), DevOps (CI/CD, Git, Docker), and System Administration (Active Directory, PowerShell). Skilled in Splunk for threat modeling and Python for automation." />
     <link rel="canonical" href="https://naol.dev/" />
 
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://naol.dev/" />
+    <meta property="og:title" content="Naol Mengistu | Cybersecurity & DevOps" />
+    <meta property="og:description" content="Cybersecurity Analyst and DevOps Engineer specializing in GRC, Cloud Security, and automation. Check out my software products and security labs." />
+    <meta property="og:image" content="https://naol.dev/assets/about-pic.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://naol.dev/" />
+    <meta property="twitter:title" content="Naol Mengistu | Cybersecurity & DevOps" />
+    <meta property="twitter:description" content="Cybersecurity Analyst and DevOps Engineer specializing in GRC, Cloud Security, and automation." />
+    <meta property="twitter:image" content="https://naol.dev/assets/about-pic.png" />
+
     <link rel="icon" type="image/png" href="./assets/web-icon.png" />
     <link rel="stylesheet" href="style.css" />
 
     <!-- Particle Background Dependency -->
     <script type="importmap">
     {"imports": {"three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js"}}
+    </script>
+
+    <!-- Pre-load Theme to Prevent Flashing -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+            if (theme === 'dark') document.documentElement.classList.add('dark-mode');
+        })();
     </script>
 </head>
 
@@ -30,6 +54,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Key Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="./products/products.html">Products</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="https://blog.naol.dev">Blog</a></li>
                 <!-- Dark/Light Mode Button -->
@@ -73,6 +98,7 @@
                         <li><a href="#about" onclick="toggleMenu()">About</a></li>
                         <li><a href="#skills" onclick="toggleMenu()">Key Skills</a></li>
                         <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+                        <li><a href="./products/products.html" onclick="toggleMenu()">Products</a></li>
                         <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
                         <li><a href="https://blog.naol.dev" onclick="toggleMenu()">Blog</a></li>
                     </ul>
@@ -105,7 +131,7 @@
     </section>
 
     <!-- About Me Section -->
-    <section id="about">
+    <section id="about" class="reveal">
         <p class="section__text__p1">Get To Know More</p>
         <h1 class="title">About Me</h1>
         <div class="section-container">
@@ -148,7 +174,7 @@
     </section>
 
     <!-- Key Skills & Expertise -->
-    <section id="skills">
+    <section id="skills" class="reveal">
         <p class="section__text__p1">Explore My</p>
         <h1 class="title">Key Skills</h1>
         <div class="experience-details-container">
@@ -249,7 +275,7 @@
     </section>
 
     <!-- Featured Projects Portfolio -->
-    <section id="projects">
+    <section id="projects" class="reveal">
         <p class="section__text__p1">Browse My Recent</p>
         <h1 class="title">Featured Projects</h1>
         <div class="experience-details-container">
@@ -312,22 +338,27 @@
                 </div>
             </div>
         </div>
+        <div class="btn-container" style="margin-top: 4rem; margin-bottom: 8rem;">
+            <button class="btn btn-color-1 view-products-btn" onclick="location.href='./products/products.html'">
+                View Software Products &nbsp; →
+            </button>
+        </div>
         <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#contact'" />
     </section>
 
     <!-- Contact Information Section -->
-    <section id="contact">
+    <section id="contact" class="reveal">
         <p class="section__text__p1">Get in Touch</p>
         <h1 class="title">Contact Me</h1>
         <div class="contact-info-upper-container">
-            <div class="contact-info-container">
+            <a href="mailto:naolmengistu.d@gmail.com" class="contact-info-container">
                 <img src="./assets/email.png" alt="Email icon" class="icon contact-icon email-icon" />
-                <p><a href="mailto:naolmengistu.d@gmail.com">Email</a></p>
-            </div>
-            <div class="contact-info-container">
+                <p>Email</p>
+            </a>
+            <a href="https://linkedin.com/in/naolmengistu" target="_blank" class="contact-info-container">
                 <img src="./assets/linkedin.png" alt="LinkedIn icon" class="icon contact-icon" />
-                <p><a href="https://linkedin.com/in/naolmengistu" target="_blank">LinkedIn</a></p>
-            </div>
+                <p>LinkedIn</p>
+            </a>
         </div>
     </section>
 
@@ -339,6 +370,7 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Key Skills</a></li>
                     <li><a href="#projects">Projects</a></li>
+                    <li><a href="./products/products.html">Products</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="https://blog.naol.dev">Blog</a></li>
                 </ul>

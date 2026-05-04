@@ -1,126 +1,125 @@
-// Toggles the mobile hamburger menu open and closed
+/**
+ * Naol Mengistu - Unified Portfolio Script
+ * Handles theme toggling, mobile menu, scroll-to-top, and reveal-on-scroll animations.
+ */
+
+// 1. Mobile Menu Logic
 function toggleMenu() {
   const menu = document.querySelector(".menu-links");
   const icon = document.querySelector(".hamburger-icon");
-  menu.classList.toggle("open");
-  icon.classList.toggle("open");
+  if (menu && icon) {
+    menu.classList.toggle("open");
+    icon.classList.toggle("open");
+  }
 }
 
-// Automatically update the footer copyright year so we never have to hardcode it
-(function () {
-  const year = new Date().getFullYear();
-  const yearElement = document.getElementById("current-year");
-  if (yearElement) {
-    yearElement.textContent = year;
+// Close mobile menu when clicking outside
+document.addEventListener("click", (event) => {
+  const menu = document.querySelector(".menu-links");
+  const icon = document.querySelector(".hamburger-icon");
+  if (menu && menu.classList.contains("open")) {
+    if (!menu.contains(event.target) && !icon.contains(event.target)) {
+      toggleMenu();
+    }
   }
-})();
+});
 
-// Theme Manager: Handles saving and toggling Dark/Light mode
-
-const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
-const body = document.body;
-
+// 2. Theme Management
 const applyTheme = (theme) => {
   if (theme === 'dark') {
-    body.classList.add('dark-mode');
+    document.documentElement.classList.add('dark-mode');
   } else {
-    body.classList.remove('dark-mode');
+    document.documentElement.classList.remove('dark-mode');
   }
 };
 
 const toggleTheme = () => {
-  const newTheme = body.classList.contains('dark-mode') ? 'light' : 'dark';
+  const newTheme = document.documentElement.classList.contains('dark-mode') ? 'light' : 'dark';
   applyTheme(newTheme);
   localStorage.setItem('theme', newTheme);
 };
 
-themeToggleBtns.forEach(btn => {
-  btn.addEventListener('click', toggleTheme);
-});
-
-// On initial load: Check localStorage first, then OS preferences, else default to Light
-(function () {
+// Initialize Theme (redundancy check if head script was blocked)
+(function initTheme() {
   const savedTheme = localStorage.getItem('theme');
   const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-
   if (savedTheme) {
     applyTheme(savedTheme);
   } else if (prefersDark) {
     applyTheme('dark');
-  } else {
-    applyTheme('light');
   }
 })();
 
-// Scroll-to-Top Button Logic
-// We use an IntersectionObserver so it only pops up when the user reaches the Contact or Footer sections.
+// 3. Scroll-to-Top Logic
+const initScrollToTop = () => {
+  const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+  if (!scrollToTopBtn) return;
 
-const scrollToTopBtn = document.getElementById("scrollToTopBtn");
-
-if (scrollToTopBtn) {
-  const observerCallback = (entries) => {
+  const observer = new IntersectionObserver((entries) => {
     const isVisible = entries.some(entry => entry.isIntersecting);
-    if (isVisible) {
-      scrollToTopBtn.classList.add("show");
-    } else {
-      scrollToTopBtn.classList.remove("show");
-    }
-  };
-
-  const observer = new IntersectionObserver(observerCallback, {
-    root: null,
-    rootMargin: "0px",
-    threshold: 0.1
-  });
+    scrollToTopBtn.classList.toggle("show", isVisible);
+  }, { threshold: 0.01 });
 
   const contactSection = document.getElementById("contact");
   const footer = document.querySelector("footer");
-
   if (contactSection) observer.observe(contactSection);
   if (footer) observer.observe(footer);
 
   scrollToTopBtn.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
-}
+};
 
-// Close the mobile menu if the user clicks anywhere outside of it
-document.addEventListener("click", function (event) {
-  const menu = document.querySelector(".menu-links");
-  const icon = document.querySelector(".hamburger-icon");
+// 4. Reveal-on-Scroll Logic
+const initRevealOnScroll = () => {
+  const revealElements = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        // Once revealed, we can stop observing this specific element
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
 
-  if (menu.classList.contains("open")) {
-    const isClickInsideMenu = menu.contains(event.target);
-    const isClickOnIcon = icon.contains(event.target);
+  revealElements.forEach(el => observer.observe(el));
+};
 
-    if (!isClickInsideMenu && !isClickOnIcon) {
-      toggleMenu();
+// 5. Global Utilities (Copyright Year, Card Height Equalizer)
+const initUtilities = () => {
+  const yearElement = document.getElementById("current-year");
+  if (yearElement) yearElement.textContent = new Date().getFullYear();
+
+  const equalizeHeights = () => {
+    const cards = document.querySelectorAll('.project-card, .product-card');
+    if (!cards.length) return;
+    cards.forEach(card => card.style.height = 'auto');
+    let maxHeight = 0;
+    cards.forEach(card => {
+      if (card.offsetHeight > maxHeight) maxHeight = card.offsetHeight;
+    });
+    cards.forEach(card => card.style.height = maxHeight + 'px');
+  };
+
+  window.addEventListener('load', equalizeHeights);
+  let lastWidth = window.innerWidth;
+  window.addEventListener('resize', () => {
+    if (window.innerWidth !== lastWidth) {
+      equalizeHeights();
+      lastWidth = window.innerWidth;
     }
-  }
+  });
+};
+
+// Main Initialization Hook
+document.addEventListener('DOMContentLoaded', () => {
+  // Theme toggle buttons (can exist in multiple places)
+  document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
+    btn.addEventListener('click', toggleTheme);
+  });
+
+  initScrollToTop();
+  initRevealOnScroll();
+  initUtilities();
 });
-
-// Project Card Height Equalizer
-// Since we use Flexbox wrapping, this forces all project cards globally to match the height of the tallest card.
-function equalizeProjectCardHeights() {
-  const cards = document.querySelectorAll('.project-card');
-  if (!cards.length) return;
-
-  // Temporarily reset to auto so we can measure their natural flowing height
-  cards.forEach(card => card.style.height = 'auto');
-
-  // Scan through all cards to find the absolute tallest one
-  let maxHeight = 0;
-  cards.forEach(card => {
-    if (card.offsetHeight > maxHeight) {
-      maxHeight = card.offsetHeight;
-    }
-  });
-
-  // Enforce that maximum height across the board
-  cards.forEach(card => {
-    card.style.height = maxHeight + 'px';
-  });
-}
-
-window.addEventListener('load', equalizeProjectCardHeights);
-window.addEventListener('resize', equalizeProjectCardHeights);
