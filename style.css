@@ -558,16 +558,48 @@ section {
 
 .project-card {
   min-width: 320px;
-  max-width: 380px;
+  max-width: 390px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
 }
 
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 390px) {
   .project-card {
     min-width: unset;
     width: 100%;
+  }
+}
+
+.article-card {
+  min-width: 320px;
+  max-width: 390px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.article-card .project-title {
+  margin-top: 0;
+}
+
+#articles .about-containers {
+  justify-content: center;
+}
+
+@media screen and (max-width: 1200px) {
+  #articles .about-containers {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .article-card {
+    width: 92%;
+    max-width: 400px;
+    margin: 0 auto;
+    min-width: unset;
   }
 }
 
@@ -760,10 +792,8 @@ section {
 
 /* Experience & Education Card Lists */
 .about-card-list {
-  list-style: none !important;
-  list-style-type: none !important;
+  list-style: none;
   padding: 0;
-  padding-left: 0;
   margin: 0.5rem 0 0;
   display: flex;
   flex-direction: column;
@@ -771,9 +801,15 @@ section {
 }
 
 .about-card-list li {
-  list-style: none;
   color: var(--color-text-secondary);
   font-size: 0.95rem;
+  text-align: center;
+}
+
+.about-card-list li::before {
+  content: "• ";
+  opacity: 0.5;
+  margin-right: 0.25rem;
 }
 
 #about .details-container {
@@ -836,7 +872,7 @@ section {
 /* Cap card width and center */
 #skills .about-containers {
   gap: 2rem;
-  max-width: 950px;
+  max-width: 1150px;
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
@@ -844,7 +880,7 @@ section {
 
 /* Constrain skill cards so they don't stretch too wide on large screens */
 #skills .about-containers .details-container {
-  max-width: 380px;
+  max-width: 360px;
 }
 
 /* [Adjustable Breakpoint] Tablet: Force 2 skill cards per row */
@@ -852,7 +888,7 @@ section {
   #skills .about-containers .details-container {
     flex: 0 1 calc(50% - 2rem);
     min-width: 280px;
-    max-width: 380px;
+    max-width: 360px;
   }
 }
 
@@ -941,7 +977,7 @@ article .icon {
   justify-content: space-between;
   height: auto;
   flex: 1 1 250px;
-  max-width: 380px;
+  max-width: 390px;
   margin: 0 auto;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
 }
@@ -1046,8 +1082,10 @@ article .icon {
   width: 100%;
   color: var(--color-text);
   border-color: var(--color-border);
-  font-size: 1.15rem; /* Larger text */
-  padding: 0.85rem;    /* Reduced padding to keep overall button size same */
+  font-size: 1.15rem;
+  /* Larger text */
+  padding: 0.85rem;
+  /* Reduced padding to keep overall button size same */
 }
 
 /* Prevent Github button from shrinking against dense text */
@@ -1162,6 +1200,10 @@ footer {
   align-items: center;
 }
 
+footer nav {
+  height: auto;
+}
+
 footer .nav-links {
   justify-content: center;
 }
@@ -1187,7 +1229,7 @@ footer p {
   }
 
   footer nav {
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
   }
 
   .nav-links {

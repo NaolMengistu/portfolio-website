@@ -16,14 +16,16 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://naol.dev/" />
     <meta property="og:title" content="Naol Mengistu | Cybersecurity & DevOps" />
-    <meta property="og:description" content="Cybersecurity Analyst and DevOps Engineer specializing in GRC, Cloud Security, and automation. Check out my software products and security labs." />
+    <meta property="og:description"
+        content="Cybersecurity Analyst and DevOps Engineer specializing in GRC, Cloud Security, and automation. Check out my software products and security labs." />
     <meta property="og:image" content="https://naol.dev/assets/about-pic.png" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://naol.dev/" />
     <meta property="twitter:title" content="Naol Mengistu | Cybersecurity & DevOps" />
-    <meta property="twitter:description" content="Cybersecurity Analyst and DevOps Engineer specializing in GRC, Cloud Security, and automation." />
+    <meta property="twitter:description"
+        content="Cybersecurity Analyst and DevOps Engineer specializing in GRC, Cloud Security, and automation." />
     <meta property="twitter:image" content="https://naol.dev/assets/about-pic.png" />
 
     <link rel="icon" type="image/png" href="./assets/web-icon.png" />
@@ -36,7 +38,7 @@
 
     <!-- Pre-load Theme to Prevent Flashing -->
     <script>
-        (function() {
+        (function () {
             const savedTheme = localStorage.getItem('theme');
             const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
             const theme = savedTheme || (prefersDark ? 'dark' : 'light');
@@ -54,13 +56,16 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Key Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#articles">Articles</a></li>
                 <li><a href="./products/products.html">Products</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="https://blog.naol.dev">Blog</a></li>
                 <!-- Dark/Light Mode Button -->
                 <button id="theme-toggle-desktop" class="theme-toggle-btn" title="Toggle theme">
                     <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="7 7 58 58" fill="currentColor">
-                        <path d="M36 23c7.18 0 13 5.82 13 13s-5.82 13-13 13-13-5.82-13-13S28.82 23 36 23zM40 11c0 .732 0 3.268 0 4 0 2.209-1.791 4-4 4s-4-1.791-4-4c0-.732 0-3.268 0-4 0-2.209 1.791-4 4-4S40 8.791 40 11zM56.506 21.151c-.518.518-2.311 2.311-2.828 2.828-1.562 1.562-4.095 1.562-5.657 0s-1.562-4.095 0-5.657c.518-.518 2.311-2.311 2.828-2.828 1.562-1.562 4.095-1.562 5.657 0S58.068 19.589 56.506 21.151zM61 40c-.732 0-3.268 0-4 0-2.209 0-4-1.791-4-4s1.791-4 4-4c.732 0 3.268 0 4 0 2.209 0 4 1.791 4 4S63.209 40 61 40zM50.849 56.506c-.518-.518-2.311-2.311-2.828-2.828-1.562-1.562-1.562-4.095 0-5.657s4.095-1.562 5.657 0c.518.518 2.311 2.311 2.828 2.828 1.562 1.562 1.562 4.095 0 5.657S52.411 58.068 50.849 56.506zM32 61c0-.732 0-3.268 0-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 .732 0 3.268 0 4 0 2.209-1.791 4-4 4S32 63.209 32 61zM15.494 50.849c.518-.518 2.311-2.311 2.828-2.828 1.562-1.562 4.095-1.562 5.657 0s1.562 4.095 0 5.657c-.518.518-2.311 2.311-2.828 2.828-1.562 1.562-4.095 1.562-5.657 0S13.932 52.411 15.494 50.849zM11 32c.732 0 3.268 0 4 0 2.209 0 4 1.791 4 4s-1.791 4-4 4c-.732 0-3.268 0-4 0-2.209 0-4-1.791-4-4S8.791 32 11 32zM21.151 15.494c.518.518 2.311 2.311 2.828 2.828 1.562 1.562 1.562 4.095 0 5.657s-4.095 1.562-5.657 0c-.518-.518-2.311-2.311-2.828-2.828-1.562-1.562-1.562-4.095 0-5.657S19.589 13.932 21.151 15.494z"></path>
+                        <path
+                            d="M36 23c7.18 0 13 5.82 13 13s-5.82 13-13 13-13-5.82-13-13S28.82 23 36 23zM40 11c0 .732 0 3.268 0 4 0 2.209-1.791 4-4 4s-4-1.791-4-4c0-.732 0-3.268 0-4 0-2.209 1.791-4 4-4S40 8.791 40 11zM56.506 21.151c-.518.518-2.311 2.311-2.828 2.828-1.562 1.562-4.095 1.562-5.657 0s-1.562-4.095 0-5.657c.518-.518 2.311-2.311 2.828-2.828 1.562-1.562 4.095-1.562 5.657 0S58.068 19.589 56.506 21.151zM61 40c-.732 0-3.268 0-4 0-2.209 0-4-1.791-4-4s1.791-4 4-4c.732 0 3.268 0 4 0 2.209 0 4 1.791 4 4S63.209 40 61 40zM50.849 56.506c-.518-.518-2.311-2.311-2.828-2.828-1.562-1.562-1.562-4.095 0-5.657s4.095-1.562 5.657 0c.518.518 2.311 2.311 2.828 2.828 1.562 1.562 1.562 4.095 0 5.657S52.411 58.068 50.849 56.506zM32 61c0-.732 0-3.268 0-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 .732 0 3.268 0 4 0 2.209-1.791 4-4 4S32 63.209 32 61zM15.494 50.849c.518-.518 2.311-2.311 2.828-2.828 1.562-1.562 4.095-1.562 5.657 0s1.562 4.095 0 5.657c-.518.518-2.311 2.311-2.828 2.828-1.562 1.562-4.095 1.562-5.657 0S13.932 52.411 15.494 50.849zM11 32c.732 0 3.268 0 4 0 2.209 0 4 1.791 4 4s-1.791 4-4 4c-.732 0-3.268 0-4 0-2.209 0-4-1.791-4-4S8.791 32 11 32zM21.151 15.494c.518.518 2.311 2.311 2.828 2.828 1.562 1.562 1.562 4.095 0 5.657s-4.095 1.562-5.657 0c-.518-.518-2.311-2.311-2.828-2.828-1.562-1.562-1.562-4.095 0-5.657S19.589 13.932 21.151 15.494z">
+                        </path>
                     </svg>
                     <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                         <path fill-rule="evenodd"
@@ -79,7 +84,9 @@
             <!-- Dark/Light Mode Button -->
             <button id="theme-toggle-mobile" class="theme-toggle-btn" title="Toggle theme">
                 <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="7 7 58 58" fill="currentColor">
-                    <path d="M36 23c7.18 0 13 5.82 13 13s-5.82 13-13 13-13-5.82-13-13S28.82 23 36 23zM40 11c0 .732 0 3.268 0 4 0 2.209-1.791 4-4 4s-4-1.791-4-4c0-.732 0-3.268 0-4 0-2.209 1.791-4 4-4S40 8.791 40 11zM56.506 21.151c-.518.518-2.311 2.311-2.828 2.828-1.562 1.562-4.095 1.562-5.657 0s-1.562-4.095 0-5.657c.518-.518 2.311-2.311 2.828-2.828 1.562-1.562 4.095-1.562 5.657 0S58.068 19.589 56.506 21.151zM61 40c-.732 0-3.268 0-4 0-2.209 0-4-1.791-4-4s1.791-4 4-4c.732 0 3.268 0 4 0 2.209 0 4 1.791 4 4S63.209 40 61 40zM50.849 56.506c-.518-.518-2.311-2.311-2.828-2.828-1.562-1.562-1.562-4.095 0-5.657s4.095-1.562 5.657 0c.518.518 2.311 2.311 2.828 2.828 1.562 1.562 1.562 4.095 0 5.657S52.411 58.068 50.849 56.506zM32 61c0-.732 0-3.268 0-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 .732 0 3.268 0 4 0 2.209-1.791 4-4 4S32 63.209 32 61zM15.494 50.849c.518-.518 2.311-2.311 2.828-2.828 1.562-1.562 4.095-1.562 5.657 0s1.562 4.095 0 5.657c-.518.518-2.311 2.311-2.828 2.828-1.562 1.562-4.095 1.562-5.657 0S13.932 52.411 15.494 50.849zM11 32c.732 0 3.268 0 4 0 2.209 0 4 1.791 4 4s-1.791 4-4 4c-.732 0-3.268 0-4 0-2.209 0-4-1.791-4-4S8.791 32 11 32zM21.151 15.494c.518.518 2.311 2.311 2.828 2.828 1.562 1.562 1.562 4.095 0 5.657s-4.095 1.562-5.657 0c-.518-.518-2.311-2.311-2.828-2.828-1.562-1.562-1.562-4.095 0-5.657S19.589 13.932 21.151 15.494z"></path>
+                    <path
+                        d="M36 23c7.18 0 13 5.82 13 13s-5.82 13-13 13-13-5.82-13-13S28.82 23 36 23zM40 11c0 .732 0 3.268 0 4 0 2.209-1.791 4-4 4s-4-1.791-4-4c0-.732 0-3.268 0-4 0-2.209 1.791-4 4-4S40 8.791 40 11zM56.506 21.151c-.518.518-2.311 2.311-2.828 2.828-1.562 1.562-4.095 1.562-5.657 0s-1.562-4.095 0-5.657c.518-.518 2.311-2.311 2.828-2.828 1.562-1.562 4.095-1.562 5.657 0S58.068 19.589 56.506 21.151zM61 40c-.732 0-3.268 0-4 0-2.209 0-4-1.791-4-4s1.791-4 4-4c.732 0 3.268 0 4 0 2.209 0 4 1.791 4 4S63.209 40 61 40zM50.849 56.506c-.518-.518-2.311-2.311-2.828-2.828-1.562-1.562-1.562-4.095 0-5.657s4.095-1.562 5.657 0c.518.518 2.311 2.311 2.828 2.828 1.562 1.562 1.562 4.095 0 5.657S52.411 58.068 50.849 56.506zM32 61c0-.732 0-3.268 0-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 .732 0 3.268 0 4 0 2.209-1.791 4-4 4S32 63.209 32 61zM15.494 50.849c.518-.518 2.311-2.311 2.828-2.828 1.562-1.562 4.095-1.562 5.657 0s1.562 4.095 0 5.657c-.518.518-2.311 2.311-2.828 2.828-1.562 1.562-4.095 1.562-5.657 0S13.932 52.411 15.494 50.849zM11 32c.732 0 3.268 0 4 0 2.209 0 4 1.791 4 4s-1.791 4-4 4c-.732 0-3.268 0-4 0-2.209 0-4-1.791-4-4S8.791 32 11 32zM21.151 15.494c.518.518 2.311 2.311 2.828 2.828 1.562 1.562 1.562 4.095 0 5.657s-4.095 1.562-5.657 0c-.518-.518-2.311-2.311-2.828-2.828-1.562-1.562-1.562-4.095 0-5.657S19.589 13.932 21.151 15.494z">
+                    </path>
                 </svg>
                 <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <path fill-rule="evenodd"
@@ -98,6 +105,7 @@
                         <li><a href="#about" onclick="toggleMenu()">About</a></li>
                         <li><a href="#skills" onclick="toggleMenu()">Key Skills</a></li>
                         <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+                        <li><a href="#articles" onclick="toggleMenu()">Articles</a></li>
                         <li><a href="./products/products.html" onclick="toggleMenu()">Products</a></li>
                         <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
                         <li><a href="https://blog.naol.dev" onclick="toggleMenu()">Blog</a></li>
@@ -112,7 +120,7 @@
         <div class="section__text">
             <p class="section__text__p1">Hello, I'm</p>
             <h1 class="title">Naol Mengistu</h1>
-            <p class="section__text__p2">Cybersecurity | DevOps | Cloud Engineering</p>
+            <p class="section__text__p2">Information Security | System Administration | DevSecOps</p>
             <div class="btn-container">
                 <button class="btn btn-color-2" onclick="window.open('./assets/naol_cv.pdf')">
                     Download CV
@@ -152,20 +160,20 @@
                         <img src="./assets/education.png" alt="Education icon" class="icon" />
                         <h3>Education</h3>
                         <ul class="about-card-list">
-                            <li>M.Sc. in Cybersecurity</li>
+                            <li>M.Sc. in Information Security</li>
                             <li>B.Sc. in Computer Science</li>
                         </ul>
                     </div>
                 </div>
                 <div class="text-container">
                     <p>
-                        Information Security professional with a Master's in Information Security and a Bachelor's in
-                        Computer Science. I currently work as a System Administrator, managing backend infrastructure,
-                        Debian Linux servers, and security protocols for a Freedom of Information platform. With over 3
-                        years of experience in technical support and quality analysis, I combine hands-on skills in ISO
-                        27001/NIST compliance, threat detection, and cloud security. I actively build enterprise-grade
-                        home labs involving Active Directory, pfSense, and automation scripts to stay sharp in defensive
-                        and infrastructure operations.
+                        Information Security professional holding a Master's in Information Security from Stockholm
+                        University and a Bachelor's in Computer Science. I currently work as a System Administrator,
+                        managing backend infrastructure, Debian Linux servers, and security protocols for a Freedom of
+                        Information platform. With over 3 years of experience in technical support and quality analysis,
+                        I combine hands-on skills in DORA and ISO 27001 compliance, Compliance-as-Code practices, and
+                        cloud security. I actively build enterprise-grade home labs involving Active Directory, pfSense,
+                        and automation scripts to stay sharp in defensive and infrastructure operations.
                     </p>
                 </div>
             </div>
@@ -179,40 +187,46 @@
         <h1 class="title">Key Skills</h1>
         <div class="experience-details-container">
             <div class="about-containers">
-                <!-- Skill Column: Cloud Engineer -->
+                <!-- Skill Column: Security Operations -->
                 <div class="details-container">
-                    <h2 class="experience-sub-title">Cloud Engineer</h2>
+                    <h2 class="experience-sub-title">Security Operations & Threat Detection</h2>
                     <div class="article-container">
                         <article>
                             <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
                             <div class="skill-text">
-                                <h3>Google Cloud Platform</h3>
+                                <h3>SIEM Analysis (Splunk)</h3>
                             </div>
                         </article>
                         <article>
                             <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
                             <div class="skill-text">
-                                <h3>AWS & Cloud Security</h3>
+                                <h3>Vulnerability Scanning (Nessus, Nmap)</h3>
                             </div>
                         </article>
                         <article>
                             <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
                             <div class="skill-text">
-                                <h3>Networking & Security</h3>
+                                <h3>Network Analysis (Wireshark)</h3>
                             </div>
                         </article>
                         <article>
                             <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
                             <div class="skill-text">
-                                <h3>Infrastructure as Code (Terraform)</h3>
+                                <h3>Incident Response & Forensics</h3>
                             </div>
                         </article>
                     </div>
                 </div>
                 <!-- Skill Column: System Admin -->
                 <div class="details-container">
-                    <h2 class="experience-sub-title">System Admin</h2>
+                    <h2 class="experience-sub-title">System Administration & Infrastructure</h2>
                     <div class="article-container">
+                        <article>
+                            <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                            <div class="skill-text">
+                                <h3>Debian Linux Administration</h3>
+                            </div>
+                        </article>
                         <article>
                             <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
                             <div class="skill-text">
@@ -222,49 +236,43 @@
                         <article>
                             <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
                             <div class="skill-text">
-                                <h3>Windows & Linux Server</h3>
+                                <h3>Docker & Containerization</h3>
                             </div>
                         </article>
                         <article>
                             <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
                             <div class="skill-text">
-                                <h3>PowerShell & Automation</h3>
-                            </div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                            <div class="skill-text">
-                                <h3>Virtualization & Networking</h3>
+                                <h3>Bash & PowerShell Automation</h3>
                             </div>
                         </article>
                     </div>
                 </div>
-                <!-- Skill Column: SOC Analyst -->
+                <!-- Skill Column: DevSecOps -->
                 <div class="details-container">
-                    <h2 class="experience-sub-title">SOC Analyst</h2>
+                    <h2 class="experience-sub-title">DevSecOps & Compliance</h2>
                     <div class="article-container">
                         <article>
                             <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
                             <div class="skill-text">
-                                <h3>SIEM (Splunk)</h3>
+                                <h3>DORA, ISO 27001 & GDPR</h3>
                             </div>
                         </article>
                         <article>
                             <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
                             <div class="skill-text">
-                                <h3>Vulnerability Assessment (NMAP)</h3>
+                                <h3>Compliance-as-Code (Python)</h3>
                             </div>
                         </article>
                         <article>
                             <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
                             <div class="skill-text">
-                                <h3>ISO 27001 / NIST Frameworks</h3>
+                                <h3>Cloud Security (AWS & GCP)</h3>
                             </div>
                         </article>
                         <article>
                             <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
                             <div class="skill-text">
-                                <h3>Wireshark & Network Analysis</h3>
+                                <h3>Git & CI/CD Pipelines</h3>
                             </div>
                         </article>
                     </div>
@@ -315,7 +323,12 @@
                         <img src="./assets/project-3.png" alt="YouTube Cleanup Extension" class="project-img" />
                     </div>
                     <h2 class="experience-sub-title project-title">YouTube Cleanup Extension</h2>
-                    <p class="project-description">A Chrome extension that cleans up YouTube, hides Shorts & Members-only content, restores dislike counts, sets your preferred video quality automatically, and enables Picture-in-Picture with a keyboard shortcut Alt+P. Read the security thinking behind why I built it on <a class="project-inline-link" href="https://blog.naol.dev/posts/browser-extension-and-the-trust-lifecycle/" target="_blank">my blog</a>.</p>
+                    <p class="project-description">A Chrome extension that cleans up YouTube, hides Shorts &
+                        Members-only content, restores dislike counts, sets your preferred video quality automatically,
+                        and enables Picture-in-Picture with a keyboard shortcut Alt+P. Read the security thinking behind
+                        why I built it on <a class="project-inline-link"
+                            href="https://blog.naol.dev/posts/browser-extension-and-the-trust-lifecycle/"
+                            target="_blank">my blog</a>.</p>
                     <div class="btn-container">
                         <button class="btn btn-color-2 project-btn"
                             onclick="window.open('https://github.com/NaolMengistu/NeatTube')">Github</button>
@@ -341,6 +354,57 @@
         <div class="btn-container" style="margin-top: 4rem; margin-bottom: 8rem;">
             <button class="btn btn-color-1 view-products-btn" onclick="location.href='./products/products.html'">
                 View Software Products &nbsp; →
+            </button>
+        </div>
+        <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#articles'" />
+    </section>
+
+    <!-- Featured Articles Section -->
+    <section id="articles" class="reveal">
+        <p class="section__text__p1">Read My Latest</p>
+        <h1 class="title">Featured Articles</h1>
+        <div class="experience-details-container">
+            <div class="about-containers">
+                <!-- Article 1 -->
+                <div class="details-container color-container article-card">
+                    <h2 class="experience-sub-title project-title">Browser Extensions and the Trust Lifecycle</h2>
+                    <p class="project-description">A security-focused reflection on how browser extensions accumulate
+                        trust over time, why silent updates change the risk model, and how reducing dependency surface
+                        led me to build NeatTube.</p>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn"
+                            onclick="window.open('https://blog.naol.dev/posts/browser-extension-and-the-trust-lifecycle/')">Read
+                            Article →</button>
+                    </div>
+                </div>
+                <!-- Article 2 -->
+                <div class="details-container color-container article-card">
+                    <h2 class="experience-sub-title project-title">What My Master's Thesis on DORA Taught Me</h2>
+                    <p class="project-description">A personal reflection on building a DORA compliance scanner and
+                        learning to translate the abstract language of regulation into the concrete world of code.</p>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn"
+                            onclick="window.open('https://blog.naol.dev/posts/what-my-masters-thesis-on-dora-taught-me/')">Read
+                            Article →</button>
+                    </div>
+                </div>
+                <!-- Article 3 -->
+                <div class="details-container color-container article-card">
+                    <h2 class="experience-sub-title project-title">Building an Enterprise SysAdmin Home Lab</h2>
+                    <p class="project-description">Learn how to build a production-grade virtualized lab environment
+                        that teaches network security, identity management, Linux administration, and defensive security
+                        operations.</p>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn"
+                            onclick="window.open('https://blog.naol.dev/posts/building-an-enterprise-sysadmin-home-lab/')">Read
+                            Article →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-container" style="margin-top: 4rem; margin-bottom: 8rem;">
+            <button class="btn btn-color-1 view-products-btn" onclick="window.open('https://blog.naol.dev')">
+                Visit Technical Blog &nbsp; →
             </button>
         </div>
         <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#contact'" />
@@ -370,6 +434,7 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Key Skills</a></li>
                     <li><a href="#projects">Projects</a></li>
+                    <li><a href="#articles">Articles</a></li>
                     <li><a href="./products/products.html">Products</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="https://blog.naol.dev">Blog</a></li>
